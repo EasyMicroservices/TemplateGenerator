@@ -6,10 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Database\Contexts\" />
     <Folder Include="Database\Documents\" />
-    <Folder Include="Database\Entities\" />
-    <Folder Include="Database\Schemas\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.TemplateGeneratorMicroservice.Domain\EasyMicroservices.TemplateGeneratorMicroservice.Domain.csproj" />
   </ItemGroup>
 
 </Project>
