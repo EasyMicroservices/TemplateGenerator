@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>EasyMicroservices.TemplateGeneratorMicroservice</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Database\Documents\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.TemplateGeneratorMicroservice.Domain\EasyMicroservices.TemplateGeneratorMicroservice.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
