@@ -10,11 +10,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EasyMicroservices.TemplateGeneratorMicroservice.Domain\EasyMicroservices.TemplateGeneratorMicroservice.Domain.csproj" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Configuration" Version="0.0.0.2" />
+    <PackageReference Include="EasyMicroservices.Cores.Database" Version="0.0.0.5" />
+    <PackageReference Include="EasyMicroservices.Database.EntityFrameworkCore" Version="0.0.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+  </ItemGroup>
+  
 </Project>

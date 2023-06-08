@@ -5,12 +5,25 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
 {
     public class TemplateGeneratorContext : DbContext
     {
+        IDatabaseBuilder _builder;
+        public TemplateGeneratorContext(IDatabaseBuilder builder)
+        {
+            _builder = builder;
+        }
+
         public DbSet<FormEntity> Forms { get; set; }
         public DbSet<FormDetailEntity> FormDetails { get; set; }
         public DbSet<FormFilledEntity> FormFills { get; set; }
         public DbSet<FormItemEntity> FormItems { get; set; }
         public DbSet<FormItemValueEntity> FormItemValues { get; set; }
         public DbSet<ItemTypeEntity> ItemTypes { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (_builder != null)
+                _builder.OnConfiguring(optionsBuilder);
+            base.OnConfiguring(optionsBuilder);
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -68,10 +81,12 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
                    .WithMany(x => x.FormItemValues)
                    .HasForeignKey(x => x.FormItemId).OnDelete(DeleteBehavior.Restrict);
             });
-            
+
             modelBuilder.Entity<ItemTypeEntity>(model =>
             {
                 model.HasKey(x => x.Id);
+
+                model.HasIndex(x => x.Type).IsUnique();
             });
         }
     }
