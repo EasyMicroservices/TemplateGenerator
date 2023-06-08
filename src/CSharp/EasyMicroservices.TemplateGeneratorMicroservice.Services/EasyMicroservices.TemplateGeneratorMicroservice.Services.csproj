@@ -5,4 +5,8 @@
     <RootNamespace>EasyMicroservices.TemplateGeneratorMicroservice</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EasyMicroservices.TemplateGeneratorMicroservice.Logics\EasyMicroservices.TemplateGeneratorMicroservice.Logics.csproj" />
+  </ItemGroup>
+
 </Project>
