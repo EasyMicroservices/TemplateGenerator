@@ -1,0 +1,91 @@
+﻿{
+  "Environments": [
+		{
+			"Name": "TemplateGeneratorMicroservice",
+			"GenerationPath": "D:\\Github\\EasyMicroservices\\Microservices\\TemplateGenerator\\src\\CSharp\\EasyMicroservices.TemplateGeneratorMicroservice.Logics\\Mappers",
+			"BuildPath": "D:\\Github\\EasyMicroservices\\Microservices\\TemplateGenerator\\src\\CSharp\\EasyMicroservices.TemplateGeneratorMicroservice.WebApi\\bin\\Debug\\net7.0",
+			"NameSpaces": [
+				"EasyMicroservices.Mapper.Interfaces",
+				"EasyMicroservices.Mapper.CompileTimeMapper.Interfaces",
+				"System.Linq",
+				"EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics"
+			],
+			"Groups": [
+				{
+					"DisplayName": "FormEntity_CreateFormRequestContract",
+					"MapFrom": {
+						"Name": "FormEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+
+					},
+					"MapTo": {
+						"Name": "CreateFormRequestContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "Id"
+						},
+						{
+							"Name": "FormDetails"
+						},
+						{
+							"Name": "FormFills"
+						}
+					],
+					"CustomProperties": [
+					]
+				},
+				{
+					"DisplayName": "FormItemEntity_FormItemContract",
+					"MapFrom": {
+						"Name": "FormItemEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+
+					},
+					"MapTo": {
+						"Name": "FormItemContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "FormId"
+						},
+						{
+							"Name": "Form"
+						},
+						{
+							"Name": "ItemType"
+						},
+						{
+							"Name": "ItemTypeId"
+						},
+						{
+							"Name": "ParentFormItemId"
+						},
+						{
+							"Name": "FormItemValues"
+						},
+						{
+							"Name": "ParentFormItem"
+						},
+						{
+							"Name": "Type"
+						}
+					],
+					"CustomProperties": [
+						{
+							"FromName": "Items",
+							"ToName": "Children"
+						}
+					],
+					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
+				}
+			]
+		}
+  ]
+}
