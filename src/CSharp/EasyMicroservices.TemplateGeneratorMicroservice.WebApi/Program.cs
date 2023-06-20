@@ -42,6 +42,10 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             app.UseAuthorization();
             app.MapControllers();
 
+            var context = new TemplateGeneratorContext(new DatabaseBuilder());
+            await context.Database.MigrateAsync();
+            await context.DisposeAsync();
+
             //CreateDatabase();
 
             StartUp startUp = new StartUp();
