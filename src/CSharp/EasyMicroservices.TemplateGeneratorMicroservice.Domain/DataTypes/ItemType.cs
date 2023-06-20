@@ -15,5 +15,6 @@
         DateTime = 10,
         DateOnly = 11,
         TimeOnly = 12,
+        Label = 13
     }
 }
