@@ -98,6 +98,7 @@ namespace CompileTimeMapper
             {
                 Children = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
+                Index = fromObject.Index,
                 Title = fromObject.Title,
             };
             return mapped;
@@ -110,6 +111,7 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract()
             {
                 Id = fromObject.Id,
+                Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
                 Title = fromObject.Title,
             };
@@ -124,6 +126,7 @@ namespace CompileTimeMapper
             {
                 Children = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
+                Index = fromObject.Index,
                 Title = fromObject.Title,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
@@ -137,6 +140,7 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract()
             {
                 Id = fromObject.Id,
+                Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
                 Title = fromObject.Title,
             };

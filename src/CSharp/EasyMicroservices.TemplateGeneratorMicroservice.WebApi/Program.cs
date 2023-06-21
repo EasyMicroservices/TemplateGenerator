@@ -1,10 +1,14 @@
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database;
+using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System.Reflection;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
 {
@@ -31,21 +35,64 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             var app = builder.Build();
             app.UseDeveloperExceptionPage();
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
+
+            var context = new TemplateGeneratorContext(new DatabaseBuilder());
+            await context.Database.MigrateAsync();
+            await context.DisposeAsync();
+
+            //CreateDatabase();
+
             StartUp startUp = new StartUp();
             await startUp.Run(new DependencyManager());
             app.Run();
+        }
+
+        static void CreateDatabase()
+        {
+            using (var context = new TemplateGeneratorContext(new DatabaseBuilder()))
+            {
+                if (context.Database.EnsureCreated())
+                {
+                    //auto migration when database created first time
+
+                    //add migration history table
+
+                    string createEFMigrationsHistoryCommand = $@"
+USE [{context.Database.GetDbConnection().Database}];
+SET ANSI_NULLS ON;
+SET QUOTED_IDENTIFIER ON;
+CREATE TABLE [dbo].[__EFMigrationsHistory](
+    [MigrationId] [nvarchar](150) NOT NULL,
+    [ProductVersion] [nvarchar](32) NOT NULL,
+ CONSTRAINT [PK___EFMigrationsHistory] PRIMARY KEY CLUSTERED 
+(
+    [MigrationId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY];
+";
+                    context.Database.ExecuteSqlRaw(createEFMigrationsHistoryCommand);
+
+                    //insert all of migrations
+                    var dbAssebmly = context.GetType().Assembly;
+                    foreach (var item in dbAssebmly.GetTypes())
+                    {
+                        if (item.BaseType == typeof(Migration))
+                        {
+                            string migrationName = item.GetCustomAttributes<MigrationAttribute>().First().Id;
+                            var version = typeof(Migration).Assembly.GetName().Version;
+                            string efVersion = $"{version.Major}.{version.Minor}.{version.Build}";
+                            context.Database.ExecuteSqlRaw("INSERT INTO __EFMigrationsHistory(MigrationId,ProductVersion) VALUES ({0},{1})", migrationName, efVersion);
+                        }
+                    }
+                }
+                context.Database.Migrate();
+            }
         }
     }
 
