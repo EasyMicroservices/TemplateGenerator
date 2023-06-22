@@ -28,7 +28,10 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
                 options.SchemaFilter<GenericFilter>();
                 options.SchemaFilter<XEnumNamesSchemaFilter>();
             });
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract>());
+
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormFilledEntity, FormValuesRequestContract, FormContract, FormContract>());
+            
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
 
