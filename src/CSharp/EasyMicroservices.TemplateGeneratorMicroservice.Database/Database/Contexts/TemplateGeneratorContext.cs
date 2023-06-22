@@ -88,6 +88,56 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
 
                 model.HasIndex(x => x.Type).IsUnique();
             });
+
+            modelBuilder.Entity<ItemTypeEntity>().HasData(
+                new ItemTypeEntity()
+                {
+                    Id = 1,
+                    Title = "DateTime",
+                    Type = DataTypes.ItemType.DateTime
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 2,
+                    Title = "DateOnly",
+                    Type = DataTypes.ItemType.DateOnly
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 3,
+                    Title = "TimeOnly",
+                    Type = DataTypes.ItemType.TimeOnly
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 4,
+                    Title = "Label",
+                    Type = DataTypes.ItemType.Label
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 5,
+                    Title = "CheckBox",
+                    Type = DataTypes.ItemType.CheckBox
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 6,
+                    Title = "CheckList",
+                    Type = DataTypes.ItemType.CheckList
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 7,
+                    Title = "OptionList",
+                    Type = DataTypes.ItemType.OptionList
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 8,
+                    Title = "TextBox",
+                    Type = DataTypes.ItemType.TextBox
+                });
         }
     }
 }
