@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using EasyMicroservices.Cores.Database.Interfaces;
+using System.Collections.Generic;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities
 {
-    public class FormFilledEntity
+    public class FormFilledEntity : IIdSchema<long>
     {
         public long Id { get; set; }
 

@@ -9,10 +9,7 @@ using EasyMicroservices.Mapper.Interfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice
 {
@@ -23,11 +20,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
             throw new NotImplementedException();
         }
 
-        public virtual IContractLogic<TEntity, TRequestContract, TResponseContract, long> GetContractLogic<TEntity, TRequestContract, TResponseContract>()
+        public virtual IContractLogic<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract, long> GetContractLogic<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>()
             where TEntity : class, IIdSchema<long>
             where TResponseContract : class
         {
-            return new LongIdMappedDatabaseLogicBase<TEntity, TRequestContract, TResponseContract>(GetDatabase().GetReadableOf<TEntity>(), GetDatabase().GetWritableOf<TEntity>(), GetMapper());
+            return new LongIdMappedDatabaseLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(GetDatabase().GetReadableOf<TEntity>(), GetDatabase().GetWritableOf<TEntity>(), GetMapper());
         }
 
         public virtual IDatabase GetDatabase()

@@ -1,5 +1,5 @@
 ﻿{
-  "Environments": [
+	"Environments": [
 		{
 			"Name": "TemplateGeneratorMicroservice",
 			"GenerationPath": "D:\\Github\\EasyMicroservices\\Microservices\\TemplateGenerator\\src\\CSharp\\EasyMicroservices.TemplateGeneratorMicroservice.Logics\\Mappers",
@@ -17,7 +17,6 @@
 						"Name": "FormEntity",
 						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
 						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
-
 					},
 					"MapTo": {
 						"Name": "CreateFormRequestContract",
@@ -35,8 +34,7 @@
 							"Name": "FormFills"
 						}
 					],
-					"CustomProperties": [
-					]
+					"CustomProperties": []
 				},
 				{
 					"DisplayName": "FormItemEntity_FormItemContract",
@@ -44,7 +42,6 @@
 						"Name": "FormItemEntity",
 						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
 						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
-
 					},
 					"MapTo": {
 						"Name": "FormItemContract",
@@ -84,8 +81,87 @@
 						}
 					],
 					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
+				},
+				{
+					"DisplayName": "FormEntity_FormContract",
+					"MapFrom": {
+						"Name": "FormEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "FormContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "FormDetails"
+						},
+						{
+							"Name": "FormFills"
+						}
+					],
+					"CustomProperties": [
+						{
+							"FromName": "FormItems",
+							"ToName": "Items"
+						}
+					]
+				},
+				{
+					"DisplayName": "FormFilledEntity_FormValuesRequestContract",
+					"MapFrom": {
+						"Name": "FormFilledEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "FormValuesRequestContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "Form"
+						},
+						{
+							"Name": "Id"
+						}
+					],
+					"CustomProperties": []
+				},
+				{
+					"DisplayName": "FormItemValueEntity_FormItemValueContract",
+					"MapFrom": {
+						"Name": "FormItemValueEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "FormItemValueContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "FormFilled"
+						},
+						{
+							"Name": "FormFilledId"
+						},
+						{
+							"Name": "FormItem"
+						},
+						{
+							"Name": "Id"
+						}
+					],
+					"CustomProperties": [
+						
+					]
 				}
 			]
 		}
-  ]
+	]
 }
