@@ -69,15 +69,16 @@
 						},
 						{
 							"Name": "ParentFormItem"
-						},
-						{
-							"Name": "Type"
 						}
 					],
 					"CustomProperties": [
 						{
 							"FromName": "Items",
 							"ToName": "Children"
+						},
+						{
+							"FromName": "Type",
+							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
 						}
 					],
 					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
@@ -157,9 +158,7 @@
 							"Name": "Id"
 						}
 					],
-					"CustomProperties": [
-						
-					]
+					"CustomProperties": []
 				}
 			]
 		}
