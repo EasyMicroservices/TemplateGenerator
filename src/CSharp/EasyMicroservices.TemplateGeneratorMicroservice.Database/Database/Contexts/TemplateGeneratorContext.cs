@@ -62,7 +62,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
 
                 model.HasOne(x => x.ItemType)
                    .WithMany(x => x.FormItems)
-                   .HasForeignKey(x => x.FormId).OnDelete(DeleteBehavior.Restrict);
+                   .HasForeignKey(x => x.ItemTypeId).OnDelete(DeleteBehavior.Restrict);
 
                 model.HasOne(x => x.ParentFormItem)
                    .WithMany(x => x.Children)
@@ -85,7 +85,6 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
             modelBuilder.Entity<ItemTypeEntity>(model =>
             {
                 model.HasKey(x => x.Id);
-
                 model.HasIndex(x => x.Type).IsUnique();
             });
 

@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 {
     /// <inheritdoc />
@@ -46,7 +48,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FormId = table.Column<long>(type: "bigint", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Index = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -87,7 +90,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     FormId = table.Column<long>(type: "bigint", nullable: false),
                     ItemTypeId = table.Column<long>(type: "bigint", nullable: false),
                     ParentFormItemId = table.Column<long>(type: "bigint", nullable: true),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Index = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,8 +109,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_FormItems_ItemTypes_FormId",
-                        column: x => x.FormId,
+                        name: "FK_FormItems_ItemTypes_ItemTypeId",
+                        column: x => x.ItemTypeId,
                         principalTable: "ItemTypes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -139,6 +143,21 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.InsertData(
+                table: "ItemTypes",
+                columns: new[] { "Id", "Description", "Title", "Type" },
+                values: new object[,]
+                {
+                    { 1L, null, "DateTime", (byte)10 },
+                    { 2L, null, "DateOnly", (byte)11 },
+                    { 3L, null, "TimeOnly", (byte)12 },
+                    { 4L, null, "Label", (byte)13 },
+                    { 5L, null, "CheckBox", (byte)8 },
+                    { 6L, null, "CheckList", (byte)7 },
+                    { 7L, null, "OptionList", (byte)9 },
+                    { 8L, null, "TextBox", (byte)6 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_FormDetails_FormId",
                 table: "FormDetails",
@@ -153,6 +172,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                 name: "IX_FormItems_FormId",
                 table: "FormItems",
                 column: "FormId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_FormItems_ItemTypeId",
+                table: "FormItems",
+                column: "ItemTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FormItems_ParentFormItemId",

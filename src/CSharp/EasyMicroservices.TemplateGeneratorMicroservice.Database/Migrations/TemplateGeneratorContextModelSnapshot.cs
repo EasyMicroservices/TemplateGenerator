@@ -110,6 +110,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     b.HasIndex("FormId");
 
+                    b.HasIndex("ItemTypeId");
+
                     b.HasIndex("ParentFormItemId");
 
                     b.ToTable("FormItems");
@@ -248,7 +250,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.ItemTypeEntity", "ItemType")
                         .WithMany("FormItems")
-                        .HasForeignKey("FormId")
+                        .HasForeignKey("ItemTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
