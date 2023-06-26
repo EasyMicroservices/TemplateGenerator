@@ -16,7 +16,9 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 
         protected override Func<IQueryable<FormEntity>, IQueryable<FormEntity>> OnGetQuery()
         {
-            return query => query.Include(e => e.FormItems).ThenInclude(x => x.ItemType);
+            return query => query
+            .Include(e => e.FormItems).ThenInclude(x => x.ItemType)
+            .Include(x => x.FormItems).ThenInclude(x => x.Children);
         }
     }
 }

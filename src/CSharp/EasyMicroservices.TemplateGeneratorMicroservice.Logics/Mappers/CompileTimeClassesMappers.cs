@@ -266,6 +266,7 @@ namespace CompileTimeMapper
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
                 Title = fromObject.Title,
+                Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
             return mapped;
         }
@@ -295,6 +296,7 @@ namespace CompileTimeMapper
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
                 Title = fromObject.Title,
+                Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
             return mapped;
         }
