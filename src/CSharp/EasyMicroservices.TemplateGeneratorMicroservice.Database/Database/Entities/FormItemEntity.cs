@@ -7,7 +7,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities
     {
         public long Id { get; set; }
 
-        public long FormId { get; set; }
+        public long? FormId { get; set; }
         public FormEntity Form { get; set; }
 
         public long ItemTypeId { get; set; }

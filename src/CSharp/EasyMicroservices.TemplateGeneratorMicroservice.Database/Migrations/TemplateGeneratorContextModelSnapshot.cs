@@ -91,7 +91,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("FormId")
+                    b.Property<long?>("FormId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Index")
@@ -109,6 +109,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FormId");
+
+                    b.HasIndex("ItemTypeId");
 
                     b.HasIndex("ParentFormItemId");
 
@@ -243,12 +245,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormEntity", "Form")
                         .WithMany("FormItems")
                         .HasForeignKey("FormId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.ItemTypeEntity", "ItemType")
                         .WithMany("FormItems")
-                        .HasForeignKey("FormId")
+                        .HasForeignKey("ItemTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

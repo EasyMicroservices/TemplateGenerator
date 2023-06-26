@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 {
     [DbContext(typeof(TemplateGeneratorContext))]
-    [Migration("20230620125029_Add_Index_Property_FormItemEntity")]
-    partial class AddIndexPropertyFormItemEntity
+    [Migration("20230625164522_Initialize")]
+    partial class Initialize
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,7 +94,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
-                    b.Property<long>("FormId")
+                    b.Property<long?>("FormId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Index")
@@ -112,6 +112,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("FormId");
+
+                    b.HasIndex("ItemTypeId");
 
                     b.HasIndex("ParentFormItemId");
 
@@ -167,6 +169,56 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         .IsUnique();
 
                     b.ToTable("ItemTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Title = "DateTime",
+                            Type = (byte)10
+                        },
+                        new
+                        {
+                            Id = 2L,
+                            Title = "DateOnly",
+                            Type = (byte)11
+                        },
+                        new
+                        {
+                            Id = 3L,
+                            Title = "TimeOnly",
+                            Type = (byte)12
+                        },
+                        new
+                        {
+                            Id = 4L,
+                            Title = "Label",
+                            Type = (byte)13
+                        },
+                        new
+                        {
+                            Id = 5L,
+                            Title = "CheckBox",
+                            Type = (byte)8
+                        },
+                        new
+                        {
+                            Id = 6L,
+                            Title = "CheckList",
+                            Type = (byte)7
+                        },
+                        new
+                        {
+                            Id = 7L,
+                            Title = "OptionList",
+                            Type = (byte)9
+                        },
+                        new
+                        {
+                            Id = 8L,
+                            Title = "TextBox",
+                            Type = (byte)6
+                        });
                 });
 
             modelBuilder.Entity("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity", b =>
@@ -196,12 +248,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormEntity", "Form")
                         .WithMany("FormItems")
                         .HasForeignKey("FormId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.ItemTypeEntity", "ItemType")
                         .WithMany("FormItems")
-                        .HasForeignKey("FormId")
+                        .HasForeignKey("ItemTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
