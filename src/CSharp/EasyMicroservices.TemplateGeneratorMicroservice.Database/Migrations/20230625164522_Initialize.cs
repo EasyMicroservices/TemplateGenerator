@@ -87,7 +87,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FormId = table.Column<long>(type: "bigint", nullable: false),
+                    FormId = table.Column<long>(type: "bigint", nullable: true),
                     ItemTypeId = table.Column<long>(type: "bigint", nullable: false),
                     ParentFormItemId = table.Column<long>(type: "bigint", nullable: true),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
