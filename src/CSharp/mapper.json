@@ -159,6 +159,28 @@
 						}
 					],
 					"CustomProperties": []
+				},
+				{
+					"DisplayName": "FormDetailEntity_FormDetailContract",
+					"MapFrom": {
+						"Name": "FormDetailEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "FormDetailContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "Id"
+						},
+						{
+							"Name": "Form"
+						}
+					],
+					"CustomProperties": []
 				}
 			]
 		}

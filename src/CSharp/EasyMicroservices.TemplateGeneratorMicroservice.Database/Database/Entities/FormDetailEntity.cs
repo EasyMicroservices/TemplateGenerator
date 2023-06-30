@@ -1,8 +1,9 @@
-﻿using EasyMicroservices.TemplateGeneratorMicroservice.Database.Schemas;
+﻿using EasyMicroservices.Cores.Database.Interfaces;
+using EasyMicroservices.TemplateGeneratorMicroservice.Database.Schemas;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities
 {
-    public class FormDetailEntity : ItemSchema
+    public class FormDetailEntity : FormDetailSchema, IIdSchema<long>
     {
         public long Id { get; set; }
 

@@ -6,6 +6,86 @@ using System.Linq;
 
 namespace CompileTimeMapper
 {
+    public class FormDetailEntity_FormDetailContract_Mapper : IMapper
+    {
+        readonly IMapperProvider _mapper;
+        public FormDetailEntity_FormDetailContract_Mapper(IMapperProvider mapper)
+        {
+            _mapper = mapper;
+        }
+
+        public global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity Map(global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract fromObject, string uniqueRecordId, string language, object[] parameters)
+        {
+            if (fromObject == default)
+                return default;
+            var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity()
+            {
+                FormId = fromObject.FormId,
+                Key = fromObject.Key,
+                Title = fromObject.Title,
+                Value = fromObject.Value,
+            };
+            return mapped;
+        }
+
+        public global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract Map(global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity fromObject, string uniqueRecordId, string language, object[] parameters)
+        {
+            if (fromObject == default)
+                return default;
+            var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract()
+            {
+                FormId = fromObject.FormId,
+                Key = fromObject.Key,
+                Title = fromObject.Title,
+                Value = fromObject.Value,
+            };
+            return mapped;
+        }
+
+        public async Task<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity> MapAsync(global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract fromObject, string uniqueRecordId, string language, object[] parameters)
+        {
+            if (fromObject == default)
+                return default;
+            var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity()
+            {
+                FormId = fromObject.FormId,
+                Key = fromObject.Key,
+                Title = fromObject.Title,
+                Value = fromObject.Value,
+            };
+            return mapped;
+        }
+
+        public async Task<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract> MapAsync(global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity fromObject, string uniqueRecordId, string language, object[] parameters)
+        {
+            if (fromObject == default)
+                return default;
+            var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract()
+            {
+                FormId = fromObject.FormId,
+                Key = fromObject.Key,
+                Title = fromObject.Title,
+                Value = fromObject.Value,
+            };
+            return mapped;
+        }
+        public object MapObject(object fromObject, string uniqueRecordId, string language, object[] parameters)
+        {
+            if (fromObject == default)
+                return default;
+            if (fromObject.GetType() == typeof(EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity))
+                return Map((EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity)fromObject, uniqueRecordId, language, parameters);
+            return Map((EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract)fromObject, uniqueRecordId, language, parameters);
+        }
+        public async Task<object> MapObjectAsync(object fromObject, string uniqueRecordId, string language, object[] parameters)
+        {
+            if (fromObject == default)
+                return default;
+            if (fromObject.GetType() == typeof(EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity))
+                return await MapAsync((EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormDetailEntity)fromObject, uniqueRecordId, language, parameters);
+            return await MapAsync((EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormDetailContract)fromObject, uniqueRecordId, language, parameters);
+        }
+    }
     public class FormEntity_CreateFormRequestContract_Mapper : IMapper
     {
         readonly IMapperProvider _mapper;
