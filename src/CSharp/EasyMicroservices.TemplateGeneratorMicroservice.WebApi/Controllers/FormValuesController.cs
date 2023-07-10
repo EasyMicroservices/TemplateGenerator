@@ -6,7 +6,7 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 {
-    public class FormValuesController : SimpleQueryServiceController<FormFilledEntity, long, FormValuesRequestContract, FormContract, FormContract>
+    public class FormValuesController : SimpleQueryServiceController<FormFilledEntity, FormValuesRequestContract, FormContract, FormContract, long>
     {
         public FormValuesController(IContractLogic<FormFilledEntity, FormValuesRequestContract, FormContract, FormContract, long> contractReadable) : base(contractReadable)
         {
