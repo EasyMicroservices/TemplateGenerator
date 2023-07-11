@@ -11,7 +11,6 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using System;
 using System.Linq;
-using System.Security.AccessControl;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice
 {
@@ -34,9 +33,14 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
             return new EntityFrameworkCoreDatabaseProvider(new TemplateGeneratorContext(new DatabaseBuilder()));
         }
 
+        public static string DefaultUniqueIdentity { get; set; }
+        public static long MicroserviceId { get; set; }
+        public static IUniqueIdentityManager UniqueIdentityManager { get; set; }
         public virtual IUniqueIdentityManager GetUniqueIdentityManager()
         {
-            return new DefaultUniqueIdentityManager();
+            if (UniqueIdentityManager == null)
+                UniqueIdentityManager = new DefaultUniqueIdentityManager(DefaultUniqueIdentity, MicroserviceId);
+            return UniqueIdentityManager;
         }
 
         public virtual IMapperProvider GetMapper()

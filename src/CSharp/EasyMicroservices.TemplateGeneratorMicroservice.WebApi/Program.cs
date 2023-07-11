@@ -6,6 +6,7 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -37,7 +38,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
-
+            builder.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IDatabaseBuilder>()));
+            //builder.WebHost.UseUrls("https://*:7185");
             var app = builder.Build();
             app.UseDeveloperExceptionPage();
             // Configure the HTTP request pipeline.
@@ -47,11 +49,12 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
-            var context = new TemplateGeneratorContext(new DatabaseBuilder());
-            await context.Database.MigrateAsync();
-            await context.DisposeAsync();
+            
             using (var scope = app.Services.CreateScope())
             {
+                using var context = scope.ServiceProvider.GetService<TemplateGeneratorContext>();
+                await context.Database.MigrateAsync();
+                await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
                 await service.Initialize("TemplateGenerator", "https://localhost:7184", typeof(TemplateGeneratorContext));
             }
