@@ -3,8 +3,10 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
+using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -32,10 +34,12 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormFilledEntity, FormValuesRequestContract, FormContract, FormContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormDetailEntity, FormDetailContract, FormDetailContract, FormDetailContract>());
-            
+            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
+            builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
-
+            builder.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IDatabaseBuilder>()));
+            //builder.WebHost.UseUrls("https://*:7185");
             var app = builder.Build();
             app.UseDeveloperExceptionPage();
             // Configure the HTTP request pipeline.
@@ -45,29 +49,32 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
-
-            var context = new TemplateGeneratorContext(new DatabaseBuilder());
-            await context.Database.MigrateAsync();
-            await context.DisposeAsync();
-
+            
+            using (var scope = app.Services.CreateScope())
+            {
+                using var context = scope.ServiceProvider.GetService<TemplateGeneratorContext>();
+                await context.Database.MigrateAsync();
+                await context.DisposeAsync();
+                var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
+                await service.Initialize("TemplateGenerator", "https://localhost:7184", typeof(TemplateGeneratorContext));
+            }
             //CreateDatabase();
-
-            StartUp startUp = new StartUp();
+            
+            StartUp startUp = new();
             await startUp.Run(new DependencyManager());
             app.Run();
         }
 
         static void CreateDatabase()
         {
-            using (var context = new TemplateGeneratorContext(new DatabaseBuilder()))
+            using TemplateGeneratorContext context = new(new DatabaseBuilder());
+            if (context.Database.EnsureCreated())
             {
-                if (context.Database.EnsureCreated())
-                {
-                    //auto migration when database created first time
+                //auto migration when database created first time
 
-                    //add migration history table
+                //add migration history table
 
-                    string createEFMigrationsHistoryCommand = $@"
+                string createEFMigrationsHistoryCommand = $@"
 USE [{context.Database.GetDbConnection().Database}];
 SET ANSI_NULLS ON;
 SET QUOTED_IDENTIFIER ON;
@@ -80,23 +87,22 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY];
 ";
-                    context.Database.ExecuteSqlRaw(createEFMigrationsHistoryCommand);
+                context.Database.ExecuteSqlRaw(createEFMigrationsHistoryCommand);
 
-                    //insert all of migrations
-                    var dbAssebmly = context.GetType().Assembly;
-                    foreach (var item in dbAssebmly.GetTypes())
+                //insert all of migrations
+                var dbAssebmly = context.GetType().Assembly;
+                foreach (var item in dbAssebmly.GetTypes())
+                {
+                    if (item.BaseType == typeof(Migration))
                     {
-                        if (item.BaseType == typeof(Migration))
-                        {
-                            string migrationName = item.GetCustomAttributes<MigrationAttribute>().First().Id;
-                            var version = typeof(Migration).Assembly.GetName().Version;
-                            string efVersion = $"{version.Major}.{version.Minor}.{version.Build}";
-                            context.Database.ExecuteSqlRaw("INSERT INTO __EFMigrationsHistory(MigrationId,ProductVersion) VALUES ({0},{1})", migrationName, efVersion);
-                        }
+                        string migrationName = item.GetCustomAttributes<MigrationAttribute>().First().Id;
+                        var version = typeof(Migration).Assembly.GetName().Version;
+                        string efVersion = $"{version.Major}.{version.Minor}.{version.Build}";
+                        context.Database.ExecuteSqlRaw("INSERT INTO __EFMigrationsHistory(MigrationId,ProductVersion) VALUES ({0},{1})", migrationName, efVersion);
                     }
                 }
-                context.Database.Migrate();
             }
+            context.Database.Migrate();
         }
     }
 

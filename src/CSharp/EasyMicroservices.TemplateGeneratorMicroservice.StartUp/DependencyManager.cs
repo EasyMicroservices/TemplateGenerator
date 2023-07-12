@@ -1,6 +1,7 @@
 ﻿using EasyMicroservices.Configuration.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.Cores.Database.Logics;
+using EasyMicroservices.Cores.Database.Managers;
 using EasyMicroservices.Database.EntityFrameworkCore.Providers;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Interfaces;
@@ -24,12 +25,22 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
             where TEntity : class, IIdSchema<long>
             where TResponseContract : class
         {
-            return new LongIdMappedDatabaseLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(GetDatabase().GetReadableOf<TEntity>(), GetDatabase().GetWritableOf<TEntity>(), GetMapper());
+            return new LongIdMappedDatabaseLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(GetDatabase().GetReadableOf<TEntity>(), GetDatabase().GetWritableOf<TEntity>(), GetMapper(), GetUniqueIdentityManager());
         }
 
         public virtual IDatabase GetDatabase()
         {
             return new EntityFrameworkCoreDatabaseProvider(new TemplateGeneratorContext(new DatabaseBuilder()));
+        }
+
+        public static string DefaultUniqueIdentity { get; set; }
+        public static long MicroserviceId { get; set; }
+        public static IUniqueIdentityManager UniqueIdentityManager { get; set; }
+        public virtual IUniqueIdentityManager GetUniqueIdentityManager()
+        {
+            if (UniqueIdentityManager == null)
+                UniqueIdentityManager = new DefaultUniqueIdentityManager(DefaultUniqueIdentity, MicroserviceId);
+            return UniqueIdentityManager;
         }
 
         public virtual IMapperProvider GetMapper()

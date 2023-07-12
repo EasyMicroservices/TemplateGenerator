@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 {
-    public class FormController : SimpleQueryServiceController<FormEntity, long, CreateFormRequestContract, FormContract, FormContract>
+    public class FormController : SimpleQueryServiceController<FormEntity, CreateFormRequestContract, FormContract, FormContract, long>
     {
         public FormController(IContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract, long> contractReadable) : base(contractReadable)
         {

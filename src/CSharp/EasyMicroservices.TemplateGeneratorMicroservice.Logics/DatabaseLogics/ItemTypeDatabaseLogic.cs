@@ -14,14 +14,15 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics
 {
     public class ItemTypeDatabaseLogic : LongIdDatabaseLogicBase<ItemTypeEntity>
     {
-        public ItemTypeDatabaseLogic(IDatabase database, IMapperProvider mapperProvider) : base(database.GetReadableOf<ItemTypeEntity>(), database.GetWritableOf<ItemTypeEntity>(), mapperProvider)
+        public ItemTypeDatabaseLogic(IDatabase database, IMapperProvider mapperProvider, IDependencyManager dependencyManager) :
+            base(database.GetReadableOf<ItemTypeEntity>(), database.GetWritableOf<ItemTypeEntity>(), mapperProvider, dependencyManager.GetUniqueIdentityManager())
         {
 
         }
 
         public static ItemTypeDatabaseLogic CreateInstance(IDependencyManager dependencyManager)
         {
-            return new ItemTypeDatabaseLogic(dependencyManager.GetDatabase(), dependencyManager.GetMapper());
+            return new ItemTypeDatabaseLogic(dependencyManager.GetDatabase(), dependencyManager.GetMapper(), dependencyManager);
         }
 
         public static async Task<long> GetItemTypeIdByType(ItemType itemType)
