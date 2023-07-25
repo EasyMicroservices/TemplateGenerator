@@ -31,12 +31,12 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
                 options.SchemaFilter<XEnumNamesSchemaFilter>();
             });
 
+            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormFilledEntity, FormValuesRequestContract, FormContract, FormContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormDetailEntity, FormDetailContract, FormDetailContract, FormDetailContract>());
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
-            builder.Services.AddHttpContextAccessor();
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
             builder.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IDatabaseBuilder>()));
             //builder.WebHost.UseUrls("https://*:7185");
@@ -53,7 +53,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             using (var scope = app.Services.CreateScope())
             {
                 using var context = scope.ServiceProvider.GetService<TemplateGeneratorContext>();
-                await context.Database.MigrateAsync();
+                await context.Database.EnsureCreatedAsync();
+                //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
                 await service.Initialize("TemplateGenerator", "https://localhost:7184", typeof(TemplateGeneratorContext));

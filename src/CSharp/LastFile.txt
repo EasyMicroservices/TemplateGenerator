@@ -1,0 +1,1 @@
+﻿D:\Github\EasyMicroservices\Microservices\TemplateGenerator\src\CSharp\mapper.json
