@@ -2,6 +2,7 @@
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.Cores.Database.Logics;
 using EasyMicroservices.Cores.Database.Managers;
+using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.Database.EntityFrameworkCore.Providers;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.Mapper.CompileTimeMapper.Interfaces;

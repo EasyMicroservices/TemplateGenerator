@@ -1,4 +1,4 @@
-﻿using EasyMicroservices.Cores.Database.Interfaces;
+﻿using EasyMicroservices.Cores.Interfaces;
 using System.Collections.Generic;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities
