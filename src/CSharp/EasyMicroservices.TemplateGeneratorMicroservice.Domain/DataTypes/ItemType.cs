@@ -17,6 +17,7 @@
         TimeOnly = 12,
         Label = 13,
         Table = 14,
-        Row = 15
+        Row = 15,
+        AutoIncrementNumber = 16
     }
 }
