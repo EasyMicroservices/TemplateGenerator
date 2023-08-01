@@ -45,6 +45,55 @@
         }
       }
     },
+    "/api/Form/GetByUniqueIdentity": {
+      "get": {
+        "tags": [
+          "Form"
+        ],
+        "operationId": "GetByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Form/Add": {
       "post": {
         "tags": [
@@ -144,7 +193,7 @@
       }
     },
     "/api/Form/HardDeleteById": {
-      "post": {
+      "delete": {
         "tags": [
           "Form"
         ],
@@ -213,6 +262,55 @@
         }
       }
     },
+    "/api/Form/GetAllByUniqueIdentity": {
+      "get": {
+        "tags": [
+          "Form"
+        ],
+        "operationId": "GetAllByUniqueIdentity",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormDetail/GetById": {
       "get": {
         "tags": [
@@ -229,6 +327,55 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormDetail/GetByUniqueIdentity": {
+      "get": {
+        "tags": [
+          "FormDetail"
+        ],
+        "operationId": "GetByUniqueIdentity2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -352,7 +499,7 @@
       }
     },
     "/api/FormDetail/HardDeleteById": {
-      "post": {
+      "delete": {
         "tags": [
           "FormDetail"
         ],
@@ -421,6 +568,55 @@
         }
       }
     },
+    "/api/FormDetail/GetAllByUniqueIdentity": {
+      "get": {
+        "tags": [
+          "FormDetail"
+        ],
+        "operationId": "GetAllByUniqueIdentity2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormValues/GetById": {
       "get": {
         "tags": [
@@ -437,6 +633,55 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormValues/GetByUniqueIdentity": {
+      "get": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "GetByUniqueIdentity3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -560,7 +805,7 @@
       }
     },
     "/api/FormValues/HardDeleteById": {
-      "post": {
+      "delete": {
         "tags": [
           "FormValues"
         ],
@@ -605,6 +850,55 @@
           "FormValues"
         ],
         "operationId": "GetAll3",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormValues/GetAllByUniqueIdentity": {
+      "get": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "GetAllByUniqueIdentity3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -908,6 +1202,16 @@
           }
         }
       },
+      "GetUniqueIdentityRequest": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
       "Int64MessageContract": {
         "title": "MessageContract<Int64>",
         "type": "object",
@@ -942,7 +1246,9 @@
           "DateTime",
           "DateOnly",
           "TimeOnly",
-          "Label"
+          "Label",
+          "Table",
+          "Row"
         ],
         "enum": [
           0,
@@ -958,7 +1264,9 @@
           10,
           11,
           12,
-          13
+          13,
+          14,
+          15
         ]
       },
       "MessageContract": {
