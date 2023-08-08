@@ -2790,6 +2790,7 @@ namespace TemplateGenerators.GeneratedServices
     public partial class FormItemValueContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _formItemId;
+        private int _index;
         private string _value;
 
         [Newtonsoft.Json.JsonProperty("formItemId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -2802,6 +2803,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_formItemId != value)
                 {
                     _formItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("index", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int Index
+        {
+            get { return _index; }
+
+            set
+            {
+                if (_index != value)
+                {
+                    _index = value;
                     RaisePropertyChanged();
                 }
             }
