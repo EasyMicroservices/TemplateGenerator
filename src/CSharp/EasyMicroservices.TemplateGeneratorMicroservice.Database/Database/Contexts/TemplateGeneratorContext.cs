@@ -136,6 +136,24 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
                     Id = 8,
                     Title = "TextBox",
                     Type = DataTypes.ItemType.TextBox
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 9,
+                    Title = "Table",
+                    Type = DataTypes.ItemType.Table
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 10,
+                    Title = "Row",
+                    Type = DataTypes.ItemType.Row
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 11,
+                    Title = "AutoIncrementNumber",
+                    Type = DataTypes.ItemType.AutoIncrementNumber
                 });
         }
     }

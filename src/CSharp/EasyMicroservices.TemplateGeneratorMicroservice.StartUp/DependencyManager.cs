@@ -29,6 +29,12 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
             return new LongIdMappedDatabaseLogicBase<TEntity, TCreateRequestContract, TUpdateRequestContract, TResponseContract>(GetDatabase().GetReadableOf<TEntity>(), GetDatabase().GetWritableOf<TEntity>(), GetMapper(), GetUniqueIdentityManager());
         }
 
+        public virtual IEasyReadableQueryableAsync<TEntity> GetReadableQueryable<TEntity>()
+            where TEntity : class, IIdSchema<long>
+        {
+            return GetDatabase().GetReadableOf<TEntity>();
+        }
+
         public virtual IDatabase GetDatabase()
         {
             return new EntityFrameworkCoreDatabaseProvider(new TemplateGeneratorContext(new DatabaseBuilder()));

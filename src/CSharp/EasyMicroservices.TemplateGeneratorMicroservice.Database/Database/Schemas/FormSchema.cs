@@ -1,5 +1,4 @@
-﻿using EasyMicroservices.Cores.Database.Interfaces;
-using EasyMicroservices.Cores.Interfaces;
+﻿using EasyMicroservices.Cores.Interfaces;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Schemas
 {
