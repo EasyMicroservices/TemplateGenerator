@@ -17,6 +17,18 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             _formValueContractReadable = formValueContractReadable;
         }
 
+        protected override Func<IQueryable<FormFilledEntity>, IQueryable<FormFilledEntity>> OnGetAllQuery()
+        {
+            return query => query
+            .Include(e => e.FormItemValues);
+        }
+
+        protected override Func<IQueryable<FormFilledEntity>, IQueryable<FormFilledEntity>> OnGetQuery()
+        {
+            return query => query
+            .Include(e => e.FormItemValues);
+        }
+
         public override async Task<MessageContract<long>> Add(FormValuesContract request, CancellationToken cancellationToken = default)
         {
             var allValues = await _formValueContractReadable.Where(x => x.FormFilled.FormId == request.FormId).Include(x => x.FormItem).ThenInclude(x => x.ItemType).ToListAsync();
