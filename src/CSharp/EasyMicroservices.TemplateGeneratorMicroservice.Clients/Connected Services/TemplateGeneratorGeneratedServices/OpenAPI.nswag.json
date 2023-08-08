@@ -617,6 +617,55 @@
         }
       }
     },
+    "/api/FormValues/Add": {
+      "post": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "Add3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormValues/GetById": {
       "get": {
         "tags": [
@@ -639,17 +688,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               }
             }
@@ -688,66 +737,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/FormValues/Add": {
-      "post": {
-        "tags": [
-          "FormValues"
-        ],
-        "operationId": "Add3",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FormValuesRequestContract"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FormValuesRequestContract"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/FormValuesRequestContract"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Int64MessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               }
             }
@@ -765,17 +765,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/FormContract"
+                "$ref": "#/components/schemas/FormValuesContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/FormContract"
+                "$ref": "#/components/schemas/FormValuesContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/FormContract"
+                "$ref": "#/components/schemas/FormValuesContract"
               }
             }
           }
@@ -786,17 +786,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
                 }
               }
             }
@@ -856,17 +856,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractListMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractListMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractListMessageContract"
                 }
               }
             }
@@ -905,17 +905,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractListMessageContract"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractListMessageContract"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FormContractListMessageContract"
+                  "$ref": "#/components/schemas/FormValuesContractListMessageContract"
                 }
               }
             }
@@ -1149,6 +1149,10 @@
             "type": "integer",
             "format": "int64"
           },
+          "defaultValue": {
+            "type": "string",
+            "nullable": true
+          },
           "title": {
             "type": "string",
             "nullable": true
@@ -1184,13 +1188,17 @@
           }
         }
       },
-      "FormValuesRequestContract": {
+      "FormValuesContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "formId": {
             "type": "integer",
             "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
           },
           "formItemValues": {
             "title": "List<FormItemValueContract>",
@@ -1199,6 +1207,43 @@
             "items": {
               "$ref": "#/components/schemas/FormItemValueContract"
             }
+          }
+        }
+      },
+      "FormValuesContractListMessageContract": {
+        "title": "MessageContract<List`1>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "title": "List<FormValuesContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormValuesContract"
+            }
+          }
+        }
+      },
+      "FormValuesContractMessageContract": {
+        "title": "MessageContract<FormValuesContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "result": {
+            "$ref": "#/components/schemas/FormValuesContract"
           }
         }
       },
