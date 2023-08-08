@@ -4,6 +4,7 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 {
     [DbContext(typeof(TemplateGeneratorContext))]
-    partial class TemplateGeneratorContextModelSnapshot : ModelSnapshot
+    [Migration("20230801104452_Add_SomeNewSeeds")]
+    partial class Add_SomeNewSeeds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,9 +85,6 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.Property<long>("FormId")
                         .HasColumnType("bigint");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("FormId");
@@ -99,9 +99,6 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         .HasColumnType("bigint");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("DefaultValue")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("FormId")
                         .HasColumnType("bigint");

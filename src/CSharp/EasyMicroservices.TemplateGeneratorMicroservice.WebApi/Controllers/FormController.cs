@@ -18,7 +18,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
         {
             return query => query
             .Include(e => e.FormItems).ThenInclude(x => x.ItemType)
-            .Include(x => x.FormItems).ThenInclude(x => x.Children);
+            .Include(x => x.FormItems).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.Children)
+            .Include(x => x.FormItems).ThenInclude(x => x.Children).ThenInclude(x => x.ItemType)
+            .Include(x => x.FormItems).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.ItemType)
+            .Include(x => x.FormItems).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.ItemType)
+            .Include(x => x.FormItems).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.Children).ThenInclude(x => x.ItemType);
         }
     }
 }

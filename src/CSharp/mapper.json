@@ -114,15 +114,15 @@
 					]
 				},
 				{
-					"DisplayName": "FormFilledEntity_FormValuesRequestContract",
+					"DisplayName": "FormFilledEntity_FormValuesContract",
 					"MapFrom": {
 						"Name": "FormFilledEntity",
 						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
 						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
 					},
 					"MapTo": {
-						"Name": "FormValuesRequestContract",
-						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests",
+						"Name": "FormValuesContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common",
 						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
 					},
 					"SkippedProperties": [
