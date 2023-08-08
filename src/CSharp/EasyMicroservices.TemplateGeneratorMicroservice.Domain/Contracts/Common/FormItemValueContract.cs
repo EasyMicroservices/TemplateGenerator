@@ -9,6 +9,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common
     public class FormItemValueContract
     {
         public long FormItemId { get; set; }
+        public int Index { get; set; }
         public string Value { get; set; }
     }
 }

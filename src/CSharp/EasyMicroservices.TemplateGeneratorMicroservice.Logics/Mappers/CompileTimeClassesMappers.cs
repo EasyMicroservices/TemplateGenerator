@@ -424,6 +424,7 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemValueEntity()
             {
                 FormItemId = fromObject.FormItemId,
+                Index = fromObject.Index,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -436,6 +437,7 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemValueContract()
             {
                 FormItemId = fromObject.FormItemId,
+                Index = fromObject.Index,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -448,6 +450,7 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemValueEntity()
             {
                 FormItemId = fromObject.FormItemId,
+                Index = fromObject.Index,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -460,6 +463,7 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemValueContract()
             {
                 FormItemId = fromObject.FormItemId,
+                Index = fromObject.Index,
                 Value = fromObject.Value,
             };
             return mapped;
