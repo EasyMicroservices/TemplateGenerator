@@ -262,6 +262,7 @@ namespace CompileTimeMapper
             {
                 FormId = fromObject.FormId,
                 FormItemValues = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemValueEntity>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
+                Id = fromObject.Id,
                 Name = fromObject.Name,
             };
             return mapped;
@@ -275,6 +276,7 @@ namespace CompileTimeMapper
             {
                 FormId = fromObject.FormId,
                 FormItemValues = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemValueContract>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
+                Id = fromObject.Id,
                 Name = fromObject.Name,
             };
             return mapped;
@@ -288,6 +290,7 @@ namespace CompileTimeMapper
             {
                 FormId = fromObject.FormId,
                 FormItemValues = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemValueEntity>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
+                Id = fromObject.Id,
                 Name = fromObject.Name,
             };
             return mapped;
@@ -301,6 +304,7 @@ namespace CompileTimeMapper
             {
                 FormId = fromObject.FormId,
                 FormItemValues = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemValueContract>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
+                Id = fromObject.Id,
                 Name = fromObject.Name,
             };
             return mapped;
