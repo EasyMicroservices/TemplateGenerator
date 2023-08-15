@@ -6,21 +6,30 @@
   },
   "paths": {
     "/api/Form/GetById": {
-      "get": {
+      "post": {
         "tags": [
           "Form"
         ],
         "operationId": "GetById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -46,7 +55,7 @@
       }
     },
     "/api/Form/GetByUniqueIdentity": {
-      "get": {
+      "post": {
         "tags": [
           "Form"
         ],
@@ -55,17 +64,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             }
           }
@@ -144,7 +153,7 @@
       }
     },
     "/api/Form/Update": {
-      "post": {
+      "put": {
         "tags": [
           "Form"
         ],
@@ -198,16 +207,74 @@
           "Form"
         ],
         "operationId": "HardDeleteById",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Form/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "Form"
         ],
+        "operationId": "SoftDeleteById",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -263,7 +330,7 @@
       }
     },
     "/api/Form/GetAllByUniqueIdentity": {
-      "get": {
+      "post": {
         "tags": [
           "Form"
         ],
@@ -272,17 +339,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             }
           }
@@ -312,21 +379,30 @@
       }
     },
     "/api/FormDetail/GetById": {
-      "get": {
+      "post": {
         "tags": [
           "FormDetail"
         ],
         "operationId": "GetById2",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -352,7 +428,7 @@
       }
     },
     "/api/FormDetail/GetByUniqueIdentity": {
-      "get": {
+      "post": {
         "tags": [
           "FormDetail"
         ],
@@ -361,17 +437,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             }
           }
@@ -450,7 +526,7 @@
       }
     },
     "/api/FormDetail/Update": {
-      "post": {
+      "put": {
         "tags": [
           "FormDetail"
         ],
@@ -504,16 +580,74 @@
           "FormDetail"
         ],
         "operationId": "HardDeleteById2",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormDetail/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "FormDetail"
         ],
+        "operationId": "SoftDeleteById2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -569,7 +703,7 @@
       }
     },
     "/api/FormDetail/GetAllByUniqueIdentity": {
-      "get": {
+      "post": {
         "tags": [
           "FormDetail"
         ],
@@ -578,17 +712,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             }
           }
@@ -667,21 +801,30 @@
       }
     },
     "/api/FormValues/GetById": {
-      "get": {
+      "post": {
         "tags": [
           "FormValues"
         ],
         "operationId": "GetById3",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -707,7 +850,7 @@
       }
     },
     "/api/FormValues/GetByUniqueIdentity": {
-      "get": {
+      "post": {
         "tags": [
           "FormValues"
         ],
@@ -716,17 +859,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             }
           }
@@ -756,7 +899,7 @@
       }
     },
     "/api/FormValues/Update": {
-      "post": {
+      "put": {
         "tags": [
           "FormValues"
         ],
@@ -810,16 +953,74 @@
           "FormValues"
         ],
         "operationId": "HardDeleteById3",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
             }
           }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormValues/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "FormValues"
         ],
+        "operationId": "SoftDeleteById3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -875,7 +1076,7 @@
       }
     },
     "/api/FormValues/GetAllByUniqueIdentity": {
-      "get": {
+      "post": {
         "tags": [
           "FormValues"
         ],
@@ -884,17 +1085,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequest"
+                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
               }
             }
           }
@@ -967,6 +1168,10 @@
             "type": "string",
             "nullable": true
           },
+          "endUserMessage": {
+            "type": "string",
+            "nullable": true
+          },
           "details": {
             "type": "string",
             "nullable": true
@@ -995,7 +1200,9 @@
           "NotFound",
           "ValidationsError",
           "StreamError",
-          "WebServiceNotWorking"
+          "WebServiceNotWorking",
+          "Incorrect",
+          "OperationFailed"
         ],
         "enum": [
           0,
@@ -1012,7 +1219,9 @@
           11,
           12,
           13,
-          14
+          14,
+          15,
+          16
         ]
       },
       "FormContract": {
@@ -1255,13 +1464,35 @@
           }
         }
       },
-      "GetUniqueIdentityRequest": {
+      "GetUniqueIdentityRequestContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "uniqueIdentity": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "Int64DeleteRequestContract": {
+        "title": "DeleteRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Int64GetIdRequestContract": {
+        "title": "GetIdRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
           }
         }
       },
@@ -1279,6 +1510,20 @@
           "result": {
             "type": "integer",
             "format": "int64"
+          }
+        }
+      },
+      "Int64SoftDeleteRequestContract": {
+        "title": "SoftDeleteRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "isDelete": {
+            "type": "boolean"
           }
         }
       },
