@@ -1,9 +1,10 @@
-﻿using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
+﻿using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
+using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
 {
-    public class TemplateGeneratorContext : DbContext
+    public class TemplateGeneratorContext : RelationalCoreContext
     {
         IDatabaseBuilder _builder;
         public TemplateGeneratorContext(IDatabaseBuilder builder)
