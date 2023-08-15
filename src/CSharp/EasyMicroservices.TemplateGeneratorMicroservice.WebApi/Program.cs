@@ -19,7 +19,9 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
         public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .Build();
             // Add services to the container.
             //builder.Services.AddAuthorization();
             builder.Services.AddControllers();
@@ -58,7 +60,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
                 //await context.Database.MigrateAsync();
                 await context.DisposeAsync();
                 var service = scope.ServiceProvider.GetService<WhiteLabelManager>();
-                await service.Initialize("TemplateGenerator", "http://localhost:7184", typeof(TemplateGeneratorContext));
+                await service.Initialize("TemplateGenerator", config.GetValue<string>("RootAddresses:WhiteLabel"), typeof(TemplateGeneratorContext));
             }
             //CreateDatabase();
             
