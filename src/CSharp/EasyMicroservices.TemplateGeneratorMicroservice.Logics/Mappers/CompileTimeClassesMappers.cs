@@ -264,6 +264,7 @@ namespace CompileTimeMapper
                 FormItemValues = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemValueEntity>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Name = fromObject.Name,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -278,6 +279,7 @@ namespace CompileTimeMapper
                 FormItemValues = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemValueContract>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Name = fromObject.Name,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -292,6 +294,7 @@ namespace CompileTimeMapper
                 FormItemValues = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemValueEntity>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Name = fromObject.Name,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -306,6 +309,7 @@ namespace CompileTimeMapper
                 FormItemValues = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemValueContract>(fromObject.FormItemValues, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Name = fromObject.Name,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -429,6 +433,7 @@ namespace CompileTimeMapper
             {
                 FormItemId = fromObject.FormItemId,
                 Index = fromObject.Index,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -442,6 +447,7 @@ namespace CompileTimeMapper
             {
                 FormItemId = fromObject.FormItemId,
                 Index = fromObject.Index,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -455,6 +461,7 @@ namespace CompileTimeMapper
             {
                 FormItemId = fromObject.FormItemId,
                 Index = fromObject.Index,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -468,6 +475,7 @@ namespace CompileTimeMapper
             {
                 FormItemId = fromObject.FormItemId,
                 Index = fromObject.Index,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;

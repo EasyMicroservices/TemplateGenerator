@@ -38,6 +38,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormDetailEntity, FormDetailContract, FormDetailContract, FormDetailContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetReadableQueryable<FormItemValueEntity>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetReadableQueryable<FormItemEntity>());
             builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager()); 
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
