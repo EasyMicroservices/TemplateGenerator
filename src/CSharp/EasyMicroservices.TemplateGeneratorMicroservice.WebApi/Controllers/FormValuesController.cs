@@ -12,9 +12,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
     public class FormValuesController : SimpleQueryServiceController<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract, long>
     {
         IEasyReadableQueryableAsync<FormItemValueEntity> _formValueContractReadable;
-        public FormValuesController(IContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract, long> contractReadable, IEasyReadableQueryableAsync<FormItemValueEntity> formValueContractReadable) : base(contractReadable)
+        IEasyReadableQueryableAsync<FormItemEntity> _formItemContractReadable;
+        public FormValuesController(IContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract, long> contractReadable, IEasyReadableQueryableAsync<FormItemValueEntity> formValueContractReadable, IEasyReadableQueryableAsync<FormItemEntity> formItemContractReadable) : base(contractReadable)
         {
             _formValueContractReadable = formValueContractReadable;
+            _formItemContractReadable = formItemContractReadable;
         }
 
         protected override Func<IQueryable<FormFilledEntity>, IQueryable<FormFilledEntity>> OnGetAllQuery()
@@ -31,16 +33,17 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 
         public override async Task<MessageContract<long>> Add(FormValuesContract request, CancellationToken cancellationToken = default)
         {
+            var autoIndexFormItems = await _formItemContractReadable.Where(x => x.FormId == request.FormId && x.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).ToListAsync();
             var allValues = await _formValueContractReadable.Where(x => x.FormFilled.FormId == request.FormId).Include(x => x.FormItem).ThenInclude(x => x.ItemType).ToListAsync();
-            
+
             var allAutoIncrementNumber = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).ToList();
-            var index = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).Select(x => x.Value).OrderByDescending(x => x).FirstOrDefault();
+            var index = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).Select(x => x.Value).OrderByDescending(x => x).FirstOrDefault();
             int number = 1;
             if (index.HasValue() && int.TryParse(index, out int parsedInt))
                 number = parsedInt + 1;
             foreach (var formItemValue in request.FormItemValues)
             {
-                if (allAutoIncrementNumber.Any(x => x.FormItemId == formItemValue.FormItemId))
+                if (autoIndexFormItems.Any(x => x.Id == formItemValue.FormItemId))
                 {
                     if (!int.TryParse(formItemValue.Value, out _))
                     {

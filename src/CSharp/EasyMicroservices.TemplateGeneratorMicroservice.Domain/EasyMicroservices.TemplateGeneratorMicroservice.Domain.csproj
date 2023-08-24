@@ -9,5 +9,8 @@
     <Folder Include="Contracts\Requests\Filters\" />
     <Folder Include="Contracts\Responses\" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <PackageReference Include="EasyMicroservices.Cores.Relational.EntityFrameworkCore" Version="0.0.0.8" />
+  </ItemGroup>
 </Project>
