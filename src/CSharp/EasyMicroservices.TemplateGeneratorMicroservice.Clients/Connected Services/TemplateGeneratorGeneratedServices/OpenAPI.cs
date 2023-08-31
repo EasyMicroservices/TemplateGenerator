@@ -3509,22 +3509,22 @@ namespace TemplateGenerators.GeneratedServices
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
     public partial class FormItemValueContract : System.ComponentModel.INotifyPropertyChanged
     {
-        private long _innerFormItemId;
+        private long _id;
         private long _formItemId;
         private int _index;
         private string _value;
         private string _uniqueIdentity;
 
-        [Newtonsoft.Json.JsonProperty("innerFormItemId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long InnerFormItemId
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long Id
         {
-            get { return _innerFormItemId; }
+            get { return _id; }
 
             set
             {
-                if (_innerFormItemId != value)
+                if (_id != value)
                 {
-                    _innerFormItemId = value;
+                    _id = value;
                     RaisePropertyChanged();
                 }
             }
