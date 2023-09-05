@@ -35,6 +35,18 @@
 						},
 						{
 							"Name": "UniqueIdentity"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
 						}
 					],
 					"CustomProperties": []
@@ -72,6 +84,18 @@
 						},
 						{
 							"Name": "ParentFormItem"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
 						}
 					],
 					"CustomProperties": [
@@ -104,6 +128,18 @@
 						},
 						{
 							"Name": "FormFills"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
 						}
 					],
 					"CustomProperties": [
@@ -128,6 +164,18 @@
 					"SkippedProperties": [
 						{
 							"Name": "Form"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
 						}
 					],
 					"CustomProperties": []
@@ -155,7 +203,16 @@
 							"Name": "FormItem"
 						},
 						{
-							"Name": "Id"
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
 						}
 					],
 					"CustomProperties": []
@@ -178,6 +235,18 @@
 						},
 						{
 							"Name": "Form"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
 						}
 					],
 					"CustomProperties": []
