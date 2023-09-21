@@ -4,6 +4,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common
 {
     public class FormItemValueContract : IUniqueIdentitySchema
     {
+        public long Id { get; set; }
         public long FormItemId { get; set; }
         public int Index { get; set; }
         public string Value { get; set; }

@@ -14,10 +14,10 @@
     "GenerateTypeScriptClient": false,
     "GenerateCSharpController": false,
     "OpenApiToCSharpClientCommand": {
-      "ClientBaseClass": null,
+      "ClientBaseClass": "",
       "ConfigurationClass": null,
       "GenerateClientClasses": true,
-      "GenerateClientInterfaces": false,
+      "GenerateClientInterfaces": true,
       "ClientBaseInterface": null,
       "InjectHttpClient": true,
       "DisposeHttpClient": true,
