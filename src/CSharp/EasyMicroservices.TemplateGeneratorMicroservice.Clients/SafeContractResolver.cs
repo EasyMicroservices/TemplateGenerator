@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System.Net.Http;
 using System.Reflection;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Clients
 {
@@ -19,6 +22,14 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Clients
         public MyJsonSerializerSettings(JsonSerializerSettings settings)
         {
             this.ContractResolver = new SafeContractResolver();
+        }
+    }
+
+    internal class MyHttpClient : HttpClient
+    {
+        public override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            return base.SendAsync(request, cancellationToken);
         }
     }
 }

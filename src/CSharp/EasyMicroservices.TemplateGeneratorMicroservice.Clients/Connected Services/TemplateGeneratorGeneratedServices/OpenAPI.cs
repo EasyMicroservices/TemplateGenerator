@@ -19,7 +19,93 @@ namespace TemplateGenerators.GeneratedServices
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class FormClient 
+    public partial interface IFormClient
+    {
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CreateFormRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CreateFormRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractMessageContract> UpdateAsync(FormContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractMessageContract> UpdateAsync(FormContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractListMessageContract> FilterAsync(FilterRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractListMessageContract> FilterAsync(FilterRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class FormClient : IFormClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -855,7 +941,93 @@ namespace TemplateGenerators.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class FormDetailClient 
+    public partial interface IFormDetailClient
+    {
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormDetailContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormDetailContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractMessageContract> UpdateAsync(FormDetailContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractMessageContract> UpdateAsync(FormDetailContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractListMessageContract> FilterAsync(FilterRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractListMessageContract> FilterAsync(FilterRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class FormDetailClient : IFormDetailClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -1691,7 +1863,93 @@ namespace TemplateGenerators.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class FormValuesClient 
+    public partial interface IFormValuesClient
+    {
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormValuesContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormValuesContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractMessageContract> UpdateAsync(FormValuesContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractMessageContract> UpdateAsync(FormValuesContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractListMessageContract> FilterAsync(FilterRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractListMessageContract> FilterAsync(FilterRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllAsync();
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken);
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
+
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class FormValuesClient : IFormValuesClient
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -2531,6 +2789,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private string _name;
         private string _description;
+        private string _uniqueIdentity;
         private System.Collections.Generic.ICollection<FormItemContract> _formItems;
 
         [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -2558,6 +2817,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_description != value)
                 {
                     _description = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("uniqueIdentity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string UniqueIdentity
+        {
+            get { return _uniqueIdentity; }
+
+            set
+            {
+                if (_uniqueIdentity != value)
+                {
+                    _uniqueIdentity = value;
                     RaisePropertyChanged();
                 }
             }
@@ -2596,7 +2870,9 @@ namespace TemplateGenerators.GeneratedServices
         private string _message;
         private string _endUserMessage;
         private string _details;
-        private string _stackTrace;
+        private System.Collections.Generic.ICollection<string> _stackTrace;
+        private System.Collections.Generic.ICollection<ErrorContract> _children;
+        private ServiceDetailsContract _serviceDetails;
 
         [Newtonsoft.Json.JsonProperty("validations", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public System.Collections.Generic.ICollection<ValidationContract> Validations
@@ -2674,7 +2950,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("stackTrace", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string StackTrace
+        public System.Collections.Generic.ICollection<string> StackTrace
         {
             get { return _stackTrace; }
 
@@ -2683,6 +2959,36 @@ namespace TemplateGenerators.GeneratedServices
                 if (_stackTrace != value)
                 {
                     _stackTrace = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<ErrorContract> Children
+        {
+            get { return _children; }
+
+            set
+            {
+                if (_children != value)
+                {
+                    _children = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("serviceDetails", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public ServiceDetailsContract ServiceDetails
+        {
+            get { return _serviceDetails; }
+
+            set
+            {
+                if (_serviceDetails != value)
+                {
+                    _serviceDetails = value;
                     RaisePropertyChanged();
                 }
             }
@@ -2720,7 +3026,7 @@ namespace TemplateGenerators.GeneratedServices
 
         InternalError = 8,
 
-        Dupplicate = 9,
+        Duplicate = 9,
 
         Empty = 10,
 
@@ -3043,6 +3349,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private System.Collections.Generic.ICollection<FormContract> _result;
         private bool _hasItems;
 
@@ -3071,6 +3378,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3121,6 +3443,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private FormContract _result;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3148,6 +3471,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3261,6 +3599,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private System.Collections.Generic.ICollection<FormDetailContract> _result;
         private bool _hasItems;
 
@@ -3289,6 +3628,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3339,6 +3693,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private FormDetailContract _result;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3366,6 +3721,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3699,6 +4069,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private System.Collections.Generic.ICollection<FormValuesContract> _result;
         private bool _hasItems;
 
@@ -3727,6 +4098,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3777,6 +4163,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private FormValuesContract _result;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3804,6 +4191,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -3929,6 +4331,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
         private long _result;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -3956,6 +4359,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
                     RaisePropertyChanged();
                 }
             }
@@ -4077,6 +4495,7 @@ namespace TemplateGenerators.GeneratedServices
     {
         private bool _isSuccess;
         private ErrorContract _error;
+        private SuccessContract _success;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool IsSuccess
@@ -4103,6 +4522,129 @@ namespace TemplateGenerators.GeneratedServices
                 if (_error != value)
                 {
                     _error = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("success", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public SuccessContract Success
+        {
+            get { return _success; }
+
+            set
+            {
+                if (_success != value)
+                {
+                    _success = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class ServiceDetailsContract : System.ComponentModel.INotifyPropertyChanged
+    {
+        private string _servieRouteAddress;
+        private string _methodName;
+        private string _path;
+        private string _porjectName;
+
+        [Newtonsoft.Json.JsonProperty("servieRouteAddress", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ServieRouteAddress
+        {
+            get { return _servieRouteAddress; }
+
+            set
+            {
+                if (_servieRouteAddress != value)
+                {
+                    _servieRouteAddress = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("methodName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string MethodName
+        {
+            get { return _methodName; }
+
+            set
+            {
+                if (_methodName != value)
+                {
+                    _methodName = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("path", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Path
+        {
+            get { return _path; }
+
+            set
+            {
+                if (_path != value)
+                {
+                    _path = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("porjectName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string PorjectName
+        {
+            get { return _porjectName; }
+
+            set
+            {
+                if (_porjectName != value)
+                {
+                    _porjectName = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        {
+            var handler = PropertyChanged;
+            if (handler != null)
+                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
+    public partial class SuccessContract : System.ComponentModel.INotifyPropertyChanged
+    {
+        private string _endUserMessage;
+
+        [Newtonsoft.Json.JsonProperty("endUserMessage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string EndUserMessage
+        {
+            get { return _endUserMessage; }
+
+            set
+            {
+                if (_endUserMessage != value)
+                {
+                    _endUserMessage = value;
                     RaisePropertyChanged();
                 }
             }
