@@ -6,7 +6,6 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -37,9 +36,10 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormDetailEntity, FormDetailContract, FormDetailContract, FormDetailContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetReadableQueryable<FormItemValueEntity>());
             builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetReadableQueryable<FormItemEntity>());
-            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager()); 
+            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
             builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
             builder.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IDatabaseBuilder>()));
@@ -53,7 +53,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
-            
+
             using (var scope = app.Services.CreateScope())
             {
                 using var context = scope.ServiceProvider.GetService<TemplateGeneratorContext>();
@@ -64,7 +64,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
                 await service.Initialize("TemplateGenerator", config.GetValue<string>("RootAddresses:WhiteLabel"), typeof(TemplateGeneratorContext));
             }
             //CreateDatabase();
-            
+
             StartUp startUp = new();
             await startUp.Run(new DependencyManager());
             app.Run();
@@ -116,7 +116,6 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             var type = context.Type;
-
             if (type.IsGenericType == false)
                 return;
 
