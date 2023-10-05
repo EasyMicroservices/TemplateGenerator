@@ -37,10 +37,14 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             var allValues = await _formValueContractReadable.Where(x => x.FormFilled.FormId == request.FormId).Include(x => x.FormItem).ThenInclude(x => x.ItemType).ToListAsync();
 
             var allAutoIncrementNumber = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).ToList();
-            var index = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).Select(x => x.Value).OrderByDescending(x => x).FirstOrDefault();
+            var globalFormItemValue = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).OrderByDescending(x => x.Value).FirstOrDefault();
+            var globalFormItem = autoIndexFormItems.FirstOrDefault(x => x.Id == globalFormItemValue.FormItemId);
             int number = 1;
-            if (index.HasValue() && int.TryParse(index, out int parsedInt))
+            if (globalFormItemValue.Value.HasValue() && int.TryParse(globalFormItemValue.Value, out int parsedInt))
                 number = parsedInt + 1;
+            else if (globalFormItem != null && int.TryParse(globalFormItem.DefaultValue, out parsedInt))
+                number = parsedInt;
+
             foreach (var formItemValue in request.FormItemValues)
             {
                 if (autoIndexFormItems.Any(x => x.Id == formItemValue.FormItemId))
