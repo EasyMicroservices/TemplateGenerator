@@ -6,9 +6,11 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using System;
 using System.Reflection;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
@@ -33,15 +35,15 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             });
 
             builder.Services.AddHttpContextAccessor();
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract>());
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormDetailEntity, FormDetailContract, FormDetailContract, FormDetailContract>());
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity>());
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetReadableQueryable<FormItemValueEntity>());
-            builder.Services.AddScoped((serviceProvider) => new DependencyManager().GetReadableQueryable<FormItemEntity>());
-            builder.Services.AddScoped<IDependencyManager>(service => new DependencyManager());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager(serviceProvider).GetContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager(serviceProvider).GetContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager(serviceProvider).GetContractLogic<FormDetailEntity, FormDetailContract, FormDetailContract, FormDetailContract>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager(serviceProvider).GetContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager(serviceProvider).GetReadableQueryable<FormItemValueEntity>());
+            builder.Services.AddScoped((serviceProvider) => new DependencyManager(serviceProvider).GetReadableQueryable<FormItemEntity>());
+            builder.Services.AddScoped<IDependencyManager>(serviceProvider => new DependencyManager(serviceProvider));
             builder.Services.AddScoped(service => new WhiteLabelManager(service, service.GetService<IDependencyManager>()));
-            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder());
+            builder.Services.AddScoped<IDatabaseBuilder>(serviceProvider => new DatabaseBuilder(serviceProvider.GetService<IConfiguration>()));
             builder.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IDatabaseBuilder>()));
             //builder.WebHost.UseUrls("https://*:7185");
             var app = builder.Build();
@@ -66,13 +68,15 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             //CreateDatabase();
 
             StartUp startUp = new();
-            await startUp.Run(new DependencyManager());
+            await startUp.Run(new DependencyManager(app.Services));
             app.Run();
         }
 
         static void CreateDatabase()
         {
-            using TemplateGeneratorContext context = new(new DatabaseBuilder());
+            using TemplateGeneratorContext context = new(new DatabaseBuilder(new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+        .Build()));
             if (context.Database.EnsureCreated())
             {
                 //auto migration when database created first time
