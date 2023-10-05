@@ -6,14 +6,17 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
 {
     public class DatabaseBuilder : IDatabaseBuilder
     {
-        readonly IConfiguration config = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-        .Build();
+        IConfiguration _config;
+        public DatabaseBuilder(IConfiguration config)
+        {
+            _config = config;
+        }
+
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("TemplateGenerator");
+            //optionsBuilder.UseInMemoryDatabase("TemplateGenerator");
             //optionsBuilder.UseSqlServer("Server=.;Database=TemplateGenerator;User ID=test;Password=test1234;Trusted_Connection=True;TrustServerCertificate=True");
-            //optionsBuilder.UseSqlServer(config.GetConnectionString("local"));
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("local"));
         }
     }
 }
