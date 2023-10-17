@@ -38,7 +38,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 
             var allAutoIncrementNumber = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).ToList();
             var globalFormItemValue = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).OrderByDescending(x => x.Value).FirstOrDefault();
-            var globalFormItem = autoIndexFormItems.FirstOrDefault(x => x.Id == globalFormItemValue.FormItemId);
+            var globalFormItem = autoIndexFormItems.FirstOrDefault(x => x.Id == globalFormItemValue?.FormItemId);
             int number = 1;
             if (globalFormItemValue != null && globalFormItemValue.Value.HasValue() && int.TryParse(globalFormItemValue.Value, out int parsedInt))
                 number = parsedInt + 1;
