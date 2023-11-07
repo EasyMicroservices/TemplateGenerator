@@ -15,7 +15,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 
         public FormController(IUnitOfWork uow) : base(uow)
         {
-            _formItemContractReadable = uow.GetReadableContractLogic<FormItemEntity, FormItemEntity, long>();
+            _formItemContractReadable = uow.GetContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity, long>();
         }
 
         protected override Func<IQueryable<FormEntity>, IQueryable<FormEntity>> OnGetQuery()
