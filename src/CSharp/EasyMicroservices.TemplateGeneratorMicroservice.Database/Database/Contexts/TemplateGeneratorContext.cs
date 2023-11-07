@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -6,11 +7,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
 {
     public class TemplateGeneratorContext : RelationalCoreContext
     {
-        IDatabaseBuilder _builder;
-        public TemplateGeneratorContext(IDatabaseBuilder builder)
+        IEntityFrameworkCoreDatabaseBuilder _builder;
+        public TemplateGeneratorContext(IEntityFrameworkCoreDatabaseBuilder builder) : base(builder)
         {
-            _builder = builder;
         }
+
 
         public DbSet<FormEntity> Forms { get; set; }
         public DbSet<FormDetailEntity> FormDetails { get; set; }

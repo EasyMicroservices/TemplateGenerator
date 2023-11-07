@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.Cores.AspCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
@@ -13,10 +14,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
     {
         IEasyReadableQueryableAsync<FormItemValueEntity> _formValueContractReadable;
         IEasyReadableQueryableAsync<FormItemEntity> _formItemContractReadable;
-        public FormValuesController(IContractLogic<FormFilledEntity, FormValuesContract, FormValuesContract, FormValuesContract, long> contractReadable, IEasyReadableQueryableAsync<FormItemValueEntity> formValueContractReadable, IEasyReadableQueryableAsync<FormItemEntity> formItemContractReadable) : base(contractReadable)
+
+        public FormValuesController(IUnitOfWork uow) : base(uow)
         {
-            _formValueContractReadable = formValueContractReadable;
-            _formItemContractReadable = formItemContractReadable;
+            _formValueContractReadable = uow.GetReadableOf<FormItemValueEntity>(); 
+            _formItemContractReadable = uow.GetReadableOf<FormItemEntity>(); ;
         }
 
         protected override Func<IQueryable<FormFilledEntity>, IQueryable<FormFilledEntity>> OnGetAllQuery()
