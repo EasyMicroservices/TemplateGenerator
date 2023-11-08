@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.Cores.AspCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
@@ -11,10 +12,10 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
     public class FormController : SimpleQueryServiceController<FormEntity, CreateFormRequestContract, FormContract, FormContract, long>
     {
         IContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity, long> _formItemContractReadable;
-        public FormController(IContractLogic<FormEntity, CreateFormRequestContract, FormContract, FormContract, long> contractReadable,
-            IContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity, long> formItemContractReadable) : base(contractReadable)
+
+        public FormController(IUnitOfWork uow) : base(uow)
         {
-            _formItemContractReadable = formItemContractReadable;
+            _formItemContractReadable = uow.GetContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity, long>();
         }
 
         protected override Func<IQueryable<FormEntity>, IQueryable<FormEntity>> OnGetQuery()
