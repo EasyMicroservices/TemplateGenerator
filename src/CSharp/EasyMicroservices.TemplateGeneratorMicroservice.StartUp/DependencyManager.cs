@@ -10,6 +10,8 @@ using EasyMicroservices.Mapper.CompileTimeMapper.Providers;
 using EasyMicroservices.Mapper.Interfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
 
@@ -17,6 +19,12 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
 {
     public class DependencyManager : IDependencyManager
     {
+        IServiceProvider _serviceProvider;
+        public DependencyManager(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
+
         public virtual IConfigProvider GetConfigProvider()
         {
             throw new NotImplementedException();
@@ -37,7 +45,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
 
         public virtual IDatabase GetDatabase()
         {
-            return new EntityFrameworkCoreDatabaseProvider(new TemplateGeneratorContext(new DatabaseBuilder()));
+            return new EntityFrameworkCoreDatabaseProvider(new TemplateGeneratorContext(new DatabaseBuilder(_serviceProvider.GetService<IConfiguration>())));
         }
 
         public static string DefaultUniqueIdentity { get; set; }
