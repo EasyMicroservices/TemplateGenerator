@@ -116,6 +116,11 @@ CREATE TABLE [dbo].[__EFMigrationsHistory](
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {
             var type = context.Type;
+            schema.Description = Newtonsoft.Json.JsonConvert.SerializeObject(new CodeGenerator.DotNetReflection.TypeExtractor().Extract(type), new Newtonsoft.Json.JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Serialize,
+                PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All
+            });
             if (type.IsGenericType == false)
                 return;
 
