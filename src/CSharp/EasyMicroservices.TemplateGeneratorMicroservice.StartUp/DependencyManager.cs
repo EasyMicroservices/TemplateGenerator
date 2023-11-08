@@ -54,7 +54,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
         public virtual IUniqueIdentityManager GetUniqueIdentityManager()
         {
             if (UniqueIdentityManager == null)
-                UniqueIdentityManager = new DefaultUniqueIdentityManager(DefaultUniqueIdentity, MicroserviceId);
+                UniqueIdentityManager = new DefaultUniqueIdentityManager(DefaultUniqueIdentity, MicroserviceId, "TemplateGenerator");
             return UniqueIdentityManager;
         }
 
