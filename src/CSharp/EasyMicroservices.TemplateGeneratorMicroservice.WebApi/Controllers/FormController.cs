@@ -1,6 +1,5 @@
 ﻿using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
-using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests;
@@ -11,17 +10,14 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 {
     public class FormController : SimpleQueryServiceController<FormEntity, CreateFormRequestContract, FormContract, FormContract, long>
     {
-        IContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity, long> _formItemContractReadable;
-
         public FormController(IUnitOfWork uow) : base(uow)
         {
-            _formItemContractReadable = uow.GetContractLogic<FormItemEntity, FormItemEntity, FormItemEntity, FormItemEntity, long>();
         }
 
         protected override Func<IQueryable<FormEntity>, IQueryable<FormEntity>> OnGetQuery()
         {
             return query => query
-            .Include(e => e.FormItems.Where(x=>!x.IsDeleted)).ThenInclude(x => x.ItemType)
+            .Include(e => e.FormItems.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType)
             .Include(x => x.FormItems.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted))
             .Include(x => x.FormItems.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType)
             .Include(x => x.FormItems.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType)
@@ -39,7 +35,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             {
                 foreach (var item in deletedItems)
                 {
-                    var result = await _formItemContractReadable.SoftDeleteById(new Cores.Contracts.Requests.SoftDeleteRequestContract<long>()
+                    var result = await UnitOfWork.GetLogic<FormItemEntity, long>().SoftDeleteById(new Cores.Contracts.Requests.SoftDeleteRequestContract<long>()
                     {
                         Id = item,
                         IsDelete = true

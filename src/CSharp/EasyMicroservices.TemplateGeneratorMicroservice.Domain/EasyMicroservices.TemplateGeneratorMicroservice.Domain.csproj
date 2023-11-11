@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -12,6 +12,6 @@
   
   <ItemGroup>
     <PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.45" />
-    <PackageReference Include="EasyMicroservices.Cores.Relational.EntityFrameworkCore" Version="0.0.0.45" />
+    <PackageReference Include="EasyMicroservices.Domain" Version="0.0.0.1" />
   </ItemGroup>
 </Project>

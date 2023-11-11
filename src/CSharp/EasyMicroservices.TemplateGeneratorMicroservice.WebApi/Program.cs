@@ -2,6 +2,8 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice;
+using Microsoft.OpenApi.Models;
+using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
 {
@@ -10,7 +12,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
         public static async Task Main(string[] args)
         {
             var app = CreateBuilder(args);
-            var build = await app.Build<TemplateGeneratorContext>();
+            var build = await app.Build<TemplateGeneratorContext>(true);
+            ApplicationManager.Instance.DependencyManager = new DependencyManager(build.Services);
             build.MapControllers();
             build.Run();
         }

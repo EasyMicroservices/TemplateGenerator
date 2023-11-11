@@ -7,7 +7,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
 {
     public class DatabaseBuilder : IEntityFrameworkCoreDatabaseBuilder
     {
-        IConfiguration _config;
+        readonly IConfiguration _config;
         public DatabaseBuilder(IConfiguration config)
         {
             _config = config;
