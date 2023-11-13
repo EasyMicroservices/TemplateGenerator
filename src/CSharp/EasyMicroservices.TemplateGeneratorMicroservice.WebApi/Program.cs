@@ -4,6 +4,7 @@ using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice;
 using Microsoft.OpenApi.Models;
 using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
+using CompileTimeMapper;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
 {
@@ -13,6 +14,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
         {
             var app = CreateBuilder(args);
             var build = await app.Build<TemplateGeneratorContext>(true);
+            UnitOfWork.MapperTypeAssembly = typeof(FormDetailEntity_FormDetailContract_Mapper);
             ApplicationManager.Instance.DependencyManager = new DependencyManager(build.Services);
             build.MapControllers();
             build.Run();
