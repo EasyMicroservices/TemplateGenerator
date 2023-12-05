@@ -78,7 +78,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
                 q => q.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).Include(x => x.FormFilled).Include(x => x.FormItem).ThenInclude(x => x.ItemType)))
                  .GetCheckedResult();
             allValues = allValues.Where(x => HasUniqueOdentity(request, x)).ToList();
-            var globalFormItemValue = allValues.Where(x=> x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table)
+            var globalFormItemValue = allValues.Where(x => x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table)
                 .OrderByDescending(x => long.TryParse(x.Value, out long value) ? value : 0).FirstOrDefault();
             long number = 1;
             if (globalFormItemValue != null && globalFormItemValue.Value.HasValue() && long.TryParse(globalFormItemValue.Value, out long parsedInt))
