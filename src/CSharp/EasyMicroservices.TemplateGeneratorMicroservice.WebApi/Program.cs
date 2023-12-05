@@ -1,10 +1,9 @@
-using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
-using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
-using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
-using EasyMicroservices.TemplateGeneratorMicroservice;
-using Microsoft.OpenApi.Models;
-using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
 using CompileTimeMapper;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
+using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
+using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
+using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
+using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
 {
@@ -15,7 +14,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             var app = CreateBuilder(args);
             var build = await app.Build<TemplateGeneratorContext>(true);
             UnitOfWork.MapperTypeAssembly = typeof(FormDetailEntity_FormDetailContract_Mapper);
-            ApplicationManager.Instance.DependencyManager = new DependencyManager(build.Services);
+            var scope = build.Services.CreateScope();
+            ApplicationManager.Instance.DependencyManager = scope.ServiceProvider.GetService<IUnitOfWork>();
             build.MapControllers();
             build.Run();
         }
@@ -23,7 +23,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
         static WebApplicationBuilder CreateBuilder(string[] args)
         {
             var app = StartUpExtensions.Create<TemplateGeneratorContext>(args);
-            app.Services.Builder<TemplateGeneratorContext>();
+            app.Services.Builder<TemplateGeneratorContext>().UseDefaultSwaggerOptions();
             app.Services.AddTransient((serviceProvider) => new UnitOfWork(serviceProvider));
             app.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IEntityFrameworkCoreDatabaseBuilder>()));
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
