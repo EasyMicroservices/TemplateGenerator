@@ -59,15 +59,27 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             return await base.Add(request, cancellationToken);
         }
 
+        bool HasUniqueOdentity(GetUniqueIdentityRequestContract request, FormItemValueEntity formItemValueEntity)
+        {
+            if (formItemValueEntity.UniqueIdentity.IsNullOrEmpty())
+            {
+                if (formItemValueEntity.FormFilled != null)
+                    return formItemValueEntity.FormFilled.UniqueIdentity.StartsWith(request.UniqueIdentity);
+                return false;
+            }
+            return formItemValueEntity.UniqueIdentity.StartsWith(request.UniqueIdentity);
+        }
+
         [HttpPost]
         public async Task<MessageContract<long>> GetBiggestAutoIncrementNumber(GetUniqueIdentityRequestContract request)
         {
             var allValues = (await UnitOfWork.GetLongLogic<FormItemValueEntity>()
-                .GetAllByUniqueIdentity(request,
-                Cores.DataTypes.GetUniqueIdentityType.All,
-                q => q.Include(x => x.FormItem).ThenInclude(x => x.ItemType)))
+                .GetAll(
+                q => q.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).Include(x => x.FormFilled).Include(x => x.FormItem).ThenInclude(x => x.ItemType)))
                  .GetCheckedResult();
-            var globalFormItemValue = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).OrderByDescending(x => long.TryParse(x.Value, out long value) ? value : 0).FirstOrDefault();
+            allValues = allValues.Where(x => HasUniqueOdentity(request, x)).ToList();
+            var globalFormItemValue = allValues.Where(x=> x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table)
+                .OrderByDescending(x => long.TryParse(x.Value, out long value) ? value : 0).FirstOrDefault();
             long number = 1;
             if (globalFormItemValue != null && globalFormItemValue.Value.HasValue() && long.TryParse(globalFormItemValue.Value, out long parsedInt))
                 number = parsedInt + 1;

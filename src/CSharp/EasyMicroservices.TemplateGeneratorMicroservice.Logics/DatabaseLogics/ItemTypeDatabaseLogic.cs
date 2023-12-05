@@ -1,4 +1,5 @@
-﻿using EasyMicroservices.Cores.Database.Logics;
+﻿using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
+using EasyMicroservices.Cores.Database.Logics;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.Mapper.Interfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
@@ -14,15 +15,10 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics
 {
     public class ItemTypeDatabaseLogic : LongIdDatabaseLogicBase<ItemTypeEntity>
     {
-        public ItemTypeDatabaseLogic(IDatabase database, IMapperProvider mapperProvider, IDependencyManager dependencyManager) :
-            base(database.GetReadableOf<ItemTypeEntity>(), database.GetWritableOf<ItemTypeEntity>(), mapperProvider, dependencyManager.GetUniqueIdentityManager())
+        public ItemTypeDatabaseLogic(IUnitOfWork unitOfWork) :
+            base(unitOfWork.GetReadableOf<ItemTypeEntity>(), unitOfWork.GetWritableOf<ItemTypeEntity>(), unitOfWork)
         {
 
-        }
-
-        public static ItemTypeDatabaseLogic CreateInstance(IDependencyManager dependencyManager)
-        {
-            return new ItemTypeDatabaseLogic(dependencyManager.GetDatabase(), dependencyManager.GetMapper(), dependencyManager);
         }
 
         public static async Task<long> GetItemTypeIdByType(ItemType itemType)

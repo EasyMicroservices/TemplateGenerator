@@ -15,9 +15,9 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice
 
         public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("TemplateGenerator");
+            //optionsBuilder.UseInMemoryDatabase("TemplateGenerator");
             //optionsBuilder.UseSqlServer("Server=.;Database=TemplateGenerator;User ID=test;Password=test1234;Trusted_Connection=True;TrustServerCertificate=True");
-            //optionsBuilder.UseSqlServer(_config.GetConnectionString("local"));
+            optionsBuilder.UseSqlServer(_config.GetConnectionString("local"));
         }
     }
 }
