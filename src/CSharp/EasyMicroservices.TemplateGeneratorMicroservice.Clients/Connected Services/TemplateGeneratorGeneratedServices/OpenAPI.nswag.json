@@ -152,12 +152,110 @@
         }
       }
     },
+    "/api/Form/UpdateChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "Form"
+        ],
+        "operationId": "UpdateChangedValuesOnly",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Form/UpdateBulk": {
       "put": {
         "tags": [
           "Form"
         ],
         "operationId": "UpdateBulk",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Form/UpdateBulkChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "Form"
+        ],
+        "operationId": "UpdateBulkChangedValuesOnly",
         "requestBody": {
           "content": {
             "application/json": {
@@ -770,12 +868,110 @@
         }
       }
     },
+    "/api/FormDetail/UpdateChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "FormDetail"
+        ],
+        "operationId": "UpdateChangedValuesOnly2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDetailContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDetailContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDetailContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormDetail/UpdateBulk": {
       "put": {
         "tags": [
           "FormDetail"
         ],
         "operationId": "UpdateBulk2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDetailContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDetailContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormDetailContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormDetail/UpdateBulkChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "FormDetail"
+        ],
+        "operationId": "UpdateBulkChangedValuesOnly2",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1437,12 +1633,110 @@
         }
       }
     },
+    "/api/FormValues/UpdateChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "UpdateChangedValuesOnly3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormValues/UpdateBulk": {
       "put": {
         "tags": [
           "FormValues"
         ],
         "operationId": "UpdateBulk3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormValues/UpdateBulkChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "UpdateBulkChangedValuesOnly3",
         "requestBody": {
           "content": {
             "application/json": {
@@ -2106,12 +2400,20 @@
             "format": "int64",
             "nullable": true
           },
-          "sortColumnName": {
+          "sortColumnNames": {
             "type": "string",
             "nullable": true
           },
           "isDescending": {
             "type": "boolean"
+          },
+          "text": {
+            "type": "string",
+            "nullable": true
+          },
+          "language": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -2166,6 +2468,10 @@
             "items": {
               "$ref": "#/components/schemas/FormContract"
             }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
           },
           "hasItems": {
             "type": "boolean",
@@ -2265,6 +2571,10 @@
             "items": {
               "$ref": "#/components/schemas/FormDetailContract"
             }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
           },
           "hasItems": {
             "type": "boolean",
@@ -2431,6 +2741,10 @@
             "items": {
               "$ref": "#/components/schemas/FormValuesContract"
             }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
           },
           "hasItems": {
             "type": "boolean",
@@ -2661,7 +2975,7 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "servieRouteAddress": {
+          "serviceRouteAddress": {
             "type": "string",
             "nullable": true
           },
@@ -2673,7 +2987,7 @@
             "type": "string",
             "nullable": true
           },
-          "porjectName": {
+          "projectName": {
             "type": "string",
             "nullable": true
           }
@@ -2699,6 +3013,19 @@
           }
         }
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter your token in the text input below.\r\n Example: \"Bearer {token}\"",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
 }

@@ -19,129 +19,7 @@ namespace TemplateGenerators.GeneratedServices
     using System = global::System;
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial interface IFormClient
-    {
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractMessageContract> UpdateAsync(FormContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractMessageContract> UpdateAsync(FormContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CreateFormRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(CreateFormRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> AddBulkAsync(CreateFormRequestContractCreateBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> AddBulkAsync(CreateFormRequestContractCreateBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormContractUpdateBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormContractUpdateBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteBulkByIdsAsync(Int64DeleteBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteBulkByIdsAsync(Int64DeleteBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteBulkByIdsAsync(Int64SoftDeleteBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteBulkByIdsAsync(Int64SoftDeleteBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractListMessageContract> FilterAsync(FilterRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractListMessageContract> FilterAsync(FilterRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class FormClient : IFormClient
+    public partial class FormClient : EasyMicroservices.Cores.Clients.CoreSwaggerClientBase
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -156,7 +34,7 @@ namespace TemplateGenerators.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.TemplateGeneratorMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.Cores.Clients.CoreSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -194,7 +72,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -272,7 +150,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -350,7 +228,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -411,6 +289,84 @@ namespace TemplateGenerators.GeneratedServices
 
         /// <returns>Success</returns>
         /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<FormContractMessageContract> UpdateChangedValuesOnlyAsync(FormContract body)
+        {
+            return UpdateChangedValuesOnlyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<FormContractMessageContract> UpdateChangedValuesOnlyAsync(FormContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Form/UpdateChangedValuesOnly");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<FormContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
         public virtual System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormContractUpdateBulkRequestContract body)
         {
             return UpdateBulkAsync(body, System.Threading.CancellationToken.None);
@@ -428,7 +384,85 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<MessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<MessageContract> UpdateBulkChangedValuesOnlyAsync(FormContractUpdateBulkRequestContract body)
+        {
+            return UpdateBulkChangedValuesOnlyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<MessageContract> UpdateBulkChangedValuesOnlyAsync(FormContractUpdateBulkRequestContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Form/UpdateBulkChangedValuesOnly");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -506,7 +540,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -584,7 +618,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -662,7 +696,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -740,7 +774,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -818,7 +852,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -896,7 +930,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -974,7 +1008,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1052,7 +1086,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
@@ -1126,7 +1160,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1289,129 +1323,7 @@ namespace TemplateGenerators.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial interface IFormDetailClient
-    {
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormDetailContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormDetailContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> AddBulkAsync(FormDetailContractCreateBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> AddBulkAsync(FormDetailContractCreateBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractMessageContract> UpdateAsync(FormDetailContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractMessageContract> UpdateAsync(FormDetailContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormDetailContractUpdateBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormDetailContractUpdateBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteBulkByIdsAsync(Int64DeleteBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteBulkByIdsAsync(Int64DeleteBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteBulkByIdsAsync(Int64SoftDeleteBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteBulkByIdsAsync(Int64SoftDeleteBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractListMessageContract> FilterAsync(FilterRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractListMessageContract> FilterAsync(FilterRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormDetailContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class FormDetailClient : IFormDetailClient
+    public partial class FormDetailClient : EasyMicroservices.Cores.Clients.CoreSwaggerClientBase
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -1426,7 +1338,7 @@ namespace TemplateGenerators.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.TemplateGeneratorMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.Cores.Clients.CoreSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -1464,7 +1376,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1542,7 +1454,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1620,7 +1532,85 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<FormDetailContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<FormDetailContractMessageContract> UpdateChangedValuesOnlyAsync(FormDetailContract body)
+        {
+            return UpdateChangedValuesOnlyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<FormDetailContractMessageContract> UpdateChangedValuesOnlyAsync(FormDetailContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/FormDetail/UpdateChangedValuesOnly");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1698,7 +1688,85 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<MessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<MessageContract> UpdateBulkChangedValuesOnlyAsync(FormDetailContractUpdateBulkRequestContract body)
+        {
+            return UpdateBulkChangedValuesOnlyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<MessageContract> UpdateBulkChangedValuesOnlyAsync(FormDetailContractUpdateBulkRequestContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/FormDetail/UpdateBulkChangedValuesOnly");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1776,7 +1844,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1854,7 +1922,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -1932,7 +2000,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2010,7 +2078,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2088,7 +2156,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2166,7 +2234,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2244,7 +2312,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2322,7 +2390,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
@@ -2396,7 +2464,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2559,138 +2627,7 @@ namespace TemplateGenerators.GeneratedServices
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial interface IFormValuesClient
-    {
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormValuesContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> AddAsync(FormValuesContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> GetBiggestAutoIncrementNumberAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<Int64MessageContract> GetBiggestAutoIncrementNumberAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> AddBulkAsync(FormValuesContractCreateBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> AddBulkAsync(FormValuesContractCreateBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractMessageContract> UpdateAsync(FormValuesContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractMessageContract> UpdateAsync(FormValuesContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormValuesContractUpdateBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> UpdateBulkAsync(FormValuesContractUpdateBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteByIdAsync(Int64DeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteBulkByIdsAsync(Int64DeleteBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> HardDeleteBulkByIdsAsync(Int64DeleteBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteByIdAsync(Int64SoftDeleteRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteBulkByIdsAsync(Int64SoftDeleteBulkRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<MessageContract> SoftDeleteBulkByIdsAsync(Int64SoftDeleteBulkRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByIdAsync(Int64GetIdRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractMessageContract> GetByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractListMessageContract> FilterAsync(FilterRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractListMessageContract> FilterAsync(FilterRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllAsync();
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllAsync(System.Threading.CancellationToken cancellationToken);
-
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body);
-
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Success</returns>
-        /// <exception cref="ApiException">A server side error occurred.</exception>
-        System.Threading.Tasks.Task<FormValuesContractListMessageContract> GetAllByUniqueIdentityAsync(GetUniqueIdentityRequestContract body, System.Threading.CancellationToken cancellationToken);
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
-    public partial class FormValuesClient : IFormValuesClient
+    public partial class FormValuesClient : EasyMicroservices.Cores.Clients.CoreSwaggerClientBase
     {
         private string _baseUrl = "";
         private System.Net.Http.HttpClient _httpClient;
@@ -2705,7 +2642,7 @@ namespace TemplateGenerators.GeneratedServices
 
         private Newtonsoft.Json.JsonSerializerSettings CreateSerializerSettings()
         {
-            var settings = new EasyMicroservices.TemplateGeneratorMicroservice.Clients.MyJsonSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
+            var settings = new EasyMicroservices.Cores.Clients.CoreSerializerSettings(new Newtonsoft.Json.JsonSerializerSettings {  });
             UpdateJsonSerializerSettings(settings);
             return settings;
         }
@@ -2743,7 +2680,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2821,7 +2758,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2899,7 +2836,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -2977,7 +2914,85 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<FormValuesContractMessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<FormValuesContractMessageContract> UpdateChangedValuesOnlyAsync(FormValuesContract body)
+        {
+            return UpdateChangedValuesOnlyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<FormValuesContractMessageContract> UpdateChangedValuesOnlyAsync(FormValuesContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/FormValues/UpdateChangedValuesOnly");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3055,7 +3070,85 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
+                    var content_ = new System.Net.Http.StringContent(json_);
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    var disposeResponse_ = true;
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = (int)response_.StatusCode;
+                        if (status_ == 200)
+                        {
+                            var objectResponse_ = await ReadObjectResponseAsync<MessageContract>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            if (objectResponse_.Object == null)
+                            {
+                                throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);
+                            }
+                            return objectResponse_.Object;
+                        }
+                        else
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new ApiException("The HTTP status code of the response was not expected (" + status_ + ").", status_, responseData_, headers_, null);
+                        }
+                    }
+                    finally
+                    {
+                        if (disposeResponse_)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (disposeClient_)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual System.Threading.Tasks.Task<MessageContract> UpdateBulkChangedValuesOnlyAsync(FormValuesContractUpdateBulkRequestContract body)
+        {
+            return UpdateBulkChangedValuesOnlyAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>Success</returns>
+        /// <exception cref="ApiException">A server side error occurred.</exception>
+        public virtual async System.Threading.Tasks.Task<MessageContract> UpdateBulkChangedValuesOnlyAsync(FormValuesContractUpdateBulkRequestContract body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/FormValues/UpdateBulkChangedValuesOnly");
+
+            var client_ = _httpClient;
+            var disposeClient_ = false;
+            try
+            {
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3133,7 +3226,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3211,7 +3304,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3289,7 +3382,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3367,7 +3460,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3445,7 +3538,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3523,7 +3616,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3601,7 +3694,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -3679,7 +3772,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("text/plain"));
@@ -3753,7 +3846,7 @@ namespace TemplateGenerators.GeneratedServices
             var disposeClient_ = false;
             try
             {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                using (var request_ = await CreateHttpRequestMessageAsync(cancellationToken).ConfigureAwait(false))
                 {
                     var json_ = Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value);
                     var content_ = new System.Net.Http.StringContent(json_);
@@ -4209,18 +4302,20 @@ namespace TemplateGenerators.GeneratedServices
     public partial class FilterRequestContract : System.ComponentModel.INotifyPropertyChanged
     {
         private bool? _isDeleted;
-        private System.DateTimeOffset? _fromDeletedDateTime;
-        private System.DateTimeOffset? _toDeletedDateTime;
-        private System.DateTimeOffset? _fromCreationDateTime;
-        private System.DateTimeOffset? _toCreationDateTime;
-        private System.DateTimeOffset? _fromModificationDateTime;
-        private System.DateTimeOffset? _toModificationDateTime;
+        private System.DateTime? _fromDeletedDateTime;
+        private System.DateTime? _toDeletedDateTime;
+        private System.DateTime? _fromCreationDateTime;
+        private System.DateTime? _toCreationDateTime;
+        private System.DateTime? _fromModificationDateTime;
+        private System.DateTime? _toModificationDateTime;
         private string _uniqueIdentity;
         private GetUniqueIdentityType _uniqueIdentityType;
         private long? _index;
         private long? _length;
-        private string _sortColumnName;
+        private string _sortColumnNames;
         private bool _isDescending;
+        private string _text;
+        private string _language;
 
         [Newtonsoft.Json.JsonProperty("isDeleted", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public bool? IsDeleted
@@ -4238,7 +4333,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("fromDeletedDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? FromDeletedDateTime
+        public System.DateTime? FromDeletedDateTime
         {
             get { return _fromDeletedDateTime; }
 
@@ -4253,7 +4348,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("toDeletedDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? ToDeletedDateTime
+        public System.DateTime? ToDeletedDateTime
         {
             get { return _toDeletedDateTime; }
 
@@ -4268,7 +4363,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("fromCreationDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? FromCreationDateTime
+        public System.DateTime? FromCreationDateTime
         {
             get { return _fromCreationDateTime; }
 
@@ -4283,7 +4378,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("toCreationDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? ToCreationDateTime
+        public System.DateTime? ToCreationDateTime
         {
             get { return _toCreationDateTime; }
 
@@ -4298,7 +4393,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("fromModificationDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? FromModificationDateTime
+        public System.DateTime? FromModificationDateTime
         {
             get { return _fromModificationDateTime; }
 
@@ -4313,7 +4408,7 @@ namespace TemplateGenerators.GeneratedServices
         }
 
         [Newtonsoft.Json.JsonProperty("toModificationDateTime", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.DateTimeOffset? ToModificationDateTime
+        public System.DateTime? ToModificationDateTime
         {
             get { return _toModificationDateTime; }
 
@@ -4387,16 +4482,16 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("sortColumnName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string SortColumnName
+        [Newtonsoft.Json.JsonProperty("sortColumnNames", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string SortColumnNames
         {
-            get { return _sortColumnName; }
+            get { return _sortColumnNames; }
 
             set
             {
-                if (_sortColumnName != value)
+                if (_sortColumnNames != value)
                 {
-                    _sortColumnName = value;
+                    _sortColumnNames = value;
                     RaisePropertyChanged();
                 }
             }
@@ -4412,6 +4507,36 @@ namespace TemplateGenerators.GeneratedServices
                 if (_isDescending != value)
                 {
                     _isDescending = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("text", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Text
+        {
+            get { return _text; }
+
+            set
+            {
+                if (_text != value)
+                {
+                    _text = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("language", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Language
+        {
+            get { return _language; }
+
+            set
+            {
+                if (_language != value)
+                {
+                    _language = value;
                     RaisePropertyChanged();
                 }
             }
@@ -4528,6 +4653,7 @@ namespace TemplateGenerators.GeneratedServices
         private ErrorContract _error;
         private SuccessContract _success;
         private System.Collections.Generic.ICollection<FormContract> _result;
+        private long _totalCount;
         private bool _hasItems;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -4585,6 +4711,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_result != value)
                 {
                     _result = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("totalCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalCount
+        {
+            get { return _totalCount; }
+
+            set
+            {
+                if (_totalCount != value)
+                {
+                    _totalCount = value;
                     RaisePropertyChanged();
                 }
             }
@@ -4838,6 +4979,7 @@ namespace TemplateGenerators.GeneratedServices
         private ErrorContract _error;
         private SuccessContract _success;
         private System.Collections.Generic.ICollection<FormDetailContract> _result;
+        private long _totalCount;
         private bool _hasItems;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -4895,6 +5037,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_result != value)
                 {
                     _result = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("totalCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalCount
+        {
+            get { return _totalCount; }
+
+            set
+            {
+                if (_totalCount != value)
+                {
+                    _totalCount = value;
                     RaisePropertyChanged();
                 }
             }
@@ -5368,6 +5525,7 @@ namespace TemplateGenerators.GeneratedServices
         private ErrorContract _error;
         private SuccessContract _success;
         private System.Collections.Generic.ICollection<FormValuesContract> _result;
+        private long _totalCount;
         private bool _hasItems;
 
         [Newtonsoft.Json.JsonProperty("isSuccess", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -5425,6 +5583,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_result != value)
                 {
                     _result = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("totalCount", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long TotalCount
+        {
+            get { return _totalCount; }
+
+            set
+            {
+                if (_totalCount != value)
+                {
+                    _totalCount = value;
                     RaisePropertyChanged();
                 }
             }
@@ -5996,21 +6169,21 @@ namespace TemplateGenerators.GeneratedServices
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.19.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v13.0.3.0))")]
     public partial class ServiceDetailsContract : System.ComponentModel.INotifyPropertyChanged
     {
-        private string _servieRouteAddress;
+        private string _serviceRouteAddress;
         private string _methodName;
         private string _path;
-        private string _porjectName;
+        private string _projectName;
 
-        [Newtonsoft.Json.JsonProperty("servieRouteAddress", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ServieRouteAddress
+        [Newtonsoft.Json.JsonProperty("serviceRouteAddress", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ServiceRouteAddress
         {
-            get { return _servieRouteAddress; }
+            get { return _serviceRouteAddress; }
 
             set
             {
-                if (_servieRouteAddress != value)
+                if (_serviceRouteAddress != value)
                 {
-                    _servieRouteAddress = value;
+                    _serviceRouteAddress = value;
                     RaisePropertyChanged();
                 }
             }
@@ -6046,16 +6219,16 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("porjectName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PorjectName
+        [Newtonsoft.Json.JsonProperty("projectName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string ProjectName
         {
-            get { return _porjectName; }
+            get { return _projectName; }
 
             set
             {
-                if (_porjectName != value)
+                if (_projectName != value)
                 {
-                    _porjectName = value;
+                    _projectName = value;
                     RaisePropertyChanged();
                 }
             }
