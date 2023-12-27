@@ -1,23 +1,22 @@
-﻿using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
-using EasyMicroservices.TemplateGeneratorMicroservice.Database;
+﻿using EasyMicroservices.Cores.Relational.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice
 {
-    public class DatabaseBuilder : IEntityFrameworkCoreDatabaseBuilder
+    public class DatabaseBuilder : EntityFrameworkCoreDatabaseBuilder
     {
-        readonly IConfiguration _config;
-        public DatabaseBuilder(IConfiguration config)
+        public DatabaseBuilder(IConfiguration configuration) : base(configuration)
         {
-            _config = config;
         }
 
-        public void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseInMemoryDatabase("TemplateGenerator");
-            //optionsBuilder.UseSqlServer("Server=.;Database=TemplateGenerator;User ID=test;Password=test1234;Trusted_Connection=True;TrustServerCertificate=True");
-            optionsBuilder.UseSqlServer(_config.GetConnectionString("local"));
+            var entity = GetEntity();
+            if (entity.IsSqlServer())
+                optionsBuilder.UseSqlServer(entity.ConnectionString);
+            else if (entity.IsInMemory())
+                optionsBuilder.UseInMemoryDatabase("TemplateGenerator");
         }
     }
 }

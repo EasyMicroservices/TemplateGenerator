@@ -23,11 +23,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
         static WebApplicationBuilder CreateBuilder(string[] args)
         {
             var app = StartUpExtensions.Create<TemplateGeneratorContext>(args);
-            app.Services.Builder<TemplateGeneratorContext>().UseDefaultSwaggerOptions();
+            app.Services.Builder<TemplateGeneratorContext>("TemplateGenerator")
+                .UseDefaultSwaggerOptions();
             app.Services.AddTransient((serviceProvider) => new UnitOfWork(serviceProvider));
-            app.Services.AddTransient(serviceProvider => new TemplateGeneratorContext(serviceProvider.GetService<IEntityFrameworkCoreDatabaseBuilder>()));
+            app.Services.AddTransient<TemplateGeneratorContext>();
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
-            StartUpExtensions.AddWhiteLabel("TemplateGenerator", "RootAddresses:WhiteLabel");
             return app;
         }
 
