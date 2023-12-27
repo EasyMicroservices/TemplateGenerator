@@ -11,7 +11,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.61" />
-    <PackageReference Include="EasyMicroservices.Domain" Version="0.0.0.6" />
+    <PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.79" />
+    <PackageReference Include="EasyMicroservices.Domain" Version="0.0.0.7" />
   </ItemGroup>
 </Project>

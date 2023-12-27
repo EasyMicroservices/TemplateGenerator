@@ -59,7 +59,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             return await base.Add(request, cancellationToken);
         }
 
-        bool HasUniqueOdentity(GetUniqueIdentityRequestContract request, FormItemValueEntity formItemValueEntity)
+        bool HasUniqueOdentity(GetByUniqueIdentityRequestContract request, FormItemValueEntity formItemValueEntity)
         {
             if (formItemValueEntity.UniqueIdentity.IsNullOrEmpty())
             {
@@ -71,7 +71,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
         }
 
         [HttpPost]
-        public async Task<MessageContract<long>> GetBiggestAutoIncrementNumber(GetUniqueIdentityRequestContract request)
+        public async Task<MessageContract<long>> GetBiggestAutoIncrementNumber(GetByUniqueIdentityRequestContract request)
         {
             var allValues = (await UnitOfWork.GetLongLogic<FormItemValueEntity>()
                 .GetAll(

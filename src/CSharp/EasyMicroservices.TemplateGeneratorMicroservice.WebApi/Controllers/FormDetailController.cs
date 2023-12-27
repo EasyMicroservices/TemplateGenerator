@@ -1,6 +1,5 @@
 ﻿using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
-using EasyMicroservices.Cores.Database.Interfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 
