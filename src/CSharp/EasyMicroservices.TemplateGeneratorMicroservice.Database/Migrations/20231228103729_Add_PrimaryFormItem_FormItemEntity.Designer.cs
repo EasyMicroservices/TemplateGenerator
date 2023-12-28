@@ -4,6 +4,7 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 {
     [DbContext(typeof(TemplateGeneratorContext))]
-    partial class TemplateGeneratorContextModelSnapshot : ModelSnapshot
+    [Migration("20231228103729_Add_PrimaryFormItem_FormItemEntity")]
+    partial class Add_PrimaryFormItem_FormItemEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

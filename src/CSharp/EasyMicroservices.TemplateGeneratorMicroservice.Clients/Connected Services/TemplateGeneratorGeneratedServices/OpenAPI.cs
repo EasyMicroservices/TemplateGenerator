@@ -5319,6 +5319,9 @@ namespace TemplateGenerators.GeneratedServices
         private string _title;
         private int _index;
         private ItemType _type;
+        private long? _primaryFormItemId;
+        private long? _formId;
+        private long? _parentFormItemId;
         private System.Collections.Generic.ICollection<CreateFormItemContract> _items;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -5376,6 +5379,51 @@ namespace TemplateGenerators.GeneratedServices
                 if (_type != value)
                 {
                     _type = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("primaryFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? PrimaryFormItemId
+        {
+            get { return _primaryFormItemId; }
+
+            set
+            {
+                if (_primaryFormItemId != value)
+                {
+                    _primaryFormItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("formId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? FormId
+        {
+            get { return _formId; }
+
+            set
+            {
+                if (_formId != value)
+                {
+                    _formId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("parentFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? ParentFormItemId
+        {
+            get { return _parentFormItemId; }
+
+            set
+            {
+                if (_parentFormItemId != value)
+                {
+                    _parentFormItemId = value;
                     RaisePropertyChanged();
                 }
             }
@@ -5413,6 +5461,9 @@ namespace TemplateGenerators.GeneratedServices
         private string _title;
         private int _index;
         private ItemType _type;
+        private long? _primaryFormItemId;
+        private long? _formId;
+        private long? _parentFormItemId;
         private System.Collections.Generic.ICollection<CreateFormItemContract> _items;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -5470,6 +5521,51 @@ namespace TemplateGenerators.GeneratedServices
                 if (_type != value)
                 {
                     _type = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("primaryFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? PrimaryFormItemId
+        {
+            get { return _primaryFormItemId; }
+
+            set
+            {
+                if (_primaryFormItemId != value)
+                {
+                    _primaryFormItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("formId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? FormId
+        {
+            get { return _formId; }
+
+            set
+            {
+                if (_formId != value)
+                {
+                    _formId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("parentFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? ParentFormItemId
+        {
+            get { return _parentFormItemId; }
+
+            set
+            {
+                if (_parentFormItemId != value)
+                {
+                    _parentFormItemId = value;
                     RaisePropertyChanged();
                 }
             }
@@ -6703,8 +6799,12 @@ namespace TemplateGenerators.GeneratedServices
         private string _title;
         private int _index;
         private ItemType _type;
+        private long? _primaryFormItemId;
+        private long? _formId;
+        private long? _parentFormItemId;
         private long _id;
         private System.Collections.Generic.ICollection<FormItemContract> _items;
+        private FormItemContract _primaryFormItem;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DefaultValue
@@ -6766,6 +6866,51 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
+        [Newtonsoft.Json.JsonProperty("primaryFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? PrimaryFormItemId
+        {
+            get { return _primaryFormItemId; }
+
+            set
+            {
+                if (_primaryFormItemId != value)
+                {
+                    _primaryFormItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("formId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? FormId
+        {
+            get { return _formId; }
+
+            set
+            {
+                if (_formId != value)
+                {
+                    _formId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("parentFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? ParentFormItemId
+        {
+            get { return _parentFormItemId; }
+
+            set
+            {
+                if (_parentFormItemId != value)
+                {
+                    _parentFormItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long Id
         {
@@ -6791,6 +6936,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("primaryFormItem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public FormItemContract PrimaryFormItem
+        {
+            get { return _primaryFormItem; }
+
+            set
+            {
+                if (_primaryFormItem != value)
+                {
+                    _primaryFormItem = value;
                     RaisePropertyChanged();
                 }
             }
@@ -8037,8 +8197,12 @@ namespace TemplateGenerators.GeneratedServices
         private string _title;
         private int _index;
         private ItemType _type;
+        private long? _primaryFormItemId;
+        private long? _formId;
+        private long? _parentFormItemId;
         private long _id;
         private System.Collections.Generic.ICollection<FormItemContract> _items;
+        private FormItemContract _primaryFormItem;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DefaultValue
@@ -8100,6 +8264,51 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
+        [Newtonsoft.Json.JsonProperty("primaryFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? PrimaryFormItemId
+        {
+            get { return _primaryFormItemId; }
+
+            set
+            {
+                if (_primaryFormItemId != value)
+                {
+                    _primaryFormItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("formId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? FormId
+        {
+            get { return _formId; }
+
+            set
+            {
+                if (_formId != value)
+                {
+                    _formId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("parentFormItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? ParentFormItemId
+        {
+            get { return _parentFormItemId; }
+
+            set
+            {
+                if (_parentFormItemId != value)
+                {
+                    _parentFormItemId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long Id
         {
@@ -8125,6 +8334,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("primaryFormItem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public FormItemContract PrimaryFormItem
+        {
+            get { return _primaryFormItem; }
+
+            set
+            {
+                if (_primaryFormItem != value)
+                {
+                    _primaryFormItem = value;
                     RaisePropertyChanged();
                 }
             }

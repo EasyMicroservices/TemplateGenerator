@@ -2940,6 +2940,24 @@
           "type": {
             "$ref": "#/components/schemas/ItemType"
           },
+          "primaryFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "formId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "parentFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
           "items": {
             "title": "List<CreateFormItemContract>",
             "type": "array",
@@ -2968,6 +2986,24 @@
           },
           "type": {
             "$ref": "#/components/schemas/ItemType"
+          },
+          "primaryFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "formId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "parentFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
           },
           "items": {
             "title": "List<CreateFormItemContract>",
@@ -3425,6 +3461,24 @@
           "type": {
             "$ref": "#/components/schemas/ItemType"
           },
+          "primaryFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "formId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "parentFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
           "id": {
             "type": "integer",
             "format": "int64"
@@ -3436,6 +3490,9 @@
             "items": {
               "$ref": "#/components/schemas/FormItemContract"
             }
+          },
+          "primaryFormItem": {
+            "$ref": "#/components/schemas/FormItemContract"
           }
         }
       },
@@ -3882,6 +3939,24 @@
           "type": {
             "$ref": "#/components/schemas/ItemType"
           },
+          "primaryFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "formId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "parentFormItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
           "id": {
             "type": "integer",
             "format": "int64"
@@ -3893,6 +3968,9 @@
             "items": {
               "$ref": "#/components/schemas/FormItemContract"
             }
+          },
+          "primaryFormItem": {
+            "$ref": "#/components/schemas/FormItemContract"
           }
         }
       },

@@ -6,5 +6,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common
     {
         public long Id { get; set; }
         public List<FormItemContract> Items { get; set; }
+
+        public FormItemContract PrimaryFormItem { get; set; }
     }
 }

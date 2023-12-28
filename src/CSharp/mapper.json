@@ -96,6 +96,9 @@
 						},
 						{
 							"Name": "ModificationDateTime"
+						},
+						{
+							"Name": "PrimaryFormItems"
 						}
 					],
 					"CustomProperties": [
@@ -296,6 +299,9 @@
 						},
 						{
 							"Name": "ModificationDateTime"
+						},
+						{
+							"Name": "PrimaryFormItems"
 						}
 					],
 					"CustomProperties": [
@@ -358,6 +364,12 @@
 						},
 						{
 							"Name": "Id"
+						},
+						{
+							"Name": "PrimaryFormItem"
+						},
+						{
+							"Name": "PrimaryFormItems"
 						}
 					],
 					"CustomProperties": [

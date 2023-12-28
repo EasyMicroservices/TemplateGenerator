@@ -347,6 +347,7 @@ namespace CompileTimeMapper
                 Children = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
                 Index = fromObject.Index,
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
             };
             return mapped;
@@ -361,6 +362,7 @@ namespace CompileTimeMapper
                 DefaultValue = fromObject.DefaultValue,
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
@@ -376,6 +378,7 @@ namespace CompileTimeMapper
                 Children = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
                 Index = fromObject.Index,
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
@@ -391,6 +394,7 @@ namespace CompileTimeMapper
                 DefaultValue = fromObject.DefaultValue,
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
@@ -431,6 +435,8 @@ namespace CompileTimeMapper
                 DefaultValue = fromObject.DefaultValue,
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
             };
             return mapped;
@@ -446,6 +452,8 @@ namespace CompileTimeMapper
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
@@ -462,6 +470,8 @@ namespace CompileTimeMapper
                 DefaultValue = fromObject.DefaultValue,
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
@@ -478,6 +488,8 @@ namespace CompileTimeMapper
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
@@ -518,6 +530,8 @@ namespace CompileTimeMapper
                 DefaultValue = fromObject.DefaultValue,
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
             };
             return mapped;
@@ -533,6 +547,8 @@ namespace CompileTimeMapper
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
@@ -549,6 +565,8 @@ namespace CompileTimeMapper
                 DefaultValue = fromObject.DefaultValue,
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
@@ -565,6 +583,8 @@ namespace CompileTimeMapper
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
+                PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
             };
