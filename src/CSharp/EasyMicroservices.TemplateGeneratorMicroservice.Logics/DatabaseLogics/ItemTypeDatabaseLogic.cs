@@ -1,11 +1,8 @@
 ﻿using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Logics;
-using EasyMicroservices.Database.Interfaces;
-using EasyMicroservices.Mapper.Interfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.DataTypes;
 using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
-using EasyMicroservices.TemplateGeneratorMicroservice.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;

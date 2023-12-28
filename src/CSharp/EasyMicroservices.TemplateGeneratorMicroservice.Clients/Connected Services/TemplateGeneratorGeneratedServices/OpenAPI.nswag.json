@@ -54,6 +54,55 @@
         }
       }
     },
+    "/api/Form/UpdateChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "Form"
+        ],
+        "operationId": "UpdateChangedValuesOnly",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Form/Add": {
       "post": {
         "tags": [
@@ -145,55 +194,6 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/MessageContract"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Form/UpdateChangedValuesOnly": {
-      "put": {
-        "tags": [
-          "Form"
-        ],
-        "operationId": "UpdateChangedValuesOnly",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FormContract"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FormContract"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/FormContract"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/FormContractMessageContract"
                 }
               }
             }
@@ -505,17 +505,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             }
           }
@@ -554,17 +554,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -682,17 +682,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -1221,17 +1221,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             }
           }
@@ -1270,17 +1270,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -1398,17 +1398,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -1496,17 +1496,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -1986,17 +1986,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Int64GetIdRequestContract"
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
               }
             }
           }
@@ -2035,17 +2035,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -2163,17 +2163,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/GetUniqueIdentityRequestContract"
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
               }
             }
           }
@@ -2201,10 +2201,799 @@
           }
         }
       }
+    },
+    "/api/NoParentFormItem/UpdateChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "UpdateChangedValuesOnly4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/Add": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "Add4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormItemRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormItemRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormItemRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Int64MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/AddBulk": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "AddBulk4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormItemRequestContractCreateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormItemRequestContractCreateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateFormItemRequestContractCreateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/Update": {
+      "put": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "Update4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/UpdateBulk": {
+      "put": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "UpdateBulk4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/UpdateBulkChangedValuesOnly": {
+      "put": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "UpdateBulkChangedValuesOnly4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContractUpdateBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContractUpdateBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateFormItemRequestContractUpdateBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/HardDeleteById": {
+      "delete": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "HardDeleteById4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/HardDeleteBulkByIds": {
+      "delete": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "HardDeleteBulkByIds4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64DeleteBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/SoftDeleteById": {
+      "delete": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "SoftDeleteById4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/SoftDeleteBulkByIds": {
+      "delete": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "SoftDeleteBulkByIds4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteBulkRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteBulkRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64SoftDeleteBulkRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/GetById": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "GetById4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByIdRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/GetByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "GetByUniqueIdentity4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/Filter": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "Filter4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/GetAll": {
+      "get": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "GetAll4",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/NoParentFormItem/GetAllByUniqueIdentity": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "GetAllByUniqueIdentity4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractListMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "CreateFormItemContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "defaultValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ItemType"
+          },
+          "items": {
+            "title": "List<CreateFormItemContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CreateFormItemContract"
+            }
+          }
+        }
+      },
+      "CreateFormItemRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "defaultValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ItemType"
+          },
+          "items": {
+            "title": "List<CreateFormItemContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CreateFormItemContract"
+            }
+          }
+        }
+      },
+      "CreateFormItemRequestContractCreateBulkRequestContract": {
+        "title": "CreateBulkRequestContract<CreateFormItemRequestContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "title": "List<CreateFormItemRequestContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/CreateFormItemRequestContract"
+            }
+          }
+        }
+      },
       "CreateFormRequestContract": {
         "type": "object",
         "additionalProperties": false,
@@ -2401,17 +3190,18 @@
             "nullable": true
           },
           "sortColumnNames": {
-            "type": "string",
-            "nullable": true
-          },
-          "isDescending": {
-            "type": "boolean"
+            "title": "List<SortColumnStrategyContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/SortColumnStrategyContract"
+            }
           },
           "text": {
             "type": "string",
             "nullable": true
           },
-          "language": {
+          "languageShortName": {
             "type": "string",
             "nullable": true
           }
@@ -2620,10 +3410,6 @@
         "type": "object",
         "additionalProperties": false,
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
           "defaultValue": {
             "type": "string",
             "nullable": true
@@ -2639,6 +3425,10 @@
           "type": {
             "$ref": "#/components/schemas/ItemType"
           },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
           "items": {
             "title": "List<FormItemContract>",
             "type": "array",
@@ -2646,6 +3436,57 @@
             "items": {
               "$ref": "#/components/schemas/FormItemContract"
             }
+          }
+        }
+      },
+      "FormItemContractListMessageContract": {
+        "title": "ListMessageContract<FormItemContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "success": {
+            "$ref": "#/components/schemas/SuccessContract"
+          },
+          "result": {
+            "title": "List<FormItemContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemContract"
+            }
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "hasItems": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        }
+      },
+      "FormItemContractMessageContract": {
+        "title": "MessageContract<FormItemContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isSuccess": {
+            "type": "boolean"
+          },
+          "error": {
+            "$ref": "#/components/schemas/ErrorContract"
+          },
+          "success": {
+            "$ref": "#/components/schemas/SuccessContract"
+          },
+          "result": {
+            "$ref": "#/components/schemas/FormItemContract"
           }
         }
       },
@@ -2786,7 +3627,7 @@
           }
         }
       },
-      "GetUniqueIdentityRequestContract": {
+      "GetByUniqueIdentityRequestContract": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -2850,8 +3691,8 @@
           }
         }
       },
-      "Int64GetIdRequestContract": {
-        "title": "GetIdRequestContract<Int64>",
+      "Int64GetByIdRequestContract": {
+        "title": "GetByIdRequestContract<Int64>",
         "type": "object",
         "additionalProperties": false,
         "properties": {
@@ -2993,6 +3834,25 @@
           }
         }
       },
+      "SortColumnStrategyContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "columnName": {
+            "type": "string",
+            "nullable": true
+          },
+          "isDescending": {
+            "title": "Nullable<Boolean>",
+            "type": "boolean",
+            "nullable": true
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
       "SuccessContract": {
         "type": "object",
         "additionalProperties": false,
@@ -3000,6 +3860,54 @@
           "endUserMessage": {
             "type": "string",
             "nullable": true
+          }
+        }
+      },
+      "UpdateFormItemRequestContract": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "defaultValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "index": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "$ref": "#/components/schemas/ItemType"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "items": {
+            "title": "List<FormItemContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemContract"
+            }
+          }
+        }
+      },
+      "UpdateFormItemRequestContractUpdateBulkRequestContract": {
+        "title": "UpdateBulkRequestContract<UpdateFormItemRequestContract>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "title": "List<UpdateFormItemRequestContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/UpdateFormItemRequestContract"
+            }
           }
         }
       },

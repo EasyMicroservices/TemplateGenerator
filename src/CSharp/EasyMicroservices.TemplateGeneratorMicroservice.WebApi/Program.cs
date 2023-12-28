@@ -1,8 +1,8 @@
-using CompileTimeMapper;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
+using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;
 using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
@@ -12,8 +12,8 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
         public static async Task Main(string[] args)
         {
             var app = CreateBuilder(args);
-            var build = await app.Build<TemplateGeneratorContext>(true);
-            UnitOfWork.MapperTypeAssembly = typeof(FormDetailEntity_FormDetailContract_Mapper);
+            var build = await app.BuildWithUseCors<TemplateGeneratorContext>(null, true);
+            UnitOfWork.MapperTypeAssembly = typeof(ItemTypeDatabaseLogic);
             var scope = build.Services.CreateScope();
             ApplicationManager.Instance.DependencyManager = scope.ServiceProvider.GetService<IUnitOfWork>();
             build.MapControllers();
