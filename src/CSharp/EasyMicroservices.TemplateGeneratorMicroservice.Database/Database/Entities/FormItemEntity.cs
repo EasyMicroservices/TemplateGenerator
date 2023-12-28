@@ -18,6 +18,10 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities
         public FormItemEntity ParentFormItem { get; set; }
         public ICollection<FormItemEntity> Children { get; set; }
 
+        public long? PrimaryFormItemId { get; set; }
+        public FormItemEntity PrimaryFormItem { get; set; }
+        public ICollection<FormItemEntity> PrimaryFormItems { get; set; }
+
         public ICollection<FormItemValueEntity> FormItemValues { get; set; }
     }
 }

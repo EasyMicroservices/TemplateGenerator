@@ -96,6 +96,9 @@
 						},
 						{
 							"Name": "ModificationDateTime"
+						},
+						{
+							"Name": "PrimaryFormItems"
 						}
 					],
 					"CustomProperties": [
@@ -250,6 +253,136 @@
 						}
 					],
 					"CustomProperties": []
+				},
+				{
+					"DisplayName": "FormItemEntity_UpdateFormItemRequestContract",
+					"MapFrom": {
+						"Name": "FormItemEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "UpdateFormItemRequestContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "FormId"
+						},
+						{
+							"Name": "Form"
+						},
+						{
+							"Name": "ItemType"
+						},
+						{
+							"Name": "ItemTypeId"
+						},
+						{
+							"Name": "ParentFormItemId"
+						},
+						{
+							"Name": "FormItemValues"
+						},
+						{
+							"Name": "ParentFormItem"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
+						},
+						{
+							"Name": "PrimaryFormItems"
+						}
+					],
+					"CustomProperties": [
+						{
+							"FromName": "Items",
+							"ToName": "Children"
+						},
+						{
+							"FromName": "Type",
+							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
+						}
+					],
+					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
+				},
+				{
+					"DisplayName": "FormItemEntity_CreateFormItemRequestContract",
+					"MapFrom": {
+						"Name": "FormItemEntity",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Database.dll"
+					},
+					"MapTo": {
+						"Name": "CreateFormItemRequestContract",
+						"Namespace": "EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests",
+						"AssebmlyFileName": "EasyMicroservices.TemplateGeneratorMicroservice.Domain.dll"
+					},
+					"SkippedProperties": [
+						{
+							"Name": "FormId"
+						},
+						{
+							"Name": "Form"
+						},
+						{
+							"Name": "ItemType"
+						},
+						{
+							"Name": "ItemTypeId"
+						},
+						{
+							"Name": "ParentFormItemId"
+						},
+						{
+							"Name": "FormItemValues"
+						},
+						{
+							"Name": "ParentFormItem"
+						},
+						{
+							"Name": "CreationDateTime"
+						},
+						{
+							"Name": "DeletedDateTime"
+						},
+						{
+							"Name": "IsDeleted"
+						},
+						{
+							"Name": "ModificationDateTime"
+						},
+						{
+							"Name": "Id"
+						},
+						{
+							"Name": "PrimaryFormItem"
+						},
+						{
+							"Name": "PrimaryFormItems"
+						}
+					],
+					"CustomProperties": [
+						{
+							"FromName": "Items",
+							"ToName": "Children"
+						},
+						{
+							"FromName": "Type",
+							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
+						}
+					],
+					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
 				}
 			]
 		}
