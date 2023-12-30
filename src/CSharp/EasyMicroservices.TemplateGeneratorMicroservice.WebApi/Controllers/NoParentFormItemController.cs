@@ -16,11 +16,25 @@ public class NoParentFormItemController : SimpleQueryServiceController<FormItemE
     {
     }
 
-    public override async Task<ListMessageContract<FormItemContract>> Filter(FilterRequestContract filterRequest, CancellationToken cancellationToken = default)
+    public override async Task<MessageContract<FormItemContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
     {
+        var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
+        uniqueIdentity += "-";
         await using var context = UnitOfWork.GetDatabase();
         var readable = context.GetReadableOf<FormItemEntity>();
-        var query = readable.Where(e => e.FormId == null && e.ParentFormItemId == null && !e.IsDeleted);
+        var query = readable.Where(e => e.Id == request.Id && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
+        var result = await query.FirstAsync(cancellationToken);
+        await FormItemLogic.LoadAll(readable, result);
+        return await UnitOfWork.GetMapper().MapAsync<FormItemContract>(result);
+    }
+
+    public override async Task<ListMessageContract<FormItemContract>> Filter(FilterRequestContract filterRequest, CancellationToken cancellationToken = default)
+    {
+        var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
+        uniqueIdentity += "-";
+        await using var context = UnitOfWork.GetDatabase();
+        var readable = context.GetReadableOf<FormItemEntity>();
+        var query = readable.Where(e => e.FormId == null && e.ParentFormItemId == null && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
         var count = await query.LongCountAsync();
         filterRequest.IsDeleted = false;
         if (filterRequest.Index.HasValue)

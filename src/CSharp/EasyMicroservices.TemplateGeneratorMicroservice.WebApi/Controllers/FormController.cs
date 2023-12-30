@@ -16,6 +16,19 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
         {
         }
 
+        public override async Task<MessageContract<FormContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
+        {
+            await using var context = UnitOfWork.GetDatabase();
+            var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
+            uniqueIdentity += "-";
+            var readable = context.GetReadableOf<FormEntity>();
+            var query = readable.Where(e => e.Id == request.Id && !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
+            var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).FirstOrDefaultAsync(cancellationToken);
+            var itemReadable = context.GetReadableOf<FormItemEntity>();
+            await FormItemLogic.LoadAll(itemReadable, result.FormItems.ToList());
+            return await UnitOfWork.GetMapper().MapAsync<FormContract>(result);
+        }
+
         public override Task<ListMessageContract<FormContract>> Filter(FilterRequestContract filterRequest, CancellationToken cancellationToken = default)
         {
             return GetWithInclude(filterRequest, cancellationToken);

@@ -11,12 +11,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <!--<PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.84" />-->
+    <PackageReference Include="EasyMicroservices.Cores.AspEntityFrameworkCoreApi" Version="0.0.0.87" />
     <PackageReference Include="EasyMicroservices.Domain" Version="0.0.0.7" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Cores\src\CSharp\EasyMicroservices.Cores.AspEntityFrameworkCoreApi\EasyMicroservices.Cores.AspEntityFrameworkCoreApi.csproj" />
-    <ProjectReference Include="..\..\..\..\..\Cores\src\CSharp\EasyMicroservices.Cores.Clients\EasyMicroservices.Cores.Clients.csproj" />
   </ItemGroup>
 </Project>

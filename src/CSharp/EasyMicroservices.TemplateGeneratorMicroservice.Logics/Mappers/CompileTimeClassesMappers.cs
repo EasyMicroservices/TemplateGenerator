@@ -23,6 +23,7 @@ namespace CompileTimeMapper
                 FormId = fromObject.FormId,
                 Key = fromObject.Key,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -37,6 +38,7 @@ namespace CompileTimeMapper
                 FormId = fromObject.FormId,
                 Key = fromObject.Key,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -51,6 +53,7 @@ namespace CompileTimeMapper
                 FormId = fromObject.FormId,
                 Key = fromObject.Key,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -65,6 +68,7 @@ namespace CompileTimeMapper
                 FormId = fromObject.FormId,
                 Key = fromObject.Key,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
                 Value = fromObject.Value,
             };
             return mapped;
@@ -350,6 +354,7 @@ namespace CompileTimeMapper
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -367,6 +372,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -383,6 +389,7 @@ namespace CompileTimeMapper
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
             return mapped;
@@ -401,6 +408,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -440,6 +448,7 @@ namespace CompileTimeMapper
                 Index = fromObject.Index,
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -456,6 +465,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -471,6 +481,7 @@ namespace CompileTimeMapper
                 Index = fromObject.Index,
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
             return mapped;
@@ -488,6 +499,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -529,6 +541,7 @@ namespace CompileTimeMapper
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -547,6 +560,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -564,6 +578,7 @@ namespace CompileTimeMapper
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
             return mapped;
@@ -583,6 +598,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -624,6 +640,7 @@ namespace CompileTimeMapper
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -642,6 +659,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
@@ -659,6 +677,7 @@ namespace CompileTimeMapper
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);
             return mapped;
@@ -678,6 +697,7 @@ namespace CompileTimeMapper
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
+                UniqueIdentity = fromObject.UniqueIdentity,
             };
             return mapped;
         }
