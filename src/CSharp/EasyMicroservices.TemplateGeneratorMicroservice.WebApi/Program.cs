@@ -1,5 +1,6 @@
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
+using EasyMicroservices.Cores.Database.Managers;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;

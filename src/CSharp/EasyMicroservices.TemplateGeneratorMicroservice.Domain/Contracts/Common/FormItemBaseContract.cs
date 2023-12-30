@@ -1,7 +1,8 @@
-﻿using EasyMicroservices.TemplateGeneratorMicroservice.DataTypes;
+﻿using EasyMicroservices.Cores.Interfaces;
+using EasyMicroservices.TemplateGeneratorMicroservice.DataTypes;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
-public class FormItemBaseContract
+public class FormItemBaseContract : IUniqueIdentitySchema
 {
     public string DefaultValue { get; set; }
     public string Title { get; set; }
@@ -10,4 +11,5 @@ public class FormItemBaseContract
     public long? PrimaryFormItemId { get; set; }
     public long? FormId { get; set; }
     public long? ParentFormItemId { get; set; }
+    public string UniqueIdentity { get; set; }
 }

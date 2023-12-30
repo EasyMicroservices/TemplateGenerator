@@ -1,9 +1,11 @@
 ﻿using EasyMicroservices.Cores.AspCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
+using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
+using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers;
@@ -14,71 +16,44 @@ public class NoParentFormItemController : SimpleQueryServiceController<FormItemE
     {
     }
 
-    protected override Func<IQueryable<FormItemEntity>, IQueryable<FormItemEntity>> OnGetQuery()
+    public override async Task<MessageContract<FormItemContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
     {
-        return query => query
-        .Where(e => e.FormId == null && e.ParentFormItemId == null && !e.IsDeleted).Include(x => x.ItemType)
-        .Include(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted))
-        .Include(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType)
-        .Include(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType)
-        .Include(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType)
-        .Include(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.Children.Where(x => !x.IsDeleted)).ThenInclude(x => x.ItemType);
+        var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
+        uniqueIdentity += "-";
+        await using var context = UnitOfWork.GetDatabase();
+        var readable = context.GetReadableOf<FormItemEntity>();
+        var query = readable.Where(e => e.Id == request.Id && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
+        var result = await query.FirstAsync(cancellationToken);
+        await FormItemLogic.LoadAll(readable, result);
+        return await UnitOfWork.GetMapper().MapAsync<FormItemContract>(result);
     }
 
-    protected override Func<IQueryable<FormItemEntity>, IQueryable<FormItemEntity>> OnGetAllQuery()
+    public override async Task<ListMessageContract<FormItemContract>> Filter(FilterRequestContract filterRequest, CancellationToken cancellationToken = default)
     {
-        return OnGetQuery();
+        var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
+        uniqueIdentity += "-";
+        await using var context = UnitOfWork.GetDatabase();
+        var readable = context.GetReadableOf<FormItemEntity>();
+        var query = readable.Where(e => e.FormId == null && e.ParentFormItemId == null && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
+        var count = await query.LongCountAsync();
+        filterRequest.IsDeleted = false;
+        if (filterRequest.Index.HasValue)
+            query = query.Skip((int)filterRequest.Index.Value);
+        if (filterRequest.Length.HasValue)
+            query = query.Take((int)filterRequest.Length.Value);
+        var result = await query.ToListAsync(cancellationToken);
+        await FormItemLogic.LoadAll(readable, result);
+        return new ListMessageContract<FormItemContract>()
+        {
+            TotalCount = count,
+            IsSuccess = true,
+            Result = await UnitOfWork.GetMapper().MapToListAsync<FormItemContract>(result)
+        };
     }
 
     public override async Task<MessageContract<FormItemContract>> UpdateChangedValuesOnly(UpdateFormItemRequestContract request, CancellationToken cancellationToken = default)
     {
-        await CheckDeletedItems(request, cancellationToken);
+        await FormItemLogic.CheckDeletedItems(UnitOfWork, request, cancellationToken);
         return await base.UpdateChangedValuesOnly(request, cancellationToken);
-    }
-
-    async Task CheckDeletedItems(FormItemContract request, CancellationToken cancellationToken = default)
-    {
-        var getItemResult = await GetById(request.Id, cancellationToken)
-            .AsCheckedResult();
-
-        var deletedItems = FindDeletedItems(getItemResult.Items, request.Items);
-        if (deletedItems.Count > 0)
-        {
-            foreach (var item in deletedItems)
-            {
-                await UnitOfWork.GetLogic<FormItemEntity, long>().SoftDeleteById(new Cores.Contracts.Requests.SoftDeleteRequestContract<long>()
-                {
-                    Id = item,
-                    IsDelete = true
-                }).AsCheckedResult();
-            }
-        }
-    }
-
-    List<FormItemContract> GetAllChilren(List<FormItemContract> items)
-    {
-        List<FormItemContract> result = new List<FormItemContract>();
-        foreach (var item in items)
-        {
-            result.Add(item);
-            result.AddRange(GetAllChilren(item.Items));
-        }
-        return result;
-    }
-
-    private List<long> FindDeletedItems(ICollection<FormItemContract> realItems, ICollection<FormItemContract> newItems)
-    {
-        List<long> result = new List<long>();
-        if (realItems == null || newItems == null)
-            return result;
-        foreach (var item in realItems)
-        {
-            var findItem = newItems.FirstOrDefault(x => x.Id == item.Id);
-            if (findItem == null)
-                result.Add(item.Id);
-            else
-                result.AddRange(FindDeletedItems(item.Items, findItem.Items));
-        }
-        return result;
     }
 }

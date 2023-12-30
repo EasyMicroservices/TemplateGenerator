@@ -18,6 +18,9 @@
         Label = 13,
         Table = 14,
         Row = 15,
-        AutoIncrementNumber = 16
+        AutoIncrementNumber = 16,
+        Column = 17,
+        Menu = 18,
+        Card = 19,
     }
 }
