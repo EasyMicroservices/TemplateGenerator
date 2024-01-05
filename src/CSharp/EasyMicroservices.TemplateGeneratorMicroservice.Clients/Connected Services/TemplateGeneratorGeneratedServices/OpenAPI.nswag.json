@@ -1,4 +1,4 @@
-﻿{
+{
   "openapi": "3.0.1",
   "info": {
     "title": "EasyMicroservices.TemplateGeneratorMicroservice.WebApi",
@@ -672,6 +672,55 @@
         }
       }
     },
+    "/api/Form/GetBy": {
+      "post": {
+        "tags": [
+          "Form"
+        ],
+        "operationId": "GetBy",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Form/GetAllByUniqueIdentity": {
       "post": {
         "tags": [
@@ -1281,6 +1330,55 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/GetByUniqueIdentityRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormDetailContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FormDetail/GetBy": {
+      "post": {
+        "tags": [
+          "FormDetail"
+        ],
+        "operationId": "GetBy2",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
               }
             }
           }
@@ -2074,6 +2172,55 @@
         }
       }
     },
+    "/api/FormValues/GetBy": {
+      "post": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "GetBy3",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormValuesContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormValues/Filter": {
       "post": {
         "tags": [
@@ -2839,6 +2986,55 @@
         }
       }
     },
+    "/api/NoParentFormItem/GetBy": {
+      "post": {
+        "tags": [
+          "NoParentFormItem"
+        ],
+        "operationId": "GetBy4",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Int64GetByRequestContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FormItemContractMessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/NoParentFormItem/GetAll": {
       "get": {
         "tags": [
@@ -2958,6 +3154,10 @@
             "format": "int64",
             "nullable": true
           },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          },
           "primaryFormItem": {
             "$ref": "#/components/schemas/FormItemContract"
           },
@@ -3006,6 +3206,10 @@
             "title": "Nullable<Int64>",
             "type": "integer",
             "format": "int64",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
             "nullable": true
           },
           "primaryFormItem": {
@@ -3364,6 +3568,10 @@
           "formId": {
             "type": "integer",
             "format": "int64"
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
           }
         }
       },
@@ -3483,6 +3691,10 @@
             "title": "Nullable<Int64>",
             "type": "integer",
             "format": "int64",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
             "nullable": true
           },
           "id": {
@@ -3765,6 +3977,24 @@
           }
         }
       },
+      "Int64GetByRequestContract": {
+        "title": "GetByRequestContract<Int64>",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "uniqueIdentity": {
+            "type": "string",
+            "nullable": true
+          },
+          "uniqueIdentityType": {
+            "$ref": "#/components/schemas/GetUniqueIdentityType"
+          }
+        }
+      },
       "Int64MessageContract": {
         "title": "MessageContract<Int64>",
         "type": "object",
@@ -3841,7 +4071,10 @@
           "AutoIncrementNumber",
           "Column",
           "Menu",
-          "Card"
+          "Card",
+          "Button",
+          "HorizontalStack",
+          "VerticalStack"
         ],
         "enum": [
           0,
@@ -3863,7 +4096,10 @@
           16,
           17,
           18,
-          19
+          19,
+          20,
+          21,
+          22
         ]
       },
       "MessageContract": {
@@ -3967,6 +4203,10 @@
             "title": "Nullable<Int64>",
             "type": "integer",
             "format": "int64",
+            "nullable": true
+          },
+          "uniqueIdentity": {
+            "type": "string",
             "nullable": true
           },
           "id": {
