@@ -22,5 +22,8 @@
         Column = 17,
         Menu = 18,
         Card = 19,
+        Button = 20,
+        HorizontalStack = 21,
+        VerticalStack = 22
     }
 }
