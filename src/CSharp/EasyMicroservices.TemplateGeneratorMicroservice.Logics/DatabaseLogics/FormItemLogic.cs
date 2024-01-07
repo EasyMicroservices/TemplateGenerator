@@ -119,7 +119,10 @@ public static class FormItemLogic
         await readable.Context.Entry(formItem).ReloadReferenceAsync(nameof(formItem.ItemType));
         await readable.Context.Entry(formItem).ReloadReferenceAsync(nameof(formItem.PrimaryFormItem));
         if (formItem.PrimaryFormItem != null)
+        {
             await readable.Context.Entry(formItem.PrimaryFormItem).ReloadReferenceAsync(nameof(formItem.ItemType));
+            await LoadAll(readable, formItem.PrimaryFormItem);
+        }
         await LoadAll(readable, formItem.Children.Where(x => !x.IsDeleted).ToList());
     }
 }
