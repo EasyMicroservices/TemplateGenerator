@@ -6316,6 +6316,19 @@
             "type": "integer",
             "format": "int64"
           },
+          "formItemId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "orderIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "formItem": {
+            "$ref": "#/components/schemas/FormItemContract"
+          },
           "action": {
             "$ref": "#/components/schemas/ActionContract"
           },
@@ -6355,8 +6368,10 @@
             "format": "int64"
           },
           "formItemId": {
+            "title": "Nullable<Int64>",
             "type": "integer",
-            "format": "int64"
+            "format": "int64",
+            "nullable": true
           },
           "eventId": {
             "type": "integer",
