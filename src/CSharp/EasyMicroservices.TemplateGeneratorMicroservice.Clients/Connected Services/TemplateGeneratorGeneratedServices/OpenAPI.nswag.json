@@ -6322,6 +6322,12 @@
             "format": "int64",
             "nullable": true
           },
+          "parentId": {
+            "title": "Nullable<Int64>",
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
           "orderIndex": {
             "type": "integer",
             "format": "int32"
@@ -6331,6 +6337,14 @@
           },
           "action": {
             "$ref": "#/components/schemas/ActionContract"
+          },
+          "children": {
+            "title": "List<FormItemEventActionContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemEventActionContract"
+            }
           },
           "formItemEventActionCallHistories": {
             "title": "List<FormItemEventActionExecutionContract>",

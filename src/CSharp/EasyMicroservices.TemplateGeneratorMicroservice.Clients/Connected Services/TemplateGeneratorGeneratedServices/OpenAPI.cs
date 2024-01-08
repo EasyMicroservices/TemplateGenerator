@@ -12421,9 +12421,11 @@ namespace TemplateGenerators.GeneratedServices
         private long _formItemEventId;
         private long _actionId;
         private long? _formItemId;
+        private long? _parentId;
         private int _orderIndex;
         private FormItemContract _formItem;
         private ActionContract _action;
+        private System.Collections.Generic.ICollection<FormItemEventActionContract> _children;
         private System.Collections.Generic.ICollection<FormItemEventActionExecutionContract> _formItemEventActionCallHistories;
 
         [Newtonsoft.Json.JsonProperty("formItemEventId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12471,6 +12473,21 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
+        [Newtonsoft.Json.JsonProperty("parentId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? ParentId
+        {
+            get { return _parentId; }
+
+            set
+            {
+                if (_parentId != value)
+                {
+                    _parentId = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
         [Newtonsoft.Json.JsonProperty("orderIndex", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int OrderIndex
         {
@@ -12511,6 +12528,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_action != value)
                 {
                     _action = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("children", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<FormItemEventActionContract> Children
+        {
+            get { return _children; }
+
+            set
+            {
+                if (_children != value)
+                {
+                    _children = value;
                     RaisePropertyChanged();
                 }
             }
