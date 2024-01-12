@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.Cores.Interfaces;
+using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Schemas;
 using System.Collections.Generic;
 
@@ -23,5 +24,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities
         public ICollection<FormItemEntity> PrimaryFormItems { get; set; }
 
         public ICollection<FormItemValueEntity> FormItemValues { get; set; }
+        public ICollection<FormItemEventEntity> FormItemEvents { get; set; }
+        public ICollection<FormItemActionJobEntity> FormItemActionJobs { get; set; }
     }
 }
