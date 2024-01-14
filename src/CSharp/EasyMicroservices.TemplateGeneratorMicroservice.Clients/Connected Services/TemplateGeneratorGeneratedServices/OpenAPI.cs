@@ -13871,6 +13871,8 @@ namespace TemplateGenerators.GeneratedServices
 
         NavMenu = 23,
 
+        NavMenuLink = 24,
+
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v11.0.0.0))")]
