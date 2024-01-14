@@ -5604,6 +5604,14 @@
             "items": {
               "$ref": "#/components/schemas/CreateFormItemContract"
             }
+          },
+          "events": {
+            "title": "List<FormItemEventContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemEventContract"
+            }
           }
         }
       },
@@ -5661,6 +5669,14 @@
             "nullable": true,
             "items": {
               "$ref": "#/components/schemas/CreateFormItemContract"
+            }
+          },
+          "events": {
+            "title": "List<FormItemEventContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemEventContract"
             }
           }
         }
@@ -6248,6 +6264,14 @@
               "$ref": "#/components/schemas/FormItemContract"
             }
           },
+          "events": {
+            "title": "List<FormItemEventContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemEventContract"
+            }
+          },
           "primaryFormItem": {
             "$ref": "#/components/schemas/FormItemContract"
           }
@@ -6332,9 +6356,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "formItem": {
-            "$ref": "#/components/schemas/FormItemContract"
-          },
           "action": {
             "$ref": "#/components/schemas/ActionContract"
           },
@@ -6382,17 +6403,12 @@
             "format": "int64"
           },
           "formItemId": {
-            "title": "Nullable<Int64>",
             "type": "integer",
-            "format": "int64",
-            "nullable": true
+            "format": "int64"
           },
           "eventId": {
             "type": "integer",
             "format": "int64"
-          },
-          "formItem": {
-            "$ref": "#/components/schemas/FormItemContract"
           },
           "event": {
             "$ref": "#/components/schemas/EventContract"
@@ -6952,6 +6968,14 @@
             "nullable": true,
             "items": {
               "$ref": "#/components/schemas/FormItemContract"
+            }
+          },
+          "events": {
+            "title": "List<FormItemEventContract>",
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/FormItemEventContract"
             }
           },
           "primaryFormItem": {

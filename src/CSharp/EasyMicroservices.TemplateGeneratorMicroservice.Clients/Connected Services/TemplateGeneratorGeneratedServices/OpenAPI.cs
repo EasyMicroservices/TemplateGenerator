@@ -10149,6 +10149,7 @@ namespace TemplateGenerators.GeneratedServices
         private string _uniqueIdentity;
         private FormItemContract _primaryFormItem;
         private System.Collections.Generic.ICollection<CreateFormItemContract> _items;
+        private System.Collections.Generic.ICollection<FormItemEventContract> _events;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DefaultValue
@@ -10310,6 +10311,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("events", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<FormItemEventContract> Events
+        {
+            get { return _events; }
+
+            set
+            {
+                if (_events != value)
+                {
+                    _events = value;
                     RaisePropertyChanged();
                 }
             }
@@ -10339,6 +10355,7 @@ namespace TemplateGenerators.GeneratedServices
         private string _uniqueIdentity;
         private FormItemContract _primaryFormItem;
         private System.Collections.Generic.ICollection<CreateFormItemContract> _items;
+        private System.Collections.Generic.ICollection<FormItemEventContract> _events;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public string DefaultValue
@@ -10500,6 +10517,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("events", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<FormItemEventContract> Events
+        {
+            get { return _events; }
+
+            set
+            {
+                if (_events != value)
+                {
+                    _events = value;
                     RaisePropertyChanged();
                 }
             }
@@ -12035,6 +12067,7 @@ namespace TemplateGenerators.GeneratedServices
         private string _uniqueIdentity;
         private long _id;
         private System.Collections.Generic.ICollection<FormItemContract> _items;
+        private System.Collections.Generic.ICollection<FormItemEventContract> _events;
         private FormItemContract _primaryFormItem;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -12197,6 +12230,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("events", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<FormItemEventContract> Events
+        {
+            get { return _events; }
+
+            set
+            {
+                if (_events != value)
+                {
+                    _events = value;
                     RaisePropertyChanged();
                 }
             }
@@ -12423,7 +12471,6 @@ namespace TemplateGenerators.GeneratedServices
         private long? _formItemId;
         private long? _parentId;
         private int _orderIndex;
-        private FormItemContract _formItem;
         private ActionContract _action;
         private System.Collections.Generic.ICollection<FormItemEventActionContract> _children;
         private System.Collections.Generic.ICollection<FormItemEventActionExecutionContract> _formItemEventActionCallHistories;
@@ -12498,21 +12545,6 @@ namespace TemplateGenerators.GeneratedServices
                 if (_orderIndex != value)
                 {
                     _orderIndex = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        [Newtonsoft.Json.JsonProperty("formItem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FormItemContract FormItem
-        {
-            get { return _formItem; }
-
-            set
-            {
-                if (_formItem != value)
-                {
-                    _formItem = value;
                     RaisePropertyChanged();
                 }
             }
@@ -12639,9 +12671,8 @@ namespace TemplateGenerators.GeneratedServices
     public partial class FormItemEventContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _id;
-        private long? _formItemId;
+        private long _formItemId;
         private long _eventId;
-        private FormItemContract _formItem;
         private EventContract _event;
         private System.Collections.Generic.ICollection<FormItemEventActionContract> _formItemEventActions;
 
@@ -12660,8 +12691,8 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("formItemId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? FormItemId
+        [Newtonsoft.Json.JsonProperty("formItemId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long FormItemId
         {
             get { return _formItemId; }
 
@@ -12685,21 +12716,6 @@ namespace TemplateGenerators.GeneratedServices
                 if (_eventId != value)
                 {
                     _eventId = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        [Newtonsoft.Json.JsonProperty("formItem", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public FormItemContract FormItem
-        {
-            get { return _formItem; }
-
-            set
-            {
-                if (_formItem != value)
-                {
-                    _formItem = value;
                     RaisePropertyChanged();
                 }
             }
@@ -14123,6 +14139,7 @@ namespace TemplateGenerators.GeneratedServices
         private string _uniqueIdentity;
         private long _id;
         private System.Collections.Generic.ICollection<FormItemContract> _items;
+        private System.Collections.Generic.ICollection<FormItemEventContract> _events;
         private FormItemContract _primaryFormItem;
 
         [Newtonsoft.Json.JsonProperty("defaultValue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -14285,6 +14302,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_items != value)
                 {
                     _items = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("events", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.Generic.ICollection<FormItemEventContract> Events
+        {
+            get { return _events; }
+
+            set
+            {
+                if (_events != value)
+                {
+                    _events = value;
                     RaisePropertyChanged();
                 }
             }
