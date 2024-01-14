@@ -18,7 +18,7 @@ public static class FormItemLogic
         var getItemResult = await formReadable
             .Where(x => x.FormId == request.Id)
             .ToListAsync(cancellationToken);
-        await LoadAll(formReadable, getItemResult);
+        await LoadAll(formReadable, getItemResult, new HashSet<long>());
         var mapped = unitOfWork.GetMapper().MapToList<FormItemContract>(getItemResult);
         var allItems = GetAllChilren(getItemResult);
         await CheckDeletedItems(unitOfWork, request.Items, mapped, allItems, cancellationToken);
@@ -28,7 +28,7 @@ public static class FormItemLogic
     {
         var formItemReadable = unitOfWork.GetReadableOf<FormItemEntity>();
         var getItemResult = await formItemReadable.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
-        await LoadAll(formItemReadable, getItemResult);
+        await LoadAll(formItemReadable, getItemResult, new HashSet<long>());
         var mapped = unitOfWork.GetMapper().Map<FormItemContract>(getItemResult);
         var allItems = GetAllChilren(getItemResult.Children);
         await CheckDeletedItems(unitOfWork, request.Items, mapped.Items, allItems, cancellationToken);
@@ -105,24 +105,36 @@ public static class FormItemLogic
         return result;
     }
 
-    public static async Task LoadAll(IEasyReadableQueryableAsync<FormItemEntity> readable, List<FormItemEntity> formItems)
+    public static async Task LoadAll(IEasyReadableQueryableAsync<FormItemEntity> readable, List<FormItemEntity> formItems, HashSet<long> loadedItemsCache)
     {
         foreach (var item in formItems.Where(x => !x.IsDeleted))
         {
-            await LoadAll(readable, item);
+            await LoadAll(readable, item, loadedItemsCache);
         }
     }
 
-    public static async Task LoadAll(IEasyReadableQueryableAsync<FormItemEntity> readable, FormItemEntity formItem)
+    public static async Task LoadAll(IEasyReadableQueryableAsync<FormItemEntity> readable, FormItemEntity formItem, HashSet<long> loadedItemsCache)
     {
+        if (loadedItemsCache.Contains(formItem.Id))
+            return;
+        loadedItemsCache.Add(formItem.Id);
         await readable.Context.Entry(formItem).ReloadCollectionAsync(nameof(formItem.Children));
         await readable.Context.Entry(formItem).ReloadReferenceAsync(nameof(formItem.ItemType));
         await readable.Context.Entry(formItem).ReloadReferenceAsync(nameof(formItem.PrimaryFormItem));
+        formItem.Children = formItem.Children.Where(x => !x.IsDeleted).ToList();
         if (formItem.PrimaryFormItem != null)
         {
-            await readable.Context.Entry(formItem.PrimaryFormItem).ReloadReferenceAsync(nameof(formItem.ItemType));
-            await LoadAll(readable, formItem.PrimaryFormItem);
+            if (formItem.PrimaryFormItem.IsDeleted)
+            {
+                formItem.PrimaryFormItem = null;
+                formItem.PrimaryFormItemId = null;
+            }
+            else
+            {
+                await readable.Context.Entry(formItem.PrimaryFormItem).ReloadReferenceAsync(nameof(formItem.ItemType));
+                await LoadAll(readable, formItem.PrimaryFormItem, loadedItemsCache);
+            }
         }
-        await LoadAll(readable, formItem.Children.Where(x => !x.IsDeleted).ToList());
+        await LoadAll(readable, formItem.Children.ToList(), loadedItemsCache);
     }
 }

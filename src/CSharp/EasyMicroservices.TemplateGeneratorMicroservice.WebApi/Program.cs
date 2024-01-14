@@ -3,8 +3,10 @@ using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Managers;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
+using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;
 using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
 {
@@ -21,7 +23,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             build.Run();
         }
 
-        static WebApplicationBuilder CreateBuilder(string[] args)
+        public static WebApplicationBuilder CreateBuilder(string[] args)
         {
             var app = StartUpExtensions.Create<TemplateGeneratorContext>(args);
             app.Services.Builder<TemplateGeneratorContext>("TemplateGenerator")

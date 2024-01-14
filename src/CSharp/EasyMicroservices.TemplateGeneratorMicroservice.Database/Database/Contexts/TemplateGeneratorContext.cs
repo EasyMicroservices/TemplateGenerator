@@ -2,6 +2,7 @@
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
 {
@@ -18,7 +19,13 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
         public DbSet<FormItemEntity> FormItems { get; set; }
         public DbSet<FormItemValueEntity> FormItemValues { get; set; }
         public DbSet<ItemTypeEntity> ItemTypes { get; set; }
-
+        public DbSet<EventEntity> Events { get; set; }
+        public DbSet<ActionEntity> Actions { get; set; }
+        public DbSet<FormItemEventEntity> FormItemEvents { get; set; }
+        public DbSet<FormItemEventActionEntity> FormItemEventActions { get; set; }
+        public DbSet<FormItemEventActionExecutionEntity> FormItemEventActionCallHistories { get; set; }
+        public DbSet<FormItemActionJobEntity> FormItemActionJobs { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -148,6 +155,64 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
                     Id = 11,
                     Title = "AutoIncrementNumber",
                     Type = DataTypes.ItemType.AutoIncrementNumber
+                });
+
+            modelBuilder.Entity<EventEntity>().HasData(
+                new EventEntity()
+                {
+                    Id = 1,
+                    CreationDateTime = DateTime.Now,
+                    Name = "Click"
+                },
+                new EventEntity()
+                {
+                    Id = 2,
+                    CreationDateTime = DateTime.Now,
+                    Name = "TextChanged"
+                },
+                new EventEntity()
+                {
+                    Id = 3,
+                    CreationDateTime = DateTime.Now,
+                    Name = "ItemSelected"
+                });
+
+            modelBuilder.Entity<ActionEntity>().HasData(
+                new ActionEntity()
+                {
+                    Id = 1,
+                    CreationDateTime = DateTime.Now,
+                    JobName = "OpenDialog"
+                },
+                new ActionEntity()
+                {
+                    Id = 2,
+                    CreationDateTime = DateTime.Now,
+                    JobName = "OpenResponsibleDialog"
+                },
+                new ActionEntity()
+                {
+                    Id = 3,
+                    CreationDateTime = DateTime.Now,
+                    JobName = "OpenPage"
+                },
+                new ActionEntity()
+                {
+                    Id = 4,
+                    CreationDateTime = DateTime.Now,
+                    JobName = "CallExternalApi"
+                },
+                new ActionEntity()
+                {
+                    Id = 5,
+                    CreationDateTime = DateTime.Now,
+                    JobName = "SendResult"
+                },
+                new ActionEntity()
+                {
+                    Id = 6,
+                    CreationDateTime = DateTime.Now,
+                    JobName = "Close"
                 });
         }
     }

@@ -4,6 +4,7 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 {
     [DbContext(typeof(TemplateGeneratorContext))]
-    partial class TemplateGeneratorContextModelSnapshot : ModelSnapshot
+    [Migration("20240107061137_Add_Actions_And_Events")]
+    partial class Add_Actions_And_Events
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5200),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2738),
                             IsDeleted = false,
                             JobName = "OpenDialog",
                             OrderIndex = 0
@@ -83,7 +86,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 2L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5201),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2739),
                             IsDeleted = false,
                             JobName = "OpenResponsibleDialog",
                             OrderIndex = 0
@@ -91,7 +94,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 3L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5203),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2740),
                             IsDeleted = false,
                             JobName = "OpenPage",
                             OrderIndex = 0
@@ -99,7 +102,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 4L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5204),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2741),
                             IsDeleted = false,
                             JobName = "CallExternalApi",
                             OrderIndex = 0
@@ -107,7 +110,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 5L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5205),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2742),
                             IsDeleted = false,
                             JobName = "SendResult",
                             OrderIndex = 0
@@ -115,7 +118,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 6L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5205),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2743),
                             IsDeleted = false,
                             JobName = "Close",
                             OrderIndex = 0
@@ -167,21 +170,21 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         new
                         {
                             Id = 1L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5161),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2704),
                             IsDeleted = false,
                             Name = "Click"
                         },
                         new
                         {
                             Id = 2L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5176),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2719),
                             IsDeleted = false,
                             Name = "TextChanged"
                         },
                         new
                         {
                             Id = 3L,
-                            CreationDateTime = new DateTime(2024, 1, 8, 10, 42, 7, 281, DateTimeKind.Local).AddTicks(5177),
+                            CreationDateTime = new DateTime(2024, 1, 7, 9, 41, 37, 313, DateTimeKind.Local).AddTicks(2721),
                             IsDeleted = false,
                             Name = "ItemSelected"
                         });
@@ -469,13 +472,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.Property<DateTime?>("DeletedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<long?>("FormItemEventActionEntityId")
-                        .HasColumnType("bigint");
-
                     b.Property<long>("FormItemEventId")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("FormItemId")
                         .HasColumnType("bigint");
 
                     b.Property<bool>("IsDeleted")
@@ -483,12 +480,6 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     b.Property<DateTime?>("ModificationDateTime")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("OrderIndex")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("ParentId")
-                        .HasColumnType("bigint");
 
                     b.Property<string>("UniqueIdentity")
                         .HasColumnType("nvarchar(450)")
@@ -502,11 +493,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     b.HasIndex("DeletedDateTime");
 
-                    b.HasIndex("FormItemEventActionEntityId");
-
                     b.HasIndex("FormItemEventId");
-
-                    b.HasIndex("FormItemId");
 
                     b.HasIndex("IsDeleted");
 
@@ -587,7 +574,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                     b.Property<long>("EventId")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("FormItemId")
+                    b.Property<long>("FormItemId")
                         .HasColumnType("bigint");
 
                     b.Property<bool>("IsDeleted")
@@ -904,23 +891,13 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventActionEntity", null)
-                        .WithMany("Children")
-                        .HasForeignKey("FormItemEventActionEntityId");
-
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity", "FormItemEvent")
                         .WithMany("FormItemEventActions")
                         .HasForeignKey("FormItemEventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity", "FormItem")
-                        .WithMany()
-                        .HasForeignKey("FormItemId");
-
                     b.Navigation("Action");
-
-                    b.Navigation("FormItem");
 
                     b.Navigation("FormItemEvent");
                 });
@@ -946,7 +923,9 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
                     b.HasOne("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity", "FormItem")
                         .WithMany("FormItemEvents")
-                        .HasForeignKey("FormItemId");
+                        .HasForeignKey("FormItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Event");
 
@@ -1015,8 +994,6 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Migrations
 
             modelBuilder.Entity("EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventActionEntity", b =>
                 {
-                    b.Navigation("Children");
-
                     b.Navigation("FormItemEventActionCallHistories");
                 });
 

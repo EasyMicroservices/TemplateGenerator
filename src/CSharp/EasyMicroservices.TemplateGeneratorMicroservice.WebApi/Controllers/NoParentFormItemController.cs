@@ -24,7 +24,7 @@ public class NoParentFormItemController : SimpleQueryServiceController<FormItemE
         var readable = context.GetReadableOf<FormItemEntity>();
         var query = readable.Where(e => e.Id == request.Id && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
         var result = await query.FirstAsync(cancellationToken);
-        await FormItemLogic.LoadAll(readable, result);
+        await FormItemLogic.LoadAll(readable, result, new HashSet<long>());
         return await UnitOfWork.GetMapper().MapAsync<FormItemContract>(result);
     }
 
@@ -42,7 +42,7 @@ public class NoParentFormItemController : SimpleQueryServiceController<FormItemE
         if (filterRequest.Length.HasValue)
             query = query.Take((int)filterRequest.Length.Value);
         var result = await query.ToListAsync(cancellationToken);
-        await FormItemLogic.LoadAll(readable, result);
+        await FormItemLogic.LoadAll(readable, result, new HashSet<long>());
         return new ListMessageContract<FormItemContract>()
         {
             TotalCount = count,
