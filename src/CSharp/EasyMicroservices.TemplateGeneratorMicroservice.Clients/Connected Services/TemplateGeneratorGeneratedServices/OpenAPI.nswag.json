@@ -6797,7 +6797,8 @@
           "Card",
           "Button",
           "HorizontalStack",
-          "VerticalStack"
+          "VerticalStack",
+          "NavMenu"
         ],
         "enum": [
           0,
@@ -6822,7 +6823,8 @@
           19,
           20,
           21,
-          22
+          22,
+          23
         ]
       },
       "MessageContract": {
