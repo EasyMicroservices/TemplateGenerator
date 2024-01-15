@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 public class FormItemEventEntity : FullAbilityIdSchema<long>
 {
-    public long? FormItemId { get; set; }
+    public long FormItemId { get; set; }
     public long EventId { get; set; }
 
     public FormItemEntity FormItem { get; set; }

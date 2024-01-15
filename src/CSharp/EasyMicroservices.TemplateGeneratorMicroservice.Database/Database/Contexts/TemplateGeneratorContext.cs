@@ -155,6 +155,48 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts
                     Id = 11,
                     Title = "AutoIncrementNumber",
                     Type = DataTypes.ItemType.AutoIncrementNumber
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 12,
+                    Title = "Column",
+                    Type = DataTypes.ItemType.Column
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 13,
+                    Title = "Menu",
+                    Type = DataTypes.ItemType.Menu
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 14,
+                    Title = "Card",
+                    Type = DataTypes.ItemType.Card
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 15,
+                    Title = "Button",
+                    Type = DataTypes.ItemType.Button
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 16,
+                    Title = "HorizontalStack",
+                    Type = DataTypes.ItemType.HorizontalStack
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 17,
+                    Title = "VerticalStack",
+                    Type = DataTypes.ItemType.VerticalStack
+                },
+                new ItemTypeEntity()
+                {
+                    Id = 18,
+                    Title = "VerticalStack",
+                    Type = DataTypes.ItemType.NavMenu
                 });
 
             modelBuilder.Entity<EventEntity>().HasData(

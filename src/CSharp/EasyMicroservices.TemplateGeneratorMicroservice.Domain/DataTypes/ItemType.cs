@@ -24,6 +24,9 @@
         Card = 19,
         Button = 20,
         HorizontalStack = 21,
-        VerticalStack = 22
+        VerticalStack = 22,
+        NavMenu = 23,
+        NavMenuLink = 24,
+        NavMenuGroup = 25
     }
 }
