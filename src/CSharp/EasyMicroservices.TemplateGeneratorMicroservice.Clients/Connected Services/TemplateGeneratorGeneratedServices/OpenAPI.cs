@@ -12466,6 +12466,7 @@ namespace TemplateGenerators.GeneratedServices
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.20.0.0 (NJsonSchema v10.9.0.0 (Newtonsoft.Json v11.0.0.0))")]
     public partial class FormItemEventActionContract : System.ComponentModel.INotifyPropertyChanged
     {
+        private long _id;
         private long _formItemEventId;
         private long _actionId;
         private long? _formItemId;
@@ -12474,6 +12475,21 @@ namespace TemplateGenerators.GeneratedServices
         private ActionContract _action;
         private System.Collections.Generic.ICollection<FormItemEventActionContract> _children;
         private System.Collections.Generic.ICollection<FormItemEventActionExecutionContract> _formItemEventActionCallHistories;
+
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long Id
+        {
+            get { return _id; }
+
+            set
+            {
+                if (_id != value)
+                {
+                    _id = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
 
         [Newtonsoft.Json.JsonProperty("formItemEventId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public long FormItemEventId
