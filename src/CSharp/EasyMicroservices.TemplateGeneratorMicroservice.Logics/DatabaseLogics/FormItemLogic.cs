@@ -4,6 +4,7 @@ using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -18,107 +19,77 @@ public static class FormItemLogic
         var getItemResult = await formReadable
             .Where(x => x.FormId == request.Id)
             .ToListAsync(cancellationToken);
-        await LoadAll(formReadable, getItemResult, new HashSet<long>());
+        await LoadAllFormItems(formReadable, getItemResult, new HashSet<long>());
         var mapped = unitOfWork.GetMapper().MapToList<FormItemContract>(getItemResult);
-        var allItems = GetAllChilren(getItemResult);
-        await CheckDeletedItems(unitOfWork, request.Items, mapped, allItems, cancellationToken);
+        await CheckDeletedItems<FormItemContract, FormItemEntity>(unitOfWork, request.Items, mapped, x => x.Id, x => x.Items);
     }
 
     public static async Task CheckDeletedItems(IBaseUnitOfWork unitOfWork, FormItemContract request, CancellationToken cancellationToken = default)
     {
         var formItemReadable = unitOfWork.GetReadableOf<FormItemEntity>();
         var getItemResult = await formItemReadable.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
-        await LoadAll(formItemReadable, getItemResult, new HashSet<long>());
+        await LoadAllFormItems(formItemReadable, getItemResult, new HashSet<long>());
         var mapped = unitOfWork.GetMapper().Map<FormItemContract>(getItemResult);
-        var allItems = GetAllChilren(getItemResult.Children);
-        await CheckDeletedItems(unitOfWork, request.Items, mapped.Items, allItems, cancellationToken);
+        await CheckDeletedItems<FormItemContract, FormItemEntity>(unitOfWork, request.Items, mapped.Items, x => x.Id, x => x.Items);
+        await CheckDeletedItems<FormItemEventContract, FormItemEventEntity>(unitOfWork, request.Events, mapped.Events, x => x.Id, null);
+        if (request.Events != null)
+        {
+            foreach (var item in request.Events)
+            {
+                var findEvent = mapped.Events.FirstOrDefault(x => x.Id == item.Id);
+                if (findEvent == null)
+                    continue;
+                await CheckDeletedItems<FormItemEventActionContract, FormItemEventActionEntity>(unitOfWork, item.FormItemEventActions, findEvent.FormItemEventActions, x => x.Id, x => x.Children);
+            }
+        }
     }
 
-    public static async Task CheckDeletedItems(IBaseUnitOfWork unitOfWork, List<FormItemContract> changedItems, List<FormItemContract> oldItems, List<FormItemEntity> allItems, CancellationToken cancellationToken = default)
+    public static async Task CheckDeletedItems<TContract, TEntity>(IBaseUnitOfWork unitOfWork, ICollection<TContract> changedItems, ICollection<TContract> oldItems, Func<TContract, long> getId, Func<TContract, ICollection<TContract>> getChildren)
+        where TEntity : class
     {
-        //var logic = unitOfWork.GetLongLogic<FormItemEntity>();
-        var deletedItems = FindDeletedItems(oldItems, changedItems);
+        var deletedItems = FindDeletedItems(oldItems, changedItems, x => getId(x), getChildren == null ? null : x => getChildren(x));
         if (deletedItems.Count > 0)
         {
-            foreach (var item in deletedItems)
+            await unitOfWork.GetLogic<TEntity, long>().SoftDeleteBulkByIds(new Cores.Contracts.Requests.SoftDeleteBulkRequestContract<long>
             {
-                await unitOfWork.GetLogic<FormItemEntity, long>().SoftDeleteById(new Cores.Contracts.Requests.SoftDeleteRequestContract<long>()
-                {
-                    Id = item,
-                    IsDelete = true
-                }).AsCheckedResult();
-            }
-            //List<FormItemEntity> updatedItems = new List<FormItemEntity>();
-            //foreach (var item in allItems.Where(x => deletedItems.Contains(x.PrimaryFormItemId.GetValueOrDefault())))
-            //{
-            //    item.PrimaryFormItemId = null;
-            //    updatedItems.Add(item);
-            //}
-            //foreach (var item in allItems.Where(x => deletedItems.Contains(x.ParentFormItemId.GetValueOrDefault())))
-            //{
-            //    item.ParentFormItemId = null;
-            //    updatedItems.Add(item);
-            //}
-            //await logic.UpdateBulk(new UpdateBulkRequestContract<FormItemEntity>()
-            //{
-            //    Items = updatedItems.Distinct().ToList()
-            //}, cancellationToken).AsCheckedResult();
+                Ids = deletedItems,
+                IsDelete = true
+            }).AsCheckedResult();
         }
     }
 
-    public static List<FormItemContract> GetAllChilren(List<FormItemContract> items)
-    {
-        List<FormItemContract> result = new List<FormItemContract>();
-        foreach (var item in items)
-        {
-            result.Add(item);
-            result.AddRange(GetAllChilren(item.Items));
-        }
-        return result;
-    }
-
-    public static List<FormItemEntity> GetAllChilren(ICollection<FormItemEntity> items)
-    {
-        List<FormItemEntity> result = new List<FormItemEntity>();
-        foreach (var item in items)
-        {
-            result.Add(item);
-            if (item.Children != null)
-                result.AddRange(GetAllChilren(item.Children));
-        }
-        return result;
-    }
-
-    public static List<long> FindDeletedItems(ICollection<FormItemContract> realItems, ICollection<FormItemContract> newItems)
+    public static List<long> FindDeletedItems<TContract>(ICollection<TContract> realItems, ICollection<TContract> newItems,
+        Func<TContract, long> getId, Func<TContract, ICollection<TContract>> getChildren)
     {
         List<long> result = new List<long>();
         if (realItems == null || newItems == null)
             return result;
         foreach (var item in realItems)
         {
-            var findItem = newItems.FirstOrDefault(x => x.Id == item.Id);
+            var findItem = newItems.FirstOrDefault(x => getId(x) == getId(item));
             if (findItem == null)
-                result.Add(item.Id);
-            else
-                result.AddRange(FindDeletedItems(item.Items, findItem.Items));
+                result.Add(getId(item));
+            else if (getChildren != null)
+                result.AddRange(FindDeletedItems(getChildren(item), getChildren(findItem), getId, getChildren));
         }
         return result;
     }
 
-    public static async Task LoadAll(IEasyReadableQueryableAsync<FormItemEntity> readable, List<FormItemEntity> formItems, HashSet<long> loadedItemsCache)
+    public static async Task LoadAllFormItems(IEasyReadableQueryableAsync<FormItemEntity> readable, List<FormItemEntity> formItems, HashSet<long> loadedItemsCache)
     {
         foreach (var item in formItems.Where(x => !x.IsDeleted))
         {
-            await LoadAll(readable, item, loadedItemsCache);
+            await LoadAllFormItems(readable, item, loadedItemsCache);
         }
     }
 
-    public static async Task LoadAll(IEasyReadableQueryableAsync<FormItemEntity> readable, FormItemEntity formItem, HashSet<long> loadedItemsCache)
+    public static async Task LoadAllFormItems(IEasyReadableQueryableAsync<FormItemEntity> readable, FormItemEntity formItem, HashSet<long> loadedItemsCache)
     {
         if (loadedItemsCache.Contains(formItem.Id))
             return;
         loadedItemsCache.Add(formItem.Id);
         await readable.Context.Entry(formItem).ReloadCollectionAsync(nameof(formItem.Children));
+        await readable.Context.Entry(formItem).ReloadCollectionAsync(nameof(formItem.FormItemEvents));
         await readable.Context.Entry(formItem).ReloadReferenceAsync(nameof(formItem.ItemType));
         await readable.Context.Entry(formItem).ReloadReferenceAsync(nameof(formItem.PrimaryFormItem));
         formItem.Children = formItem.Children.Where(x => !x.IsDeleted).ToList();
@@ -132,9 +103,46 @@ public static class FormItemLogic
             else
             {
                 await readable.Context.Entry(formItem.PrimaryFormItem).ReloadReferenceAsync(nameof(formItem.ItemType));
-                await LoadAll(readable, formItem.PrimaryFormItem, loadedItemsCache);
+                await LoadAllFormItems(readable, formItem.PrimaryFormItem, loadedItemsCache);
             }
         }
-        await LoadAll(readable, formItem.Children.ToList(), loadedItemsCache);
+        formItem.FormItemEvents = formItem.FormItemEvents.Where(x => !x.IsDeleted).ToList();
+        foreach (var item in formItem.FormItemEvents)
+        {
+            await readable.Context.Entry(item).ReloadCollectionAsync(nameof(item.FormItemEventActions));
+            item.FormItemEventActions = item.FormItemEventActions.Where(x => !x.IsDeleted).ToList();
+            foreach (var child in item.FormItemEventActions)
+            {
+                await readable.Context.Entry(child).ReloadCollectionAsync(nameof(child.Children));
+                child.Children = child.Children.Where(x => !x.IsDeleted).ToList();
+            }
+        }
+        await LoadAllFormItems(readable, formItem.Children.ToList(), loadedItemsCache);
+    }
+
+    public static async Task LoadAllEventActions(IEasyReadableQueryableAsync<FormItemEventActionEntity> readable, ICollection<FormItemEventActionEntity> eventItems, HashSet<long> loadedItemsCache)
+    {
+        foreach (var item in eventItems.Where(x => !x.IsDeleted))
+        {
+            if (loadedItemsCache.Contains(item.Id))
+                continue;
+            loadedItemsCache.Add(item.Id);
+            await readable.Context.Entry(item).ReloadCollectionAsync(nameof(item.Children));
+            await LoadAllEventActions(readable, item.Children, loadedItemsCache);
+        }
+    }
+
+    public static async Task LoadAllEvents(IEasyReadableQueryableAsync<FormItemEventEntity> readable, IEasyReadableQueryableAsync<FormItemEventActionEntity> eventReadable, FormItemEventEntity eventItem, HashSet<long> loadedItemsCache)
+    {
+        if (loadedItemsCache.Contains(eventItem.Id))
+            return;
+        loadedItemsCache.Add(eventItem.Id);
+        await readable.Context.Entry(eventItem).ReloadCollectionAsync(nameof(eventItem.FormItemEventActions));
+        eventItem.FormItemEventActions = eventItem.FormItemEventActions.Where(x => !x.IsDeleted).ToList();
+        foreach (var item in eventItem.FormItemEventActions)
+        {
+            await readable.Context.Entry(item).ReloadCollectionAsync(nameof(item.Children));
+            await LoadAllEventActions(eventReadable, item.Children, loadedItemsCache);
+        }
     }
 }

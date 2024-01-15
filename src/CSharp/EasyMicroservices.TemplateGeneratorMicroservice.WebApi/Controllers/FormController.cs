@@ -25,7 +25,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             var query = readable.Where(e => e.Id == request.Id && !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
             var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).FirstOrDefaultAsync(cancellationToken);
             var itemReadable = context.GetReadableOf<FormItemEntity>();
-            await FormItemLogic.LoadAll(itemReadable, result.FormItems.ToList(), new HashSet<long>());
+            await FormItemLogic.LoadAllFormItems(itemReadable, result.FormItems.ToList(), new HashSet<long>());
             return await UnitOfWork.GetMapper().MapAsync<FormContract>(result);
         }
 
@@ -56,7 +56,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             }
             var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).ToListAsync(cancellationToken);
             var itemReadable = context.GetReadableOf<FormItemEntity>();
-            await FormItemLogic.LoadAll(itemReadable, result.SelectMany(x => x.FormItems).ToList(), new HashSet<long>());
+            await FormItemLogic.LoadAllFormItems(itemReadable, result.SelectMany(x => x.FormItems).ToList(), new HashSet<long>());
             return new ListMessageContract<FormContract>()
             {
                 TotalCount = count,

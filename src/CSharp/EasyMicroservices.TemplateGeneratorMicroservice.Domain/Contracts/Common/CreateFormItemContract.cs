@@ -5,4 +5,5 @@ public class CreateFormItemContract : FormItemBaseContract
 {
     public FormItemContract PrimaryFormItem { get; set; }
     public List<CreateFormItemContract> Items { get; set; }
+    public List<FormItemEventContract> Events { get; set; }
 }

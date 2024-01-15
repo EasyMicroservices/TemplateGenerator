@@ -99,6 +99,9 @@
 						},
 						{
 							"Name": "PrimaryFormItems"
+						},
+						{
+							"Name": "FormItemActionJobs"
 						}
 					],
 					"CustomProperties": [
@@ -109,6 +112,10 @@
 						{
 							"FromName": "Type",
 							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
+						},
+						{
+							"FromName": "FormItemEvents",
+							"ToName": "Events"
 						}
 					],
 					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
@@ -302,6 +309,9 @@
 						},
 						{
 							"Name": "PrimaryFormItems"
+						},
+						{
+							"Name": "FormItemActionJobs"
 						}
 					],
 					"CustomProperties": [
@@ -312,6 +322,10 @@
 						{
 							"FromName": "Type",
 							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
+						},
+						{
+							"FromName": "FormItemEvents",
+							"ToName": "Events"
 						}
 					],
 					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
@@ -370,6 +384,9 @@
 						},
 						{
 							"Name": "PrimaryFormItems"
+						},
+						{
+							"Name": "FormItemActionJobs"
 						}
 					],
 					"CustomProperties": [
@@ -380,6 +397,10 @@
 						{
 							"FromName": "Type",
 							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
+						},
+						{
+							"FromName": "FormItemEvents",
+							"ToName": "Events"
 						}
 					],
 					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"
@@ -435,6 +456,9 @@
 						},
 						{
 							"Name": "Id"
+						},
+						{
+							"Name": "FormItemActionJobs"
 						}
 					],
 					"CustomProperties": [
@@ -445,6 +469,10 @@
 						{
 							"FromName": "Type",
 							"ToName": "$(fromObject.ItemType?.Type).GetValueOrDefault()"
+						},
+						{
+							"FromName": "FormItemEvents",
+							"ToName": "Events"
 						}
 					],
 					"FromDirectCodeAsyncMap": "            mapped.ItemTypeId = await ItemTypeDatabaseLogic.GetItemTypeIdByType(fromObject.Type);"

@@ -350,7 +350,9 @@ namespace CompileTimeMapper
             {
                 Children = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -366,8 +368,10 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -385,7 +389,9 @@ namespace CompileTimeMapper
             {
                 Children = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -402,8 +408,10 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -445,7 +453,9 @@ namespace CompileTimeMapper
             {
                 Children = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 UniqueIdentity = fromObject.UniqueIdentity,
@@ -460,8 +470,10 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests.CreateFormItemRequestContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
@@ -478,7 +490,9 @@ namespace CompileTimeMapper
             {
                 Children = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 UniqueIdentity = fromObject.UniqueIdentity,
@@ -494,8 +508,10 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests.CreateFormItemRequestContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.CreateFormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
                 Type = (fromObject.ItemType?.Type).GetValueOrDefault(),
@@ -536,8 +552,10 @@ namespace CompileTimeMapper
             {
                 Children = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -553,9 +571,11 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -573,8 +593,10 @@ namespace CompileTimeMapper
             {
                 Children = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -591,9 +613,11 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -635,8 +659,10 @@ namespace CompileTimeMapper
             {
                 Children = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -652,9 +678,11 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests.UpdateFormItemRequestContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = _mapper.MapToList<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = _mapper.Map<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -672,8 +700,10 @@ namespace CompileTimeMapper
             {
                 Children = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.Items, uniqueRecordId, language, parameters),
                 DefaultValue = fromObject.DefaultValue,
+                FormItemEvents = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEventEntity>(fromObject.Events, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities.FormItemEntity>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
@@ -690,9 +720,11 @@ namespace CompileTimeMapper
             var mapped = new global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests.UpdateFormItemRequestContract()
             {
                 DefaultValue = fromObject.DefaultValue,
+                Events = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemEventContract>(fromObject.FormItemEvents, uniqueRecordId, language, parameters),
                 Id = fromObject.Id,
                 Index = fromObject.Index,
                 Items = await _mapper.MapToListAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.Children, uniqueRecordId, language, parameters),
+                LocalVariableName = fromObject.LocalVariableName,
                 PrimaryFormItem = await _mapper.MapAsync<global::EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common.FormItemContract>(fromObject.PrimaryFormItem, uniqueRecordId, language, parameters),
                 PrimaryFormItemId = fromObject.PrimaryFormItemId,
                 Title = fromObject.Title,
