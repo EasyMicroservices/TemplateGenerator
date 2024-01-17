@@ -12472,6 +12472,7 @@ namespace TemplateGenerators.GeneratedServices
         private long? _formItemId;
         private long? _parentId;
         private int _orderIndex;
+        private string _influencedToVariableName;
         private ActionContract _action;
         private System.Collections.Generic.ICollection<FormItemEventActionContract> _children;
         private System.Collections.Generic.ICollection<FormItemEventActionExecutionContract> _formItemEventActionCallHistories;
@@ -12561,6 +12562,21 @@ namespace TemplateGenerators.GeneratedServices
                 if (_orderIndex != value)
                 {
                     _orderIndex = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        [Newtonsoft.Json.JsonProperty("influencedToVariableName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string InfluencedToVariableName
+        {
+            get { return _influencedToVariableName; }
+
+            set
+            {
+                if (_influencedToVariableName != value)
+                {
+                    _influencedToVariableName = value;
                     RaisePropertyChanged();
                 }
             }

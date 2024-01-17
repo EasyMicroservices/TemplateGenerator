@@ -6362,6 +6362,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "influencedToVariableName": {
+            "type": "string",
+            "nullable": true
+          },
           "action": {
             "$ref": "#/components/schemas/ActionContract"
           },
