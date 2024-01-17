@@ -12467,7 +12467,7 @@ namespace TemplateGenerators.GeneratedServices
     public partial class FormItemEventActionContract : System.ComponentModel.INotifyPropertyChanged
     {
         private long _id;
-        private long _formItemEventId;
+        private long? _formItemEventId;
         private long _actionId;
         private long? _formItemId;
         private long? _parentId;
@@ -12491,8 +12491,8 @@ namespace TemplateGenerators.GeneratedServices
             }
         }
 
-        [Newtonsoft.Json.JsonProperty("formItemEventId", Required = Newtonsoft.Json.Required.DisallowNull, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long FormItemEventId
+        [Newtonsoft.Json.JsonProperty("formItemEventId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? FormItemEventId
         {
             get { return _formItemEventId; }
 
