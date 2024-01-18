@@ -1,40 +1,42 @@
 ﻿using EasyMicroservices.Cores.AspCoreApi;
-using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
-using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;
+using EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Helpers;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers;
 
 public class NoParentFormItemController : SimpleQueryServiceController<FormItemEntity, CreateFormItemRequestContract, UpdateFormItemRequestContract, FormItemContract, long>
 {
-    public NoParentFormItemController(IUnitOfWork uow) : base(uow)
+    AppUnitOfWork _appUnitOfWork;
+    public NoParentFormItemController(AppUnitOfWork uow) : base(uow)
     {
+        _appUnitOfWork = uow;
     }
 
     public override async Task<MessageContract<FormItemContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
     {
         var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
-        uniqueIdentity += "-";
-        await using var context = UnitOfWork.GetDatabase();
-        var readable = context.GetReadableOf<FormItemEntity>();
-        var query = readable.Where(e => e.Id == request.Id && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
-        var result = await query.FirstAsync(cancellationToken);
-        await FormItemLogic.LoadAllFormItems(readable, result, new HashSet<long>());
+        if (uniqueIdentity.HasValue())
+            uniqueIdentity += "-";
+        var result = await _appUnitOfWork.GetFormItemLogic().LoadAllFormItems(request.Id, uniqueIdentity, cancellationToken);
         return await UnitOfWork.GetMapper().MapAsync<FormItemContract>(result);
     }
 
     public override async Task<ListMessageContract<FormItemContract>> Filter(FilterRequestContract filterRequest, CancellationToken cancellationToken = default)
     {
         var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
-        uniqueIdentity += "-";
+        if (uniqueIdentity.HasValue())
+            uniqueIdentity += "-";
         await using var context = UnitOfWork.GetDatabase();
         var readable = context.GetReadableOf<FormItemEntity>();
-        var query = readable.Where(e => e.FormId == null && e.ParentFormItemId == null && e.UniqueIdentity.StartsWith(uniqueIdentity) && !e.IsDeleted);
+        var query = readable.Where(e => e.FormId == null && e.ParentFormItemId == null && !e.IsDeleted);
+        if (uniqueIdentity.HasValue())
+            query = query.Where(e => e.UniqueIdentity.StartsWith(uniqueIdentity));
         var count = await query.LongCountAsync();
         filterRequest.IsDeleted = false;
         if (filterRequest.Index.HasValue)
@@ -42,7 +44,6 @@ public class NoParentFormItemController : SimpleQueryServiceController<FormItemE
         if (filterRequest.Length.HasValue)
             query = query.Take((int)filterRequest.Length.Value);
         var result = await query.ToListAsync(cancellationToken);
-        await FormItemLogic.LoadAllFormItems(readable, result, new HashSet<long>());
         return new ListMessageContract<FormItemContract>()
         {
             TotalCount = count,
@@ -53,7 +54,9 @@ public class NoParentFormItemController : SimpleQueryServiceController<FormItemE
 
     public override async Task<MessageContract<FormItemContract>> UpdateChangedValuesOnly(UpdateFormItemRequestContract request, CancellationToken cancellationToken = default)
     {
-        await FormItemLogic.CheckDeletedItems(UnitOfWork, request, cancellationToken);
+        var logic = _appUnitOfWork.GetFormItemLogic();
+        await logic.CheckDeletedItems(request, cancellationToken);
+        logic.ClearInnerItems(request);
         return await base.UpdateChangedValuesOnly(request, cancellationToken);
     }
 }

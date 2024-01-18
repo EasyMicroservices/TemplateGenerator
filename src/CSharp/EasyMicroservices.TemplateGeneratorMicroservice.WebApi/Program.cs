@@ -1,11 +1,13 @@
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi;
 using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
 using EasyMicroservices.Cores.Database.Managers;
+using EasyMicroservices.Cores.Interfaces;
 using EasyMicroservices.Cores.Relational.EntityFrameworkCore.Intrerfaces;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Contexts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;
 using EasyMicroservices.TemplateGeneratorMicroservice.Helpers;
+using EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
@@ -31,6 +33,11 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi
             app.Services.AddTransient((serviceProvider) => new UnitOfWork(serviceProvider));
             app.Services.AddTransient<TemplateGeneratorContext>();
             app.Services.AddTransient<IEntityFrameworkCoreDatabaseBuilder, DatabaseBuilder>();
+            app.Services.AddTransient<IUnitOfWork, AppUnitOfWork>();
+            app.Services.AddTransient<IBaseUnitOfWork, AppUnitOfWork>();
+            app.Services.AddTransient<AppUnitOfWork>();
+            app.Services.AddTransient<FormItemLogic>();
+            
             return app;
         }
 

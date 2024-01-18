@@ -6,14 +6,17 @@ using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Requests;
 using EasyMicroservices.TemplateGeneratorMicroservice.Database.Entities;
 using EasyMicroservices.TemplateGeneratorMicroservice.DatabaseLogics;
+using EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 {
     public class FormController : SimpleQueryServiceController<FormEntity, CreateFormRequestContract, FormContract, FormContract, long>
     {
-        public FormController(IUnitOfWork uow) : base(uow)
+        AppUnitOfWork _appUnitOfWork;
+        public FormController(AppUnitOfWork uow) : base(uow)
         {
+            _appUnitOfWork = uow;
         }
 
         public override async Task<MessageContract<FormContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
@@ -24,8 +27,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             var readable = context.GetReadableOf<FormEntity>();
             var query = readable.Where(e => e.Id == request.Id && !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
             var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).FirstOrDefaultAsync(cancellationToken);
-            var itemReadable = context.GetReadableOf<FormItemEntity>();
-            await FormItemLogic.LoadAllFormItems(itemReadable, result.FormItems.ToList(), new HashSet<long>());
+            await _appUnitOfWork.GetFormItemLogic().LoadAllFormItems(result.FormItems.ToList(), new HashSet<long>());
             return await UnitOfWork.GetMapper().MapAsync<FormContract>(result);
         }
 
@@ -55,8 +57,7 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
                     query = query.Take((int)filterRequest.Length.Value);
             }
             var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).ToListAsync(cancellationToken);
-            var itemReadable = context.GetReadableOf<FormItemEntity>();
-            await FormItemLogic.LoadAllFormItems(itemReadable, result.SelectMany(x => x.FormItems).ToList(), new HashSet<long>());
+            await _appUnitOfWork.GetFormItemLogic().LoadAllFormItems(result.SelectMany(x => x.FormItems).ToList(), new HashSet<long>());
             return new ListMessageContract<FormContract>()
             {
                 TotalCount = count,
@@ -67,13 +68,13 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
 
         public override async Task<MessageContract<FormContract>> Update(FormContract request, CancellationToken cancellationToken = default)
         {
-            await FormItemLogic.CheckDeletedItems(UnitOfWork, request, cancellationToken);
+            await _appUnitOfWork.GetFormItemLogic().CheckDeletedItems(request, cancellationToken);
             return await base.Update(request, cancellationToken);
         }
 
         public override async Task<MessageContract<FormContract>> UpdateChangedValuesOnly(FormContract request, CancellationToken cancellationToken = default)
         {
-            await FormItemLogic.CheckDeletedItems(UnitOfWork, request, cancellationToken);
+            await _appUnitOfWork.GetFormItemLogic().CheckDeletedItems(request, cancellationToken);
             return await base.UpdateChangedValuesOnly(request, cancellationToken);
         }
     }
