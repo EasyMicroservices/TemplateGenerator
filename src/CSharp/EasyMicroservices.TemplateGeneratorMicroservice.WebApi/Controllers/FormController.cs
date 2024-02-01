@@ -19,51 +19,19 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
             _appUnitOfWork = uow;
         }
 
-        public override async Task<MessageContract<FormContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
+        public override Task<MessageContract<FormContract>> GetById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
         {
-            await using var context = UnitOfWork.GetDatabase();
-            var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
-            uniqueIdentity += "-";
-            var readable = context.GetReadableOf<FormEntity>();
-            var query = readable.Where(e => e.Id == request.Id && !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
-            var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).FirstOrDefaultAsync(cancellationToken);
-            await _appUnitOfWork.GetFormItemLogic().LoadAllFormItems(result.FormItems.ToList(), new HashSet<long>());
-            return await UnitOfWork.GetMapper().MapAsync<FormContract>(result);
+            return _appUnitOfWork.GetFormItemLogic().GetFormById(request, cancellationToken);
         }
 
         public override Task<ListMessageContract<FormContract>> Filter(FilterRequestContract filterRequest, CancellationToken cancellationToken = default)
         {
-            return GetWithInclude(filterRequest, cancellationToken);
+            return _appUnitOfWork.GetFormItemLogic().GetWithInclude(filterRequest, cancellationToken);
         }
 
         public override Task<ListMessageContract<FormContract>> GetAll(CancellationToken cancellationToken = default)
         {
-            return GetWithInclude(null, cancellationToken);
-        }
-
-        async Task<ListMessageContract<FormContract>> GetWithInclude(FilterRequestContract filterRequest, CancellationToken cancellationToken)
-        {
-            await using var context = UnitOfWork.GetDatabase();
-            var uniqueIdentity = await UnitOfWork.GetCurrentUserUniqueIdentity();
-            uniqueIdentity += "-";
-            var readable = context.GetReadableOf<FormEntity>();
-            var query = readable.Where(e => !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
-            var count = await query.LongCountAsync();
-            if (filterRequest != null)
-            {
-                if (filterRequest.Index.HasValue)
-                    query = query.Skip((int)filterRequest.Index.Value);
-                if (filterRequest.Length.HasValue)
-                    query = query.Take((int)filterRequest.Length.Value);
-            }
-            var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).ToListAsync(cancellationToken);
-            await _appUnitOfWork.GetFormItemLogic().LoadAllFormItems(result.SelectMany(x => x.FormItems).ToList(), new HashSet<long>());
-            return new ListMessageContract<FormContract>()
-            {
-                TotalCount = count,
-                IsSuccess = true,
-                Result = await UnitOfWork.GetMapper().MapToListAsync<FormContract>(result)
-            };
+            return _appUnitOfWork.GetFormItemLogic().GetWithInclude(null, cancellationToken);
         }
 
         public override async Task<MessageContract<FormContract>> Update(FormContract request, CancellationToken cancellationToken = default)

@@ -1,4 +1,5 @@
 ﻿using EasyMicroservices.Cores.AspEntityFrameworkCoreApi.Interfaces;
+using EasyMicroservices.Cores.Contracts.Requests;
 using EasyMicroservices.Database.Interfaces;
 using EasyMicroservices.ServiceContracts;
 using EasyMicroservices.TemplateGeneratorMicroservice.Contracts.Common;
@@ -18,6 +19,7 @@ public class FormItemLogic
     //readonly IEasyReadableQueryableAsync<FormItemEventActionEntity> _formItemEventActionReadable;
     //readonly IEasyReadableQueryableAsync<FormItemEventEntity> _formItemEventReadable;
     readonly IEasyReadableQueryableAsync<FormItemEntity> _formItemReadable;
+    readonly IEasyReadableQueryableAsync<FormEntity> _formReadable;
     readonly IUnitOfWork _unitOfWork;
     public FormItemLogic(IUnitOfWork unitOfWork)
     {
@@ -25,6 +27,56 @@ public class FormItemLogic
         //_formItemEventActionReadable = unitOfWork.GetReadableOf<FormItemEventActionEntity>();
         //_formItemEventReadable = unitOfWork.GetReadableOf<FormItemEventEntity>();
         _formItemReadable = unitOfWork.GetReadableOf<FormItemEntity>();
+        _formReadable = unitOfWork.GetReadableOf<FormEntity>();
+    }
+
+    public async Task<MessageContract<FormContract>> GetFormById(GetByIdRequestContract<long> request, CancellationToken cancellationToken = default)
+    {
+        await using var context = _unitOfWork.GetDatabase();
+        var uniqueIdentity = await _unitOfWork.GetCurrentUserUniqueIdentity();
+        uniqueIdentity += "-";
+        var readable = context.GetReadableOf<FormEntity>();
+        var query = readable.Where(e => e.Id == request.Id && !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
+        var result = await query.Include(x => x.FormItems.Where(x => !x.IsDeleted)).AsNoTracking().FirstOrDefaultAsync(cancellationToken);
+        List<FormItemEntity> itemEntities = new List<FormItemEntity>();
+        foreach (var fi in result.FormItems)
+        {
+            itemEntities.Add(await LoadAllFormItems(fi.Id, uniqueIdentity, cancellationToken));
+        }
+        result.FormItems = itemEntities;
+        return await _unitOfWork.GetMapper().MapAsync<FormContract>(result);
+    }
+
+    public async Task<ListMessageContract<FormContract>> GetWithInclude(FilterRequestContract filterRequest, CancellationToken cancellationToken)
+    {
+        var uniqueIdentity = await _unitOfWork.GetCurrentUserUniqueIdentity();
+        uniqueIdentity += "-";
+        var readable = _formReadable;
+        var query = readable.Where(e => !e.IsDeleted && e.UniqueIdentity.StartsWith(uniqueIdentity));
+        var count = await query.LongCountAsync();
+        if (filterRequest != null)
+        {
+            if (filterRequest.Index.HasValue)
+                query = query.Skip((int)filterRequest.Index.Value);
+            if (filterRequest.Length.HasValue)
+                query = query.Take((int)filterRequest.Length.Value);
+        }
+        var result = await query.Include(x => x.FormItems.Where(i => !i.IsDeleted)).AsNoTracking().ToListAsync(cancellationToken);
+        foreach (var item in result)
+        {
+            List<FormItemEntity> itemEntities = new List<FormItemEntity>();
+            foreach (var fi in item.FormItems)
+            {
+                itemEntities.Add(await LoadAllFormItems(fi.Id, uniqueIdentity, cancellationToken));
+            }
+            item.FormItems = itemEntities;
+        }
+        return new ListMessageContract<FormContract>()
+        {
+            TotalCount = count,
+            IsSuccess = true,
+            Result = await _unitOfWork.GetMapper().MapToListAsync<FormContract>(result)
+        };
     }
 
     public async Task CheckDeletedItems(FormContract request, CancellationToken cancellationToken = default)
