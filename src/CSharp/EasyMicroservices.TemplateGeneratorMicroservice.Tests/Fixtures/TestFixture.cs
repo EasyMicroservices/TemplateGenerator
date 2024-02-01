@@ -44,7 +44,7 @@ public class TestFixture : IAsyncLifetime
             string authBaseUrl = config.GetSection("ServiceAddresses").GetChildren().FirstOrDefault(x=>x.GetValue<string>("Name") == "Authentication").GetValue<string>("Address");
             string identityBaseUrl = config.GetSection("ServiceAddresses").GetChildren().FirstOrDefault(x=>x.GetValue<string>("Name") == "Identity").GetValue<string>("Address");
             app.Services.AddSingleton(s => new HttpClient());
-            app.Services.AddTransient(s => new AuthenticationClient(authBaseUrl, s.GetService<HttpClient>()));
+            app.Services.AddTransient(s => new AuthenticationClient(identityBaseUrl, s.GetService<HttpClient>()));
             app.Services.AddTransient(s => new NoParentFormItemClient(generatorBaseUrl, s.GetService<HttpClient>()));
             app.Services.AddTransient(s => new EventClient(generatorBaseUrl, s.GetService<HttpClient>()));
             app.Services.AddTransient(s => new ActionClient(generatorBaseUrl, s.GetService<HttpClient>()));
