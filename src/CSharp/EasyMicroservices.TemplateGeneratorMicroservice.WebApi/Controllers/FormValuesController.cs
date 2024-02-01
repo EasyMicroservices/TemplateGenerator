@@ -37,19 +37,19 @@ namespace EasyMicroservices.TemplateGeneratorMicroservice.WebApi.Controllers
                  .GetCheckedResult();
 
             var allAutoIncrementNumber = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber).ToList();
-            var globalFormItemValue = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).OrderByDescending(x => x.Value).FirstOrDefault();
-            var globalFormItem = autoIndexFormItems.FirstOrDefault(x => x.Id == globalFormItemValue?.FormItemId);
-            int number = 1;
-            if (globalFormItemValue != null && globalFormItemValue.Value.HasValue() && int.TryParse(globalFormItemValue.Value, out int parsedInt))
-                number = parsedInt + 1;
-            else if (globalFormItem != null && int.TryParse(globalFormItem.DefaultValue, out parsedInt))
-                number = parsedInt;
+            var globalFormItemValue = allValues.Where(x => x.FormItem.ItemType.Type == DataTypes.ItemType.AutoIncrementNumber && x.FormItem?.ParentFormItem?.ItemType?.Type != DataTypes.ItemType.Table).Select(x=> long.TryParse(x.Value,out long num) ? num : 0).OrderByDescending(x => x).FirstOrDefault();
+            //var globalFormItem = autoIndexFormItems.FirstOrDefault(x => x.Id == globalFormItemValue?.FormItemId);
+            long number = 1;
+            if (globalFormItemValue > 0)
+                number = globalFormItemValue + 1;
+            //else if (globalFormItem != null && long.TryParse(globalFormItem.DefaultValue, out long parsedInt))
+            //    number = parsedInt;
 
             foreach (var formItemValue in request.FormItemValues)
             {
                 if (autoIndexFormItems.Any(x => x.Id == formItemValue.FormItemId))
                 {
-                    if (!int.TryParse(formItemValue.Value, out _))
+                    if (!long.TryParse(formItemValue.Value, out _))
                     {
                         formItemValue.Value = number.ToString();
                         number++;

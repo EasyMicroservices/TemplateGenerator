@@ -334,6 +334,10 @@ public class FormItemTests : IClassFixture<TestFixture>
         }).AsCheckedResult(x => x.Result);
         var findFromFilter = all.FirstOrDefault(x => x.Id == result);
         Assert.NotNull(findFromFilter);
-        Assert.True(findFromFilter.Items.Count == 0);
+        var byidresult = await _noParentFormItemClient.GetByIdAsync(new  Int64GetByIdRequestContract()
+        {
+            Id = findFromFilter.Id
+        }).AsCheckedResult(x => x.Result);
+        Assert.True(byidresult.Items.Count == 0);
     }
 }
