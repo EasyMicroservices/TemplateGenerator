@@ -3928,6 +3928,55 @@
         }
       }
     },
+    "/api/FormValues/UpdateFormValuesOnly": {
+      "post": {
+        "tags": [
+          "FormValues"
+        ],
+        "operationId": "UpdateFormValuesOnly",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FormValuesContract"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MessageContract"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/FormValues/AddBulk": {
       "post": {
         "tags": [
